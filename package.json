@@ -1,7 +1,8 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "gatsby-active-ins",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "homepage": "https://activeinsurancegj.com",
+  "description": "Good Health. That's the plan",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
@@ -14,18 +15,48 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^2.0.7",
+    "dotenv": "^16.0.1",
     "gatsby": "^4.14.1",
+    "gatsby-plugin-netlify": "^4.3.1",
+    "gatsby-plugin-react-helmet": "^5.14.0",
+    "gatsby-plugin-sanity-image": "^0.11.0",
+    "gatsby-plugin-styled-components": "^5.14.0",
+    "gatsby-source-sanity": "^7.4.2",
+    "normalize.css": "^8.0.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-wesbos": "^3.0.2",
+    "eslint-plugin-css": "^0.6.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "prettier": "^2.6.2"
+  },
+    "eslintConfig": {
+    "extends": [
+      "wesbos"
+    ],
+    "rules": {
+      "react/prop-types": 0
+    }
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "git+https://github.com/EricPhifer/gatsby-ais"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/EricPhifer/gatsby-ais/issues"
   }
 }
