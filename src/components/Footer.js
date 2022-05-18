@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const FooterStyles = styled.footer`
@@ -25,7 +26,7 @@ export default function Footer() {
   return (
     <FooterStyles>
       <ul>
-        <li>&copy; Powder Ridge HOA {new Date().getFullYear()}</li>
+        <li>&copy; Active Insurance Solutions {new Date().getFullYear()}</li>
         <li>
           <a href="https://ericphifer.com" target="_blank" rel="noreferrer">
             Designed &amp; Developed by Eric Phifer LLC
@@ -33,13 +34,13 @@ export default function Footer() {
         </li>
         <li>
           <div />
-          <a href="https://powderridgegrandmesa.com/privacypolicy">
+          <Link to="/privacypolicy">
             Privacy Policy
-          </a>{' '}
+          </Link>{' '}
           |{' '}
-          <a href="https://powderridgegrandmesa.com/termsconditions">
+          <Link to="/termsconditions">
             Terms &amp; Conditions
-          </a>
+          </Link>
         </li>
       </ul>
     </FooterStyles>

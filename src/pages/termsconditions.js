@@ -7,6 +7,12 @@ const TermStyles = styled.div`
   word-wrap: break-word;
   padding-left: 5rem;
   padding-right: 5rem;
+  .termsContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: justify;
+  }
   .updateDate {
     text-align: center;
   }
@@ -30,15 +36,19 @@ export default function TermsConditions({ data }) {
     <>
       <SEO title="Terms &amp; Conditions" />
       <TermStyles>
-        <h1>Terms and Conditions</h1>
-        <p className="updateDate">Last updated: May 23, 2022</p>
+        <p className="updateDate">Last updated: May 17, 2022</p>
         {terms.map((term) => (
-          <div key={term.id}>
-            <br />
+          <section key={term.id}>
             <h1>{term.title}</h1>
-            <br />
-            {term.content.children.map((text) => text)}
-          </div>
+            <section className="termsContainer">
+              {term.content.map((c) => 
+                c.children.map((text) => 
+                  <p key={text._key}>
+                    {text.text}
+                  </p>
+              ))}
+            </section>
+          </section>
         ))}
       </TermStyles>
     </>
@@ -53,6 +63,7 @@ export const query = graphql`
       title
       content {
         children {
+          _key
           text
         }
       }

@@ -7,6 +7,12 @@ const PolicyStyles = styled.div`
   word-wrap: break-word;
   padding-left: 5rem;
   padding-right: 5rem;
+  .policyContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: justify;
+  }
   .updateDate {
     text-align: center;
   }
@@ -16,12 +22,6 @@ const PolicyStyles = styled.div`
   }
 `;
 
-function countOrder(policies) {
-  const counts = policies.map((policy) => policy);
-  const sortedOrder = Object.values(counts).sort((a, b) => a.order - b.order);
-  return sortedOrder;
-}
-
 export default function PrivacyPolicy({ data }) {
   const policies = data.policies.nodes;
   return (
@@ -30,12 +30,17 @@ export default function PrivacyPolicy({ data }) {
       <PolicyStyles>
         <p className="updateDate">Last updated: May 17, 2022</p>
         {policies.map((policy) => (
-          <div key={policy.id}>
-            <br />
+          <section key={policy.id}>
             <h1>{policy.title}</h1>
-            <br />
-            {content.map((children) => children.map((text) => text))}
-          </div>
+            <section className="policyContainer">
+              {policy.content.map((c) => 
+                c.children.map((text) => 
+                  <p key={text._key}>
+                    {text.text}
+                  </p>
+              ))}
+            </section>
+          </section>
         ))}
       </PolicyStyles>
     </>
@@ -50,6 +55,7 @@ export const query = graphql`
       title
       content {
         children {
+          _key
           text
         }
       }
