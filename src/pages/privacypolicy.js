@@ -24,25 +24,17 @@ function countOrder(policies) {
 
 export default function PrivacyPolicy({ data }) {
   const policies = data.policies.nodes;
-  const order = countOrder(policies);
   return (
     <>
       <SEO title="Privacy Policy" />
       <PolicyStyles>
-        <p className="updateDate">Last updated: April 22, 2021</p>
-        {order.map((policy) => (
-          <div key={policy._id}>
+        <p className="updateDate">Last updated: May 17, 2022</p>
+        {policies.map((policy) => (
+          <div key={policy.id}>
             <br />
             <h1>{policy.title}</h1>
             <br />
-            <div>
-              {policy.contents.map((content) => (
-                <div>
-                  <div>{content}</div>
-                  <br />
-                </div>
-              ))}
-            </div>
+            {content.map((children) => children.map((text) => text))}
           </div>
         ))}
       </PolicyStyles>
@@ -56,7 +48,7 @@ export const query = graphql`
     nodes {
       id
       title
-      name {
+      content {
         children {
           text
         }

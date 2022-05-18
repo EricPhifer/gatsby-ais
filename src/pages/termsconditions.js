@@ -32,12 +32,12 @@ export default function TermsConditions({ data }) {
       <TermStyles>
         <h1>Terms and Conditions</h1>
         <p className="updateDate">Last updated: May 23, 2022</p>
-        {order.map((term) => (
+        {terms.map((term) => (
           <div key={term.id}>
             <br />
             <h1>{term.title}</h1>
             <br />
-            <p>{content}</p>
+            {term.content.children.map((text) => text)}
           </div>
         ))}
       </TermStyles>
@@ -51,7 +51,7 @@ export const query = graphql`
     nodes {
       id
       title
-      name {
+      content {
         children {
           text
         }
