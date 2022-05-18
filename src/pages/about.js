@@ -14,6 +14,7 @@ const AboutStyles = styled.div`
 
 export default function AboutPage({ data }) {
   const about = data.about.nodes;
+  const staff = data.staff.nodes;
   return (
     <>
       <SEO title="Board Members" />
@@ -27,7 +28,57 @@ export default function AboutPage({ data }) {
 export const query = graphql`
   query {
     about: allSanityAboutPage {
-        id
+    nodes {
+      id
+      content {
+        ... on SanityAboutHero {
+          id
+          heading
+          text
+          image {
+            asset {
+              id
+            }
+          }
+        }
+        ... on SanityAboutMission {
+          id
+          mission
+          title
+        }
+        ... on SanityAboutWhat {
+          id
+          name {
+            list
+            children {
+              text
+              marks
+            }
+            style
+          }
+        }
+      }
+      title
+      description
+      image {
+        asset {
+          id
+        }
+      }
     }
   }
+  staff: allSanityAboutProfile {
+    nodes {
+      bio
+      id
+      image {
+        asset {
+          id
+        }
+      }
+      jobTitle
+      name
+    }
+  }
+}
 `;

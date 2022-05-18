@@ -14,6 +14,7 @@ const FaqStyles = styled.div`
 
 export default function FaqPage({ data }) {
   const faqs = data.faqs.nodes;
+  const hero = data.hero.nodes;
   return (
     <>
       <SEO title="Board Members" />
@@ -26,8 +27,23 @@ export default function FaqPage({ data }) {
 
 export const query = graphql`
   query {
-    faqs: allSanityFaqPage {
-        id
+    faqs: allSanityFaq {
+    nodes {
+      id
+      question
+      answer
     }
+  }
+  hero: allSanityFaqHero {
+    nodes {
+      heading
+      text
+      image {
+        asset {
+          id
+        }
+      }
+    }
+  }
   }
 `;

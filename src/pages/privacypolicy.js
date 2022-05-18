@@ -53,12 +53,15 @@ export default function PrivacyPolicy({ data }) {
 export const query = graphql`
   query {
     policies: allSanityPrivacyPolicy {
-      nodes {
-        id
-        order
-        title
-        contents
+    nodes {
+      id
+      title
+      name {
+        children {
+          text
+        }
       }
     }
+  }
   }
 `;

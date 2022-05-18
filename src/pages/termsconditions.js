@@ -48,11 +48,15 @@ export default function TermsConditions({ data }) {
 export const query = graphql`
   query {
     terms: allSanityTermsConditions {
-      nodes {
-        contents
-        id
-        title
+    nodes {
+      id
+      title
+      name {
+        children {
+          text
+        }
       }
     }
+  }
   }
 `;

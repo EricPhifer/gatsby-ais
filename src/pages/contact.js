@@ -13,7 +13,7 @@ const ContactStyles = styled.div`
 `;
 
 export default function Contact({ data }) {
-  const contact = data.contact.nodes;
+  const contacts = data.contacts.nodes;
 
   return (
     <>
@@ -27,8 +27,38 @@ export default function Contact({ data }) {
 
 export const query = graphql`
   query {
-    contact: allSanityContactPage {
-        id
+    contacts: allSanityContactPage {
+    nodes {
+      id
+      title
+      description
+      content {
+        ... on SanityContactHero {
+          id
+          image {
+            asset {
+              id
+            }
+          }
+        }
+        ... on SanityContactInfo {
+          id
+          address
+          phone
+          title
+        }
+        ... on SanitySocialLink {
+          id
+          service
+          username
+        }
+      }
+      image {
+        asset {
+          id
+        }
+      }
     }
+  }
   }
 `;

@@ -27,7 +27,73 @@ export default function ServicePage({ data }) {
 export const query = graphql`
   query {
     services: allSanityServicePage {
-        id
+    nodes {
+      title
+      id
+      description
+      content {
+        ... on SanityServiceEmployer {
+          id
+          title
+          description
+          plans {
+            title
+            description
+            id
+          }
+        }
+        ... on SanityServiceHero {
+          id
+          text
+          heading
+          image {
+            asset {
+              id
+            }
+          }
+        }
+        ... on SanityServiceIndividual {
+          id
+          description
+          title
+          plans {
+            title
+            description
+            id
+          }
+        }
+        ... on SanityServiceLife {
+          id
+          title
+          description
+          plans {
+            title
+            description
+            id
+          }
+        }
+        ... on SanityServiceMedicare {
+          id
+          title
+          description
+          plans {
+            id
+            title
+            description
+          }
+        }
+        ... on SanityServiceSupplemental {
+          id
+          title
+          description
+          plans {
+            title
+            id
+            description
+          }
+        }
+      }
     }
+  }
   }
 `;

@@ -239,3 +239,39 @@ export default function Nav() {
     </>
   );
 }
+// GraphQL for Header & Footer
+// allSanityLayout {
+//     nodes {
+//       id
+//       footer {
+//         dev
+//         designs
+//         copyright
+//         title
+//       }
+//       header {
+//         navItems {
+//           ... on SanityNavItemGroup {
+//             id
+//             name
+//             navItems {
+//               text
+//               id
+//               icon
+//               href
+//               description
+//             }
+//           }
+//         }
+//         contactnumber
+//         id
+//         title
+//         logo {
+//           asset {
+//             id
+//           }
+//         }
+//       }
+//       title
+//     }
+//   }

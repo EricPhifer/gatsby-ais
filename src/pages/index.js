@@ -27,8 +27,40 @@ export default function HomePage({ data }) {
 
 export const query = graphql`
   query {
-    homepage: allSanityHomePage {
+    homepage: allSanityHomepage {
+    nodes {
+      content {
+        ... on SanityHomepageHero {
+          id
+          image {
+            asset {
+              id
+            }
+          }
+          title
+          text
+          subhead
+          kicker
+          heading
+        }
+        ... on SanityHomepageLogoList {
+          id
+          text
+          logos {
+            image {
+              asset {
+                id
+              }
+            }
+            id
+            alt
+          }
+        }
+      }
+      title
       id
+      description
     }
+  }
   }
 `;
