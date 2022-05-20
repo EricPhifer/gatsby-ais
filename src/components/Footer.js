@@ -3,6 +3,10 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const FooterStyles = styled.footer`
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 2.5rem;
   ul {
     margin: 0;
     padding: 8vmin 0;

@@ -7,8 +7,6 @@ import GlobalStyles from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
 
 const SiteStyles = styled.div`
-    max-width: 1080px;
-    margin: 0 auto;
   width: 100vw;
 `;
 

@@ -16,10 +16,6 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
   }
 
-  body {
-    font-size: 2rem;
-  }
-
   button {
     display: flex;
     max-width: 800px;
