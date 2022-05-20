@@ -17,9 +17,6 @@ const AboutStyles = styled.div`
   @media only screen and (max-width: 501px) {
     padding-top: 1rem;
   }
-  @media only screen and (max-width: 350px) {
-    padding-top: 4rem;
-  }
 `;
 
 export default function AboutPage({ data }) {
@@ -27,7 +24,7 @@ export default function AboutPage({ data }) {
   const staff = data.staff.nodes;
   return (
     <>
-      <SEO title="Board Members" />
+      <SEO title="About Us" />
     <AboutStyles>
         <p>About Info Coming...</p>
     </AboutStyles>

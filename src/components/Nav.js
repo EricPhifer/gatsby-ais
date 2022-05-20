@@ -1,16 +1,18 @@
 import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import styled from 'styled-components';
 import SanityImage from 'gatsby-plugin-sanity-image';
-// import bg from '../assets/images/bg.png';
+import styled from 'styled-components';
 
 const NavStyles = styled.div`
   .bg-gradient {
     position: static;
+    z-index: 1;
     height: 12rem;
     background-image: linear-gradient(to bottom, var(--blue), #fff);
   }
   .bg-gray {
+    position: static;
+    z-index: 5;
     height: 6rem;
     background: var(--gray);
     box-shadow: 0 10px 10px #000;
@@ -29,7 +31,7 @@ const NavStyles = styled.div`
   .upperNav {
     display: flex;
     place-items: center center;
-    position: relative;
+    position: static;
     z-index: 6;
     .phone {
       width: 50%;
@@ -61,6 +63,7 @@ const NavStyles = styled.div`
     }
   }
   .lowerNav {
+    position: relative;
     nav {
       width: 100%;
       display: flex;
@@ -72,6 +75,8 @@ const NavStyles = styled.div`
         background: transparent;
       }
       ul {
+        position: static;
+        z-index: 4;
         display: inline-flex;
         margin-top: 13px;
       }
@@ -79,14 +84,16 @@ const NavStyles = styled.div`
     a {
       height: 8.169rem;
       width: 8.231rem;
+      margin: 0 5px;
       background-color: var(--black);
       color: var(--white);
       text-transform: uppercase;
-      margin: 0 5px;
+      box-shadow: inset 0 8px 5px #000;
       &[aria-current='page'] {
         background-color: var(--white);
         color: var(--black);
         border-bottom: 1px solid var(--red);
+        
       }
       &:last-child {
         background-color: var(--blue);
@@ -126,10 +133,11 @@ const TabletNavStyles = styled.div`
   @media only screen and (max-width: 500px) {
     display: none;
   }
-  height: 20rem;
+  height: 15rem;
   background-image: linear-gradient(to bottom, var(--blue), #fff);
   img {
-    margin-top: 9rem;
+    width: 36rem;
+    margin-top: 3rem;
   }
   .navContainer {
     width: 100vw;
@@ -142,7 +150,7 @@ const TabletNavStyles = styled.div`
   .phone {
     position: absolute;
     top: 25px;
-    left: 25px;
+    left: 15rem;
     font-weight: bold;
     z-index: 2;
   }
@@ -273,10 +281,11 @@ const MobileNavStyles = styled.div`
   @media only screen and (min-width: 501px) {
     display: none;
   }
-  height: 50vmin;
+  height: 13rem;
   background-image: linear-gradient(to bottom, var(--blue), #fff);
   img {
-    margin-top: 9rem;
+    width: 25rem;
+    margin-top: 4rem;
   }
   .navContainer {
     width: 100vw;
@@ -289,7 +298,7 @@ const MobileNavStyles = styled.div`
   .phone {
     position: absolute;
     top: 25px;
-    left: 25px;
+    left: 7rem;
     font-weight: bold;
     z-index: 2;
   }
@@ -411,6 +420,14 @@ const MobileNavStyles = styled.div`
     ul li a {
       font-size: 1.5rem;
       color: var(--blue);
+    }
+  }
+  @media only screen and (max-width: 300px) {
+    .phone {
+      left: 3.5rem;
+    }
+    img {
+      width: 20rem;
     }
   }
 `;
@@ -560,14 +577,16 @@ export default function Nav() {
                     </ul>
                   </nav>
                   <nav className="lowerNav">
-                    <ul>
+                    <ul className="inline">
                       <li>
                         <Link to="/services#individual">Employer and Individual Health Plans</Link>
                       </li>
-                      <br />
-                      <li className="inline">
+                      <span className="navBarCancel"> | </span>
+                      <li>
                         <Link to="/services#medicare">Medicare</Link>
-                        <span className="navBarCancel"> | </span>
+                      </li>
+                      <span className="navBarCancel"> | </span>
+                      <li>
                         <Link to="/services#life">Life Insurance</Link>
                       </li>
                     </ul>
@@ -578,7 +597,6 @@ export default function Nav() {
               {...node.header.logo}
               alt="Active Insurance Logo"
               style={{
-                width: '35%',
                 objectFit: 'contain',
                 auto: 'format',
               }}
@@ -641,7 +659,6 @@ export default function Nav() {
               {...node.header.logo}
               alt="Active Insurance Logo"
               style={{
-                width: '75%',
                 objectFit: 'contain',
                 auto: 'format',
               }}

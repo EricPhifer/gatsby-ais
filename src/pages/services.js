@@ -17,16 +17,13 @@ const ServiceStyles = styled.div`
   @media only screen and (max-width: 501px) {
     padding-top: 1rem;
   }
-  @media only screen and (max-width: 350px) {
-    padding-top: 4rem;
-  }
 `;
 
 export default function ServicePage({ data }) {
   const services = data.services.nodes;
   return (
     <>
-      <SEO title="Board Members" />
+      <SEO title="Insurance Services" />
       <ServiceStyles>
           <p>Services Coming...</p>
       </ServiceStyles>

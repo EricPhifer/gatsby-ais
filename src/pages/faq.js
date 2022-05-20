@@ -17,9 +17,6 @@ const FaqStyles = styled.div`
   @media only screen and (max-width: 501px) {
     padding-top: 1rem;
   }
-  @media only screen and (max-width: 350px) {
-    padding-top: 4rem;
-  }
 `;
 
 export default function FaqPage({ data }) {
@@ -27,7 +24,7 @@ export default function FaqPage({ data }) {
   const hero = data.hero.nodes;
   return (
     <>
-      <SEO title="Board Members" />
+      <SEO title="Frequently Asked Questions" />
       <FaqStyles>
           <p>FAQs Coming...</p>
       </FaqStyles>
