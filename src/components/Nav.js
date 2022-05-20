@@ -38,6 +38,8 @@ const NavStyles = styled.div`
       font-weight: bold;
       text-align: center;
       margin-right: 8rem;
+      position: static;
+      z-index: 4;
     }
     a:hover {
       color: var(--blue);

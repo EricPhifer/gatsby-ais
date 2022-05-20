@@ -95,7 +95,6 @@ export default function Footer() {
     <FooterStyles>
       {nodes.map((node) => (
       <div className="footerContainer" key={node.id}>
-        {console.log(node)}
         <ul className="footerNav inline">
           <li><Link to="/">Home</Link></li>
           <span> | </span>
