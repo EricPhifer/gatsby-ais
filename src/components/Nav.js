@@ -93,7 +93,6 @@ const NavStyles = styled.div`
         background-color: var(--white);
         color: var(--black);
         border-bottom: 1px solid var(--red);
-        
       }
       &:last-child {
         background-color: var(--blue);
@@ -469,7 +468,6 @@ export default function Nav() {
   `)
 
   const nodes = layout.nodes;
-  console.log(nodes, layout)
 
   return (
     <>

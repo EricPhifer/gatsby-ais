@@ -4,9 +4,8 @@ import styled from 'styled-components';
 import SEO from '../components/SEO';
 
 const TermStyles = styled.div`
+  padding: 18rem 5rem 0;
   word-wrap: break-word;
-  padding-left: 5rem;
-  padding-right: 5rem;
   .termsContainer {
     max-width: 600px;
     margin: 0 auto;
@@ -27,6 +26,12 @@ const TermStyles = styled.div`
     .call {
       display: block;
     }
+  }
+  @media only screen and (max-width: 900px) {
+    padding-top: 3rem;
+  }
+  @media only screen and (max-width: 501px) {
+    padding-top: 1rem;
   }
 `;
 
