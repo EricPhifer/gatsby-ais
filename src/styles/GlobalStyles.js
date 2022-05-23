@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
     --black: #221F1F;
     --red: #FF0035;
     --white: #FBF5F3;
+    --green: #6BBF59;
   }
   html {
     background-image: var(--white);

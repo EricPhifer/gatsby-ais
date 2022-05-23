@@ -8,7 +8,7 @@ const NavStyles = styled.div`
     position: static;
     z-index: 1;
     height: 12rem;
-    background-image: linear-gradient(to bottom, var(--blue), #fff);
+    background-image: linear-gradient(to bottom, var(--blue), transparent);
   }
   .bg-gray {
     position: static;
@@ -134,8 +134,13 @@ const TabletNavStyles = styled.div`
   @media only screen and (max-width: 500px) {
     display: none;
   }
-  height: 15rem;
-  background-image: linear-gradient(to bottom, var(--blue), #fff);
+  .navGradient {
+    width: 100%;
+    height: 15rem;
+    background-image: linear-gradient(to bottom, var(--blue), transparent);
+    position: fixed;
+    z-index: 1;
+  }
   img {
     width: 36rem;
     margin-top: 3rem;
@@ -282,8 +287,13 @@ const MobileNavStyles = styled.div`
   @media only screen and (min-width: 501px) {
     display: none;
   }
-  height: 13rem;
-  background-image: linear-gradient(to bottom, var(--blue), #fff);
+  .navGradient {
+    width: 100%;
+    height: 13rem;
+    background-image: linear-gradient(to bottom, var(--blue), transparent);
+    position: fixed;
+    z-index: 1;
+  }
   img {
     width: 25rem;
     margin-top: 4rem;
@@ -540,6 +550,7 @@ export default function Nav() {
             </div>
           </NavStyles>
           <TabletNavStyles>
+            <div className="navGradient" />
             <div className="navContainer">
               <a href={`tel:${node.header.contactnumber}`} className="phone">{node.header.contactnumber}</a>
               <div id="menuToggle">
@@ -604,6 +615,7 @@ export default function Nav() {
             </div>
           </TabletNavStyles>
           <MobileNavStyles>
+            <div className="navGradient" />
             <div className="navContainer">
               <a href={`tel:${node.header.contactnumber}`} className="phone">{node.header.contactnumber}</a>
               <div id="menuToggle">
