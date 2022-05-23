@@ -22,6 +22,8 @@ const FooterStyles = styled.footer`
     }
     .inline {
       display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
       span {
         padding: 0 1rem;
       }
@@ -33,6 +35,7 @@ const FooterStyles = styled.footer`
     .footerNav {
       margin: 3rem 0;
       font-weight: bold;
+      padding: 0 0.5rem;
       a {
         color: var(--blue);
       }
@@ -117,9 +120,9 @@ export default function Footer() {
           </li>
           <li> 
             Designed by {' '}
-            <a href="https://activeinsurancegj.com" target="_blank" rel="noreferrer">
+            <span>
               Suzi Productions 
-            </a>
+            </span>
             {' '}
             and
             {' '} 
