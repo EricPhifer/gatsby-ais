@@ -258,7 +258,6 @@ const TabletHeroStyles = styled.div`
     width: 100%;
     height: 6.7rem;
     display: inline-flex;
-    padding-top: 5rem;
     .taglineContainer {
       width: 50%;
       display: flex;
@@ -280,7 +279,7 @@ const TabletHeroStyles = styled.div`
       display: flex;
       justify-content: end;
       align-items: center;
-      padding: 0 1rem 2rem 0;
+      padding: 5rem 1rem 2rem 0;
       .lowerLogo {
         width: 75%;
         height: 11rem;
@@ -330,9 +329,10 @@ const TabletHeroStyles = styled.div`
       }
     }
     .lowerContent {
-      height: 10rem;
+      height: 16rem;
       .taglineContainer {
         justify-content: end;
+        align-items: start;
       }
       .contactContainer {
         justify-content: center;
