@@ -170,6 +170,30 @@ const TabletHeroStyles = styled.div`
     img { 
       width: 100%;
     }
+    .sideTexture {
+      width: 20%;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      background-image: url(${texture});
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      .solutions {
+        width: 100%;
+        height: 7rem;
+        background-image: url(${solutions});
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 11rem;
+      }
+      @media only screen and (max-width: 900px) {
+        display: none;
+      }
+    }
     @media only screen and (min-width: 575px) {
       height: 40rem;
     }
@@ -257,6 +281,20 @@ const TabletHeroStyles = styled.div`
       justify-content: end;
       align-items: center;
       padding: 0 1rem 2rem 0;
+      .lowerLogo {
+        width: 75%;
+        height: 11rem;
+        position: absolute;
+        right: 0;
+        bottom: 2rem;
+        background-image: url(${opaque});
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        opacity: 0.2;
+        @media only screen and (max-width: 900px) {
+          display: none;
+        }
       }
       .phone {
         font-weight: bold;
@@ -268,6 +306,50 @@ const TabletHeroStyles = styled.div`
           font-size: 1.75rem;
         }
       }
+    }
+  }
+  @media only screen and (min-width: 901px) {
+    .upperContent {
+      height: 50rem;
+      img {
+        80%;
+      }
+      .sideTexture {
+        .solutions {
+          width: 95%;
+          margin-bottom: 16rem;
+        }
+      }
+    }
+    .textBox {
+      width: 25%;
+      bottom: 10rem;
+      a {
+        position: static;
+      z-index: 2;
+      }
+    }
+    .lowerContent {
+      height: 10rem;
+      .taglineContainer {
+        justify-content: end;
+      }
+      .contactContainer {
+        justify-content: center;
+        .lowerLogo {
+          width: 85%;
+          bottom: 4rem;
+        }
+        .phone {
+          position: static;
+          z-index: 2;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 1000px) {
+    .upperContent {
+      height: 62rem;
     }
   }
 `;
@@ -531,6 +613,9 @@ export default function HomePage({ data }) {
                     auto: 'format',
                   }}
                 />
+                <div className="sideTexture">
+                  <div className="solutions"/>
+                </div>
               </div>
               <div className="textBox">
                 <p>Taking the worry out <br /> 
@@ -547,6 +632,7 @@ export default function HomePage({ data }) {
                   <p className="tagline upper">Good Health, That's the Plan </p>
                 </div>
                 <div className="contactContainer">
+                  <div className="lowerLogo"/>
                   <a href="tel:9702415542" className="phone">970.241.5542</a>
                 </div>
               </div>
