@@ -375,8 +375,8 @@ const MobileAboutStyles = styled.div`
       margin: 0 1rem 0 0;
       text-align: center;
       img {
-        width: 20rem;
-        height: 20rem;
+        width: 25rem;
+        height: 25rem;
         box-shadow: 5px 5px 10px #000;
       }
       @media only screen and (max-width: 400px) {
