@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
 import SEO from '../components/SEO';
 import SanityImage from 'gatsby-plugin-sanity-image';
+import knowledge from '../assets/images/KnowledgeInformedWRDS.png';
 
 const AboutStyles = styled.div`
   max-width: 1080px;
@@ -39,11 +40,19 @@ const AboutStyles = styled.div`
   }
   .right {
     width: 40%;
-    background-color: var(--gray);
+    background-color: #D3D3D3;
     font-size: 1.5rem;
     align-items: end;
     justify-content: center; 
     padding-right: 1rem;
+    .textImg {
+      width: 100%;
+      height: 3rem;
+      background-image: url(${knowledge});
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center right;
+    }
   }
   .content {
     width: 100%;
@@ -94,7 +103,7 @@ const AboutStyles = styled.div`
       }
     }
     .info {
-      background-color: var(--gray);
+      background-color: #D3D3D3;
       padding: 0.1rem 2.5rem;
       p {
         text-align: justify;
@@ -182,7 +191,7 @@ const TabletAboutStyles = styled.div`
   }
   .right {
     width: 40%;
-    background-color: var(--gray);
+    background-color: #D3D3D3;
     font-size: 1.5rem;
     align-items: end;
     justify-content: center; 
@@ -247,8 +256,9 @@ const TabletAboutStyles = styled.div`
       }
     }
     .info {
-      background-color: var(--gray);
-      padding: 0.1rem 1.5rem;
+      background-color: #D3D3D3;
+      margin: 2rem 0;
+      padding: 2rem 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -339,7 +349,7 @@ const MobileAboutStyles = styled.div`
   }
   .right {
     width: 40%;
-    background-color: var(--gray);
+    background-color: #D3D3D3;
     font-size: 1.5rem;
     align-items: end;
     justify-content: center; 
@@ -399,8 +409,9 @@ const MobileAboutStyles = styled.div`
       }
     }
     .info {
-      background-color: var(--gray);
-      padding: 0.1rem 1.5rem;
+      background-color: #D3D3D3;
+      margin: 2rem 0;
+      padding: 2rem 1.5rem;
       p {
         text-align: justify;
       }
@@ -467,7 +478,7 @@ export default function AboutPage({ data }) {
               <h1>Meet Our Team</h1>
             </div>
             <div className="right flex">
-              <h2>Knowledgeable and Informed</h2>
+              <div className="textImg" />
             </div>
           </div>
           <div className="content inline">
@@ -504,12 +515,12 @@ export default function AboutPage({ data }) {
             <section className="missionContainer flex">
           {missionlist.map((mission) => (
             <div className="paraInfo" key={mission.id}>
-              <div className="mission">
+              {/* <div className="mission">
                 <h3 className="missionTitle">{mission.title}</h3>
                 <p className="missionStatement">
                 {mission.mission}
                 </p>
-              </div>
+              </div> */}
               <div className="info">
                 <p>
                   It has always been our practice to initiate and maintain long-term trusting relationships with our clients. We have taken the time to know the “in’s and out’s” of the insurance industry so that we can guide you towards making an informed decision when it comes to the insurance plans you purchase.
@@ -537,36 +548,13 @@ export default function AboutPage({ data }) {
           </div>
         </AboutStyles>
         <TabletAboutStyles>
-        <section className="missionContainer flex">
-            {missionlist.map((mission) => (
-              <div className="paraInfo" key={mission.id}>
-                <div className="mission">
-                  <h3 className="missionTitle">{mission.title}</h3>
-                  <p className="missionStatement">
-                  {mission.mission}
-                  </p>
-                </div>
-                <div className="info">
-                  <p>
-                    It has always been our practice to initiate and maintain long-term trusting relationships with our clients. We have taken the time to know the “in’s and out’s” of the insurance industry so that we can guide you towards making an informed decision when it comes to the insurance plans you purchase.
-                  </p>
-                  <p>
-                    The effective preservation of your family’s health and lifestyle should not cost you more than you need to spend which is why we affiliate with top insurance providers to bring you inclusive and flexible coverages at their most competitive rates.
-                  </p>
-                  <p>
-                    We work tirelessly to stay informed about the latest changes in the healthcare markets. We can provide you information on what your market has available right now and any expected changes.
-                  </p>
-                </div>
-            </div>
-          ))}
-        </section>
           <div className="head flex">
             <div className="left flex">
               <h1>Meet Our Team</h1>
             </div>
           </div>
           <div className="content flex">
-            <section className="staffContainer flex">
+          <section className="staffContainer flex">
             {stafflist.map((staff) => (
               <div className="flex staff" key={staff.id}>
                 <div className="staffImg">
@@ -595,6 +583,29 @@ export default function AboutPage({ data }) {
                 </div>
               </div>
             ))}
+            </section>
+            <section className="missionContainer flex">
+                {missionlist.map((mission) => (
+                  <div className="paraInfo" key={mission.id}>
+                    {/* <div className="mission">
+                      <h3 className="missionTitle">{mission.title}</h3>
+                      <p className="missionStatement">
+                      {mission.mission}
+                      </p>
+                    </div> */}
+                    <div className="info">
+                      <p>
+                        It has always been our practice to initiate and maintain long-term trusting relationships with our clients. We have taken the time to know the “in’s and out’s” of the insurance industry so that we can guide you towards making an informed decision when it comes to the insurance plans you purchase.
+                      </p>
+                      <p>
+                        The effective preservation of your family’s health and lifestyle should not cost you more than you need to spend which is why we affiliate with top insurance providers to bring you inclusive and flexible coverages at their most competitive rates.
+                      </p>
+                      <p>
+                        We work tirelessly to stay informed about the latest changes in the healthcare markets. We can provide you information on what your market has available right now and any expected changes.
+                      </p>
+                    </div>
+                </div>
+              ))}
             </section>
             <div className="contact flex">
               <p className="tagline upper">
@@ -611,29 +622,6 @@ export default function AboutPage({ data }) {
           </div>
         </TabletAboutStyles>
         <MobileAboutStyles>
-          <section className="missionContainer flex">
-            {missionlist.map((mission) => (
-              <div className="paraInfo" key={mission.id}>
-                <div className="mission">
-                  <h3 className="missionTitle">{mission.title}</h3>
-                  <p className="missionStatement">
-                  {mission.mission}
-                  </p>
-                </div>
-                <div className="info">
-                  <p>
-                    It has always been our practice to initiate and maintain long-term trusting relationships with our clients. We have taken the time to know the “in’s and out’s” of the insurance industry so that we can guide you towards making an informed decision when it comes to the insurance plans you purchase.
-                  </p>
-                  <p>
-                    The effective preservation of your family’s health and lifestyle should not cost you more than you need to spend which is why we affiliate with top insurance providers to bring you inclusive and flexible coverages at their most competitive rates.
-                  </p>
-                  <p>
-                    We work tirelessly to stay informed about the latest changes in the healthcare markets. We can provide you information on what your market has available right now and any expected changes.
-                  </p>
-                </div>
-            </div>
-          ))}
-        </section>
           <div className="head flex">
             <div className="left flex">
               <h1>Meet Our Team</h1>
@@ -670,6 +658,29 @@ export default function AboutPage({ data }) {
               </div>
             ))}
             </section>
+            <section className="missionContainer flex">
+              {missionlist.map((mission) => (
+                <div className="paraInfo" key={mission.id}>
+                  {/* <div className="mission">
+                    <h3 className="missionTitle">{mission.title}</h3>
+                    <p className="missionStatement">
+                    {mission.mission}
+                    </p>
+                  </div> */}
+                  <div className="info">
+                    <p>
+                      It has always been our practice to initiate and maintain long-term trusting relationships with our clients. We have taken the time to know the “in’s and out’s” of the insurance industry so that we can guide you towards making an informed decision when it comes to the insurance plans you purchase.
+                    </p>
+                    <p>
+                      The effective preservation of your family’s health and lifestyle should not cost you more than you need to spend which is why we affiliate with top insurance providers to bring you inclusive and flexible coverages at their most competitive rates.
+                    </p>
+                    <p>
+                      We work tirelessly to stay informed about the latest changes in the healthcare markets. We can provide you information on what your market has available right now and any expected changes.
+                    </p>
+                  </div>
+              </div>
+            ))}
+          </section>
             <div className="contact flex">
               <p className="tagline upper">
                 Good Health, <br />That's the plan</p>

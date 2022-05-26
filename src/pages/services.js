@@ -6,16 +6,27 @@ import styled from 'styled-components';
 import SEO from '../components/SEO';
 
 const ServiceStyles = styled.div`
+  max-width: 1080px;
+  margin: 0 auto;
   padding-top: 18rem;
-  p {
-    max-width: 1080px;
-    margin: 0 auto;
+  .inline {
+    display: inline-flex;
   }
-  @media only screen and (max-width: 900px) {
-    padding-top: 3rem;
+  .flex {
+    display: flex;
+    flex-flow: column nowrap;
   }
-  @media only screen and (max-width: 501px) {
-    padding-top: 1rem;
+  .serviceContainer {
+    width: 100%;
+    outline: 1px solid black;
+  }
+  .left {
+    width: 50%;
+    border: 1px solid red;
+  }
+  .right {
+    width: 50%;
+    border: 1px solid blue;
   }
 `;
 
@@ -25,7 +36,20 @@ export default function ServicePage({ data }) {
     <>
       <SEO title="Insurance Services" />
       <ServiceStyles>
-          <p>Services Coming...</p>
+        <div className="serviceContainer inline">
+          <div className="left flex">
+            <div className="head flex">
+              <h1>What we cover</h1>
+            </div>
+            <div className="serviceCard">
+              <h2>Employer Benefit Solutions</h2>
+              <p></p>
+            </div>
+          </div>
+          <div className="right flex">
+
+          </div>
+        </div>
       </ServiceStyles>
     </>
   );
