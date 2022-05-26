@@ -33,15 +33,15 @@ const FooterStyles = styled.footer`
       flex-flow: column nowrap;
     }
     .footerNav {
-      margin: 3rem 0;
+      margin: 3rem 2.5rem;
       font-weight: bold;
       padding: 0 0.5rem;
+      li {
+        padding-bottom: 1rem;
+      }
       a {
         color: var(--blue);
       }
-    }
-    .footerCredits {
-      margin-bottom: 3rem;
     }
     a:hover {
       color: var(--white);

@@ -16,6 +16,7 @@ const AboutStyles = styled.div`
     width: 100%;
     height: 10rem;
   }
+  text-align: left;
   .inline {
     display: inline-flex;
   }
@@ -27,45 +28,44 @@ const AboutStyles = styled.div`
     text-transform: uppercase;
   }
   .left {
-    width: 60%;
+    width: calc(60% - 10rem);
     background-color: var(--black);
     color: var(--white);
     font-size: 2.5rem;
     font-weight: bold;
     justify-content: center;
     align-items: center;
+    padding-right: 10rem;
+    padding-bottom: 1rem;
     h1 {
       margin: 0;
     }
   }
   .right {
-    width: 40%;
+    width: calc(40% - 4rem);
+    padding: 2rem;
     background-color: #D3D3D3;
-    font-size: 1.5rem;
-    align-items: end;
-    justify-content: center; 
-    padding-right: 1rem;
     .textImg {
       width: 100%;
-      height: 3rem;
+      height: 100%;
       background-image: url(${knowledge});
       background-size: contain;
       background-repeat: no-repeat;
-      background-position: center right;
+      background-position: center center;
     }
   }
   .content {
     width: 100%;
   }
   .staffContainer {
-    width: 70%;
+    width: 60%;
     .staff { 
       width: 100%;
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
     .staffImg {
       width: 30%;
-      margin: 0 1rem 0 0;
+      margin: 0 2rem 0 0;
       img {
         width: 20rem;
         height: 20rem;
@@ -74,20 +74,19 @@ const AboutStyles = styled.div`
     }
     .staffInfo {
       width: 70%;
-      margin-right: 5rem;
+      margin-right: 2rem;
       h3 {
         text-align: left;
         font-weight: bold;
+        font-size: 2.5rem;
       }
       p {
         margin: 0.3rem 0;
-        text-align: justify;
       }
     }
   }
   .missionContainer {
-    width: 30%;
-    text-align: center;
+    width: 40%;
     .mission {
       width: 100%;
       background-color: var(--blue);
@@ -97,7 +96,6 @@ const AboutStyles = styled.div`
         font-weight: bold; 
       }
       p {
-        text-align: justify;
         padding: 1.5rem;
         margin: 0;
       }
@@ -105,16 +103,19 @@ const AboutStyles = styled.div`
     .info {
       background-color: #D3D3D3;
       padding: 0.1rem 2.5rem;
-      p {
-        text-align: justify;
-      }
+      font-size: 1.75rem;
+      letter-spacing: 0.6px;
     }
     .contact {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
       .tagline {
-        font-size: 2rem;
+        font-size: 3rem;
       }
       .phone {
          font-weight: bold;
+         font-size: 2rem;
          &:hover {
            color: var(--blue);
          }
@@ -125,10 +126,10 @@ const AboutStyles = styled.div`
         place-content: center center;
         padding: 1rem;
         color: var(--white);
-        font-size: 1rem;
+        font-size: 1.5rem;
         font-weight: bold;
-        width: 11.5rem;
-        margin: 2rem 0 0 9rem;
+        width: 12.5rem;
+        margin: 2rem 0;
         background-color: var(--blue);
         border-right: 4px double var(--green);
         border-bottom: 2px double var(--green);
@@ -139,7 +140,7 @@ const AboutStyles = styled.div`
           border-bottom: 2px double var(--blue);
         }
         .arrowRight {
-          font-size: 2rem;
+          font-size: 2.5rem;
           color: var(--green);
         }
       }
@@ -167,6 +168,7 @@ const TabletAboutStyles = styled.div`
   .head {
     width: 100%;
   }
+  text-align: left;
   .inline {
     display: inline-flex;
   }
@@ -231,7 +233,6 @@ const TabletAboutStyles = styled.div`
       }
       p {
         margin: 0.3rem 0;
-        text-align: justify;
       }
     }
   }
@@ -250,7 +251,6 @@ const TabletAboutStyles = styled.div`
       }
       p {
         max-width: 500px;
-        text-align: justify;
         padding: 1.5rem;
         margin: 0;
       }
@@ -264,7 +264,6 @@ const TabletAboutStyles = styled.div`
       align-items: center;
       p {
         max-width: 500px;
-        text-align: justify;
         margin: 0.5rem;
       }
     }
@@ -325,6 +324,7 @@ const MobileAboutStyles = styled.div`
   }
   position: relative;
   padding-top: 13rem;
+  text-align: left;
   .inline {
     display: inline-flex;
   }
@@ -388,7 +388,6 @@ const MobileAboutStyles = styled.div`
       }
       p {
         margin: 0.3rem 0;
-        text-align: justify;
       }
     }
   }
@@ -403,7 +402,6 @@ const MobileAboutStyles = styled.div`
         font-weight: bold; 
       }
       p {
-        text-align: justify;
         padding: 1.5rem;
         margin: 0;
       }
@@ -413,7 +411,6 @@ const MobileAboutStyles = styled.div`
       margin: 2rem 0;
       padding: 2rem 1.5rem;
       p {
-        text-align: justify;
       }
     }
   }
@@ -488,7 +485,7 @@ export default function AboutPage({ data }) {
                 <div className="staffImg">
                   <SanityImage
                     {...staff.image}
-                    alt={staff.image.asset.altText}
+                    alt="Staff Image"
                     style={{
                       objectFit: 'cover',
                       auto: 'format',

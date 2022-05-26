@@ -28,6 +28,10 @@ const ServiceStyles = styled.div`
     width: 50%;
     border: 1px solid blue;
   }
+  .head {
+    background-color: var(--black);
+    color: var(--white);
+  }
 `;
 
 export default function ServicePage({ data }) {
