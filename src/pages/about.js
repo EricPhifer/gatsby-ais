@@ -165,10 +165,10 @@ const TabletAboutStyles = styled.div`
   }
   position: relative;
   padding-top: 16rem;
+  text-align: left;
   .head {
     width: 100%;
   }
-  text-align: left;
   .inline {
     display: inline-flex;
   }
@@ -183,7 +183,7 @@ const TabletAboutStyles = styled.div`
     width: 100%;
     background-color: var(--black);
     color: var(--white);
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
     justify-content: center;
     align-items: center;
@@ -204,6 +204,7 @@ const TabletAboutStyles = styled.div`
   }
   .staffContainer {
     width: 100%;
+    margin-left: 2rem;
     .staff { 
       width: 100%;
       margin-top: 5rem;
@@ -211,12 +212,12 @@ const TabletAboutStyles = styled.div`
       align-items: center;
     }
     .staffImg {
-      width: 50%;
+      width: 30%;
       margin: 0 1rem 0 0;
       text-align: center;
       img {
-        width: 20rem;
-        height: 20rem;
+        width: 25rem;
+        height: 25rem;
         box-shadow: 5px 5px 10px #000;
       }
       @media only screen and (max-width: 400px) {
@@ -224,21 +225,21 @@ const TabletAboutStyles = styled.div`
       }
     }
     .staffInfo {
+      width: 70%;
       max-width: 600px;
-      width: 90%;
       margin-top: 3rem;
       h3 {
         text-align: left;
         font-weight: bold;
+        font-size: 2.5rem;
       }
       p {
-        margin: 0.3rem 0;
+        margin: 0.3rem 4rem 0 0;
       }
     }
   }
   .missionContainer {
     width: 100%;
-    text-align: center;
     .mission {
       background-color: var(--blue);
       color: var(--white);
@@ -259,6 +260,8 @@ const TabletAboutStyles = styled.div`
       background-color: #D3D3D3;
       margin: 2rem 0;
       padding: 2rem 1.5rem;
+      font-size: 1.75rem;
+      letter-spacing: 0.6px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -271,7 +274,7 @@ const TabletAboutStyles = styled.div`
   .contact {
     align-items: center;
     .tagline {
-      font-size: 2rem;
+      font-size: 3rem;
       text-align: center;
     }
     .nextTo {
@@ -283,8 +286,9 @@ const TabletAboutStyles = styled.div`
       }
     }
     .phone {
-      font-weight: bold;
       margin: 2rem;
+      font-size: 2rem;
+      font-weight: bold;
       &:hover {
         color: var(--blue);
       }
@@ -297,9 +301,9 @@ const TabletAboutStyles = styled.div`
       margin: 2rem;
       padding: 1rem;
       color: var(--white);
-      font-size: 1rem;
+      font-size: 1.5rem;
       font-weight: bold;
-      width: 11.5rem;
+      width: 12.5rem;
       background-color: var(--blue);
       border-right: 4px double var(--green);
       border-bottom: 2px double var(--green);
@@ -310,7 +314,7 @@ const TabletAboutStyles = styled.div`
         border-bottom: 2px double var(--blue);
       }
       .arrowRight {
-        font-size: 2rem;
+        font-size: 2.5rem;
         color: var(--green);
       }
     }
@@ -393,7 +397,6 @@ const MobileAboutStyles = styled.div`
   }
   .missionContainer {
     width: 100%;
-    text-align: center;
     .mission {
       background-color: var(--blue);
       color: var(--white);
@@ -410,14 +413,14 @@ const MobileAboutStyles = styled.div`
       background-color: #D3D3D3;
       margin: 2rem 0;
       padding: 2rem 1.5rem;
-      p {
-      }
+      font-size: 1.75rem;
+      letter-spacing: 0.6px;
     }
   }
   .contact {
     align-items: center;
     .tagline {
-      font-size: 2rem;
+      font-size: 3rem;
       text-align: center;
     }
     .nextTo {
@@ -430,7 +433,7 @@ const MobileAboutStyles = styled.div`
     }
     .phone {
       font-weight: bold;
-      margin: 2rem;
+      margin: 2.5rem;
       &:hover {
         color: var(--blue);
       }
@@ -443,9 +446,9 @@ const MobileAboutStyles = styled.div`
       margin: 2rem;
       padding: 1rem;
       color: var(--white);
-      font-size: 1rem;
+      font-size: 1.5rem;
       font-weight: bold;
-      width: 11.5rem;
+      width: 12.5rem;
       background-color: var(--blue);
       border-right: 4px double var(--green);
       border-bottom: 2px double var(--green);
@@ -456,7 +459,7 @@ const MobileAboutStyles = styled.div`
         border-bottom: 2px double var(--blue);
       }
       .arrowRight {
-        font-size: 2rem;
+        font-size: 2.5rem;
         color: var(--green);
       }
     }
@@ -553,7 +556,7 @@ export default function AboutPage({ data }) {
           <div className="content flex">
           <section className="staffContainer flex">
             {stafflist.map((staff) => (
-              <div className="flex staff" key={staff.id}>
+              <div className="inline staff" key={staff.id}>
                 <div className="staffImg">
                   <SanityImage
                     {...staff.image}
