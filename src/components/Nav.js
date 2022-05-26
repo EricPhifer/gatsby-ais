@@ -7,7 +7,7 @@ const NavStyles = styled.div`
   .bg-gradient {
     position: static;
     z-index: 1;
-    height: 12rem;
+    height: 16rem;
     background-image: linear-gradient(to bottom, var(--blue), transparent);
   }
   .bg-gray {
@@ -136,7 +136,7 @@ const TabletNavStyles = styled.div`
   }
   .navGradient {
     width: 100%;
-    height: 20rem;
+    height: 16rem;
     background-image: linear-gradient(to bottom, var(--blue), transparent);
     position: fixed;
     z-index: 1;
@@ -289,7 +289,7 @@ const MobileNavStyles = styled.div`
   }
   .navGradient {
     width: 100%;
-    height: 20rem;
+    height: 16rem;
     background-image: linear-gradient(to bottom, var(--blue), transparent);
     position: fixed;
     z-index: 1;

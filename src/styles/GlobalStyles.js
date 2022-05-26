@@ -37,9 +37,6 @@ const GlobalStyles = createGlobalStyle`
       text-decoration: none;
       color: white;
     }
-    &:hover {
-      border: 0.2rem solid #fff;s
-    }
   }
   /* .gatsby-image-wrapper img[src*=base64\\,] {
     image-rendering: -moz-crisp-edges;
