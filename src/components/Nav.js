@@ -493,15 +493,15 @@ export default function Nav() {
                 <nav>
                   <ul>
                     <li>
-                      <Link to="/services#individual">Employer and Individual Health Plans</Link>
+                      <Link to="/plans">Employer and Individual Health Plans</Link>
                     </li>
                     <span> | </span>
                     <li>
-                      <Link to="/services#medicare">Medicare</Link>
+                      <Link to="/plans">Medicare</Link>
                     </li>
                     <span> | </span>
                     <li>
-                      <Link to="/services#life">Life Insurance</Link>
+                      <Link to="/plans">Life Insurance</Link>
                     </li>
                   </ul>
                 </nav>

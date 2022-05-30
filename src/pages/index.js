@@ -593,7 +593,7 @@ export default function HomePage({ data }) {
               </div>
               <div className="lowerContent">
                 <div className="taglineContainer">
-                  <p className="tagline upper">Good Health, That's the Plan </p>
+                  <p className="tagline upper">Good Health,<br /> That's the Plan </p>
                 </div>
                 <div className="contactContainer">
                   <div className="lowerLogo"/>

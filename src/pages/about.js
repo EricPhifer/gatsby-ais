@@ -534,7 +534,8 @@ export default function AboutPage({ data }) {
               </div>
               <div className="contact flex">
                 <p className="tagline upper">
-                  Good Health, <br />That's the plan</p>
+                  Good Health, That's the plan
+                </p>
                 <a href="tel:9702415542" className="phone">
                   970.241.5542
                 </a>
