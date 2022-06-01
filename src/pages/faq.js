@@ -21,7 +21,7 @@ const FaqStyles = styled.div`
 
 export default function FaqPage({ data }) {
   const faqs = data.faqs.nodes;
-  const hero = data.hero.nodes;
+  const cta = data.cta.nodes;
   return (
     <>
       <SEO title="Frequently Asked Questions" />

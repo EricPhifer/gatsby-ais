@@ -752,7 +752,6 @@ export default function HomePage({ data }) {
           <div className="logoGrid">
             {logolist.map((logo) => (
               <div className="logoContainer" key={logo.id}>
-                {console.log(logo.logoimage)}
                 <SanityImage 
                 {...logo.logoimage}
                 alt={logo.altTitle}
