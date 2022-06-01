@@ -371,10 +371,7 @@ const MobileHeroStyles = styled.div`
       width: 100%;
     }
     @media only screen and (min-width: 321px) {
-      height: 22rem;
-    }
-    @media only screen and (min-width: 385px) {
-      height: 25rem;
+      height: 26rem;
     }
     @media only screen and (min-width: 425px) {
       height: 32rem;
@@ -385,7 +382,7 @@ const MobileHeroStyles = styled.div`
   }
   .textBox {
     width: 50%;
-    height: 11rem;
+    height: 14rem;
     position: absolute;
     display: flex;
     flex-flow: column;
@@ -396,19 +393,19 @@ const MobileHeroStyles = styled.div`
     p {
       margin: 0;
       color: var(--white);
-      font-size: 1rem;
+      font-size: 1.35rem;
       line-height: 2;
     }
     a {
       display: flex;
       align-items: center;
       jusify-content: center;
-      padding: 0.5rem;
+      padding: 0.7rem;
       color: var(--white);
-      font-size: 0.8rem;
+      font-size: 1rem;
       font-weight: bold;
-      width: 7.5rem;
-      margin-left: 3rem;
+      width: 8.5rem;
+      margin: 1rem 10rem;
       background-color: var(--blue);
       border-right: 2px double var(--green);
       border-bottom: 1px double var(--green);
@@ -437,11 +434,11 @@ const MobileHeroStyles = styled.div`
       .tagline {
         max-width: 200px;
         margin: 0;
-        align-self: start;
+        align-self: end;
         font-size: 1.3rem;
-        margin-left: 0.5rem;
+        margin: 0 0 2rem 0.5rem;
         @media only screen and (min-width: 311px) {
-          max-width: 145px;
+          max-width: 130px;
         }
       }
     }
@@ -450,7 +447,7 @@ const MobileHeroStyles = styled.div`
       position: relative;
       display: flex;
       justify-content: end;
-      align-items: center;
+      align-items: end;
       padding: 0 5rem 2rem 0;
       }
       .phone {

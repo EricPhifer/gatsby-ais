@@ -574,15 +574,15 @@ export default function Nav() {
                   <nav className="lowerNav">
                     <ul className="inline">
                       <li>
-                        <Link to="/services#employer-benefit-solutions">Employer and Individual Health Plans</Link>
+                        <Link to="/plans#employer-benefit-solutions">Employer and Individual Health Plans</Link>
                       </li>
                       <span className="navBarCancel"> | </span>
                       <li>
-                        <Link to="/services#medicare">Medicare</Link>
+                        <Link to="/plans#medicare">Medicare</Link>
                       </li>
                       <span className="navBarCancel"> | </span>
                       <li>
-                        <Link to="/services#life-insurance">Life Insurance</Link>
+                        <Link to="/plans#life-insurance">Life Insurance</Link>
                       </li>
                     </ul>
                   </nav>
@@ -639,13 +639,13 @@ export default function Nav() {
                   <nav className="lowerNav">
                     <ul>
                       <li>
-                        <Link to="/services#employer-benefit-solutions">Employer and Individual Health Plans</Link>
+                        <Link to="/plans#employer-benefit-solutions">Employer and Individual Health Plans</Link>
                       </li>
                       <br />
                       <li className="inline">
-                        <Link to="/services#medicare">Medicare</Link>
+                        <Link to="/plans#medicare">Medicare</Link>
                         <span className="navBarCancel"> | </span>
-                        <Link to="/services#life-insurance">Life Insurance</Link>
+                        <Link to="/plans#life-insurance">Life Insurance</Link>
                       </li>
                     </ul>
                   </nav>
