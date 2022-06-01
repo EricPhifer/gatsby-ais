@@ -1,7 +1,7 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-// import SanityImage from 'gatsby-plugin-sanity-image';
+import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
 
 import SEO from '../components/SEO';
 
@@ -38,6 +38,7 @@ const PlanStyles = styled.div`
     background-color: var(--black);
     h1 {
       color: var(--white);
+      margin: 2rem 0;
     }
   }
   .planGrid {
@@ -62,11 +63,53 @@ const PlanStyles = styled.div`
       }
     }
   }
+  .contact {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    .tagline {
+      font-size: 3rem;
+      margin: 0;
+    }
+    .phone {
+       font-weight: bold;
+       font-size: 2rem;
+       &:hover {
+         color: var(--blue);
+       }
+     }
+    .buttonesque {
+      display: flex;
+      place-items: center center;
+      place-content: center center;
+      padding: 1rem;
+      color: var(--white);
+      font-size: 1.25rem;
+      font-weight: bold;
+      width: 11.5rem;
+      margin: 2rem 0;
+      background-color: var(--blue);
+      border-right: 4px double var(--green);
+      border-bottom: 2px double var(--green);
+      &:hover {
+        background-color: var(--white);
+        color: var(--blue);
+        border-right: 4px double var(--blue);
+        border-bottom: 2px double var(--blue);
+      }
+      .arrowRight {
+        font-size: 2.5rem;
+        color: var(--green);
+      }
+    }
+  }
   /* Hide menu on small screens */
   @media only screen and (max-width: 1080px) {
     display: none;
   }
 `;
+
 const TabletPlanStyles = styled.div`
   /* Show compressed menu on small screens */
   @media only screen and (min-width: 1081px) {
@@ -75,7 +118,7 @@ const TabletPlanStyles = styled.div`
   @media only screen and (max-width: 500px) {
     display: none;
   }
-  padding: 18rem 2rem;
+  padding: 18rem 2rem 0;
   .planContainer {
     width: 100%;
   }
@@ -139,6 +182,47 @@ const TabletPlanStyles = styled.div`
       padding-right: 3rem;
     }
   }
+  .contact {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    .tagline {
+      font-size: 3rem;
+      margin: 0;
+    }
+    .phone {
+       font-weight: bold;
+       font-size: 2rem;
+       &:hover {
+         color: var(--blue);
+       }
+     }
+    .buttonesque {
+      display: flex;
+      place-items: center center;
+      place-content: center center;
+      padding: 1rem;
+      color: var(--white);
+      font-size: 1.25rem;
+      font-weight: bold;
+      width: 11.5rem;
+      margin: 2rem 0;
+      background-color: var(--blue);
+      border-right: 4px double var(--green);
+      border-bottom: 2px double var(--green);
+      &:hover {
+        background-color: var(--white);
+        color: var(--blue);
+        border-right: 4px double var(--blue);
+        border-bottom: 2px double var(--blue);
+      }
+      .arrowRight {
+        font-size: 2.5rem;
+        color: var(--green);
+      }
+    }
+  }
 
 `;
 const MobilePlanStyles = styled.div`
@@ -146,7 +230,7 @@ const MobilePlanStyles = styled.div`
   @media only screen and (min-width: 501px) {
     display: none;
   }
-  padding: 16rem 2rem;
+  padding: 16rem 2rem 0;
   .planContainer {
     width: 100%;
   }
@@ -191,120 +275,185 @@ const MobilePlanStyles = styled.div`
         padding: 0 1rem;
       }
     }
+  }
+  .contact {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    .tagline {
+      max-width: 245px;
+      margin: 0;
+      font-size: 3rem;
+    }
+    .phone {
+        font-weight: bold;
+        font-size: 2rem;
+        &:hover {
+          color: var(--blue);
+        }
+      }
+    .buttonesque {
+      display: flex;
+      place-items: center center;
+      place-content: center center;
+      padding: 1rem;
+      color: var(--white);
+      font-size: 1.25rem;
+      font-weight: bold;
+      width: 11.5rem;
+      margin: 2rem 0;
+      background-color: var(--blue);
+      border-right: 4px double var(--green);
+      border-bottom: 2px double var(--green);
+      &:hover {
+        background-color: var(--white);
+        color: var(--blue);
+        border-right: 4px double var(--blue);
+        border-bottom: 2px double var(--blue);
+      }
+      .arrowRight {
+        font-size: 2.5rem;
+        color: var(--green);
+      }
+    }
+  }
 `;
 
 export default function PlanPage({ data }) {
-  const faqs = data.faqs.nodes;
+  const plans = data.plans.nodes;
+  const cta = data.cta.nodes;
   return (
     <>
-      <SEO title="Frequently Asked Questions" />
+      <SEO title="Health &amp; Life Insurance Plans" />
       <PlanStyles>
-        {/* {plans.map((plan) => ( */}
-          <section className="planContainer">
+        {plans.map((plan) => (
+          <section 
+            className="planContainer" 
+            id={plan.slug.current}
+          >
             <div className="headContainer inline">
               <div className="dotContainer">
                 <div className="dot" />
               </div>
               <div className="head">
-                <h1>Employer Benefit Solutions</h1>
+                <h1>{plan.title}</h1>
               </div>
             </div>
             <div className="planGrid">
-              <div className="serviceInfo flex">
-                <p>
-                  <span className="title upper">Better Health &amp; Protection</span>
-                  <span className="spacer"> | </span>
-                  Let us help you find plans where, in many cases, your employees will receive more comprehensive benefits with lower out-of-pocket expenses.
-                </p>
-              </div>
-              <div className="serviceInfo flex">
-                <p>
-                  <span className="title upper">Personal Assistance</span>
-                  <span className="spacer"> | </span>
-                  We are here for you. we provide help to you and every one of your employees when you need it-not just once a year.
-                </p>
-              </div>
-              <div className="serviceInfo flex">
-                <p>
-                  <span className="title upper">More Choices Than Ever</span>
-                  <span className="spacer"> | </span>
-                  Don't limit yourself. You have more options now than ever before. We can give you access to health plans from several insurance companies nationwide.
-                </p>
-              </div>
+              {plan.plans.map((content) => (
+                <div className="serviceInfo flex" key={content._key}>
+                  <p>
+                    <span className="title upper">
+                      {content.plantitle}
+                    </span>
+                    <span className="spacer"> | </span>
+                    {content.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
-          {/* ))} */}
+        ))}
+        {cta.map((call) => (
+          <div className="contact flex" key={call.id}>
+            <p className="tagline upper">
+              {call.tagline}
+            </p>
+            <Link to="/contact" className="buttonesque upper">
+              {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
+            </Link>
+            <a href={`tel:${call.phone}`} className="phone">
+              {call.phone}
+            </a>
+          </div>
+        ))}
       </PlanStyles>
       <TabletPlanStyles>
-         {/* {plans.map((plan) => ( */}
-        <section className="planContainer">
+        {plans.map((plan) => (
+          <section 
+            className="planContainer" 
+            id={plan.slug.current}
+          >
           <div className="headContainer inline">
             <div className="dotContainer">
               <div className="dot" />
             </div>
             <div className="head">
-              <h1>Employer Benefit Solutions</h1>
+              <h1>{plan.title}</h1>
             </div>
           </div>
           <div className="planGrid">
-            <div className="serviceInfo flex">
-              <p>
-                <span className="title upper">Better Health &amp; Protection</span>
-                <span className="spacer"> | </span>
-                Let us help you find plans where, in many cases, your employees will receive more comprehensive benefits with lower out-of-pocket expenses.
-              </p>
-            </div>
-            <div className="serviceInfo flex">
-              <p>
-                <span className="title upper">Personal Assistance</span>
-                <span className="spacer"> | </span>
-                We are here for you. we provide help to you and every one of your employees when you need it-not just once a year.
-              </p>
-            </div>
-            <div className="serviceInfo flex">
-              <p>
-                <span className="title upper">More Choices Than Ever</span>
-                <span className="spacer"> | </span>
-                Don't limit yourself. You have more options now than ever before. We can give you access to health plans from several insurance companies nationwide.
-              </p>
-            </div>
+            {plan.plans.map((content) => (
+              <div className="serviceInfo flex" key={content._key}>
+                <p>
+                  <span className="title upper">
+                    {content.plantitle}
+                  </span>
+                  <span className="spacer"> | </span>
+                  {content.description}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
-        {/* ))} */}
+      ))}
+      {cta.map((call) => (
+        <div className="contact flex" key={call.id}>
+          <p className="tagline upper">
+            {call.tagline}
+          </p>
+          <Link to="/contact" className="buttonesque upper">
+            {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
+          </Link>
+          <a href={`tel:${call.phone}`} className="phone">
+            {call.phone}
+          </a>
+        </div>
+      ))}
       </TabletPlanStyles>
       <MobilePlanStyles>
-         {/* {plans.map((plan) => ( */}
-          <section className="planContainer">
-          <div className="headContainer inline">
-            <div className="head">
-              <h1>Employer Benefit Solutions</h1>
+        {plans.map((plan) => (
+          <section 
+            className="planContainer" 
+            id={plan.slug.current}
+          >
+            <div className="headContainer inline">
+              <div className="head">
+                <h1>{plan.title}</h1>
+              </div>
             </div>
+            <div className="planGrid">
+              {plan.plans.map((content) => (
+                <div 
+                  className="serviceInfo flex" 
+                  key={content._key}
+                >
+                  <p>
+                    <span className="title upper">
+                      {content.plantitle}
+                    </span>
+                    <span className="spacer"> | </span>
+                    {content.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
+        {cta.map((call) => (
+          <div className="contact flex" key={call.id}>
+            <p className="tagline upper">
+              {call.tagline}
+            </p>
+            <Link to="/contact" className="buttonesque upper">
+              {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
+            </Link>
+            <a href={`tel:${call.phone}`} className="phone">
+              {call.phone}
+            </a>
           </div>
-          <div className="planGrid">
-            <div className="serviceInfo flex">
-              <p>
-                <span className="title upper">Better Health &amp; Protection</span>
-                <span className="spacer"> | </span>
-                Let us help you find plans where, in many cases, your employees will receive more comprehensive benefits with lower out-of-pocket expenses.
-              </p>
-            </div>
-            <div className="serviceInfo flex">
-              <p>
-                <span className="title upper">Personal Assistance</span>
-                <span className="spacer"> | </span>
-                We are here for you. we provide help to you and every one of your employees when you need it-not just once a year.
-              </p>
-            </div>
-            <div className="serviceInfo flex">
-              <p>
-                <span className="title upper">More Choices Than Ever</span>
-                <span className="spacer"> | </span>
-                Don't limit yourself. You have more options now than ever before. We can give you access to health plans from several insurance companies nationwide.
-              </p>
-            </div>
-          </div>
-        </section>
-          {/* ))} */}
+        ))}
       </MobilePlanStyles>
     </>
   );
@@ -312,23 +461,30 @@ export default function PlanPage({ data }) {
 
 export const query = graphql`
   query {
-    faqs: allSanityFaq {
-    nodes {
-      id
-      question
-      answer
-    }
-  }
-  hero: allSanityFaqHero {
-    nodes {
-      heading
-      text
-      image {
-        asset {
-          id
+    plans: allSanityServices {
+      nodes {
+        description
+        id
+        title
+        slug {
+          current
+        }
+        plans {
+          _key
+          plantitle
+          description
         }
       }
     }
-  }
+    cta: allSanityContactInfo {
+      nodes {
+        title
+        tagline
+        phone
+        id
+        cta
+        address
+      }
+    }
   }
 `;

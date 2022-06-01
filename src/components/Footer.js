@@ -53,47 +53,21 @@ const FooterStyles = styled.footer`
 `;
 
 export default function Footer() {
-    const { layout } = useStaticQuery(graphql`
-      query {
-        layout: allSanityLayout {
+  const { footer } = useStaticQuery(graphql`
+    query {
+      footer: allSanityLayoutFooter {
           nodes {
+            dev
+            designs
+            copyright
             id
-            footer {
-              dev
-              designs
-              copyright
-              title
-            }
-            header {
-              navItems {
-                ... on SanityNavItemGroup {
-                  id
-                  name
-                  navItems {
-                    text
-                    id
-                    icon
-                    href
-                    description
-                  }
-                }
-              }
-              contactnumber
-              id
-              title
-              logo {
-                asset {
-                  id
-                }
-              }
-            }
             title
           }
         }
       }
-    `)
+  `)
   
-  const nodes = layout.nodes;
+  const nodes = footer.nodes;
   return (
     <FooterStyles>
       {nodes.map((node) => (
@@ -110,7 +84,7 @@ export default function Footer() {
           <li><Link to="/contact">Contact Us</Link></li>
         </ul>
         <ul className="footerCredits column">
-          <li>&copy; Active Insurance Solutions {new Date().getFullYear()}</li>
+          <li>&copy; {node.copyright} {new Date().getFullYear()}</li>
           <li>
             <ul className="inline privTerms">
               <li><Link to="/privacypolicy">Privacy Policy</Link></li>
@@ -121,18 +95,18 @@ export default function Footer() {
           <li> 
             Designed by {' '}
             <span>
-              Suzi Productions 
+              {node.designs[0]}
             </span>
             {' '}
             and
             {' '} 
             <a href="https://ericphifer.com" target="_blank" rel="noreferrer">
-              Eric Phifer LLC
+              {node.designs[1]}
             </a>
           </li>
           <li> 
             <a href="https://ericphifer.com" target="_blank" rel="noreferrer">
-              Developed by Eric Phifer LLC
+              Developed by {node.dev}
             </a>
           </li>
         </ul>

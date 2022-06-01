@@ -33,24 +33,23 @@ export default function FaqPage({ data }) {
 }
 
 export const query = graphql`
-  query {
-    faqs: allSanityFaq {
+query {
+  faqs: allSanityFaq {
     nodes {
       id
       question
       answer
     }
   }
-  hero: allSanityFaqHero {
-    nodes {
-      heading
-      text
-      image {
-        asset {
-          id
-        }
+  cta: allSanityContactInfo {
+      nodes {
+        title
+        tagline
+        phone
+        id
+        cta
+        address
       }
     }
-  }
   }
 `;

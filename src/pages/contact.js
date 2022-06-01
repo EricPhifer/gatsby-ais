@@ -119,81 +119,83 @@ export default function Contact({ data }) {
     <>
       <SEO title="Contact Us" />
         <ContactStyles>
-          <div className="contactContainer inline">
-            <div className="contactInfo left">
-              <p>Address</p>
-              <p>Phone Number</p>
+          {contacts.map((contact) => (
+            <div className="contactContainer inline">
+              <div className="contactInfo left">
+                <p>Address</p>
+                <p>Phone Number</p>
+              </div>
+              <div className="contactInfo right">
+                <FormStyles>
+                  <form
+                    className="container"
+                    id="formContainer"
+                    method="post"
+                    netlify-honeypot="bot-field"
+                    data-netlify="true"
+                    name="contact"
+                  >
+                    <input type="hidden" name="bot-field" />
+                    <input type="hidden" name="form-name" value="contact" />
+                    <fieldset>
+                      <legend>Contact Us</legend>
+                      <label htmlFor="name" className="nameLabel">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        value={values.name}
+                        onChange={updateValue}
+                        placeholder="Your Name"
+                      />
+                      <label htmlFor="email" className="emailLabel">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        value={values.email}
+                        onChange={updateValue}
+                        placeholder="Your Email"
+                      />
+                      <label htmlFor="contacting" className="contactingLabel">
+                        Contacting:
+                      </label>
+                      <select
+                        type="contacting"
+                        name="contacting"
+                        value={values.contacting}
+                        onChange={updateValue}
+                        id="contactList"
+                      >
+                        <option value="WhoToContact">Who Are You Contacting?</option>
+                        <option value="Randy">Randy</option>
+                        <option value="CJ">CJ</option>
+                        <option value="Rhonda">Rhonda</option>
+                      </select>
+                      <label htmlFor="message" className="messageLabel">
+                        Message
+                      </label>
+                      <textarea
+                        name="message"
+                        id="message"
+                        value={values.message}
+                        onChange={updateValue}
+                        rows="7"
+                        placeholder="How can we help you with your insurance needs?"
+                      />
+                      <button type="submit" className="submitButton" value="Submit">
+                        Submit Message
+                      </button>
+                    </fieldset>
+                  </form>
+                </FormStyles>
+              </div>
             </div>
-            <div className="contactInfo right">
-              <FormStyles>
-                <form
-                  className="container"
-                  id="formContainer"
-                  method="post"
-                  netlify-honeypot="bot-field"
-                  data-netlify="true"
-                  name="contact"
-                >
-                  <input type="hidden" name="bot-field" />
-                  <input type="hidden" name="form-name" value="contact" />
-                  <fieldset>
-                    <legend>Contact Us</legend>
-                    <label htmlFor="name" className="nameLabel">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      id="name"
-                      value={values.name}
-                      onChange={updateValue}
-                      placeholder="Your Name"
-                    />
-                    <label htmlFor="email" className="emailLabel">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      value={values.email}
-                      onChange={updateValue}
-                      placeholder="Your Email"
-                    />
-                    <label htmlFor="contacting" className="contactingLabel">
-                      Contacting:
-                    </label>
-                    <select
-                      type="contacting"
-                      name="contacting"
-                      value={values.contacting}
-                      onChange={updateValue}
-                      id="contactList"
-                    >
-                      <option value="WhoToContact">Who Are You Contacting?</option>
-                      <option value="Randy">Randy</option>
-                      <option value="CJ">CJ</option>
-                      <option value="Rhonda">Rhonda</option>
-                    </select>
-                    <label htmlFor="message" className="messageLabel">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      id="message"
-                      value={values.message}
-                      onChange={updateValue}
-                      rows="7"
-                      placeholder="How can we help you with your insurance needs?"
-                    />
-                    <button type="submit" className="submitButton" value="Submit">
-                      Submit Message
-                    </button>
-                  </fieldset>
-                </form>
-              </FormStyles>
-            </div>
-          </div>
+          ))}
         </ContactStyles>
     </>
   );
@@ -201,38 +203,25 @@ export default function Contact({ data }) {
 
 export const query = graphql`
   query {
-    contacts: allSanityContactPage {
-    nodes {
-      id
-      title
-      description
-      content {
-        ... on SanityContactHero {
-          id
-          image {
-            asset {
-              id
-            }
-          }
-        }
-        ... on SanityContactInfo {
-          id
-          address
-          phone
-          title
-        }
-        ... on SanitySocialLink {
-          id
-          service
-          username
-        }
-      }
-      image {
-        asset {
-          id
-        }
+    contacts:  allSanityContactInfo {
+      nodes {
+        title
+        tagline
+        phone
+        id
+        cta
+        address
       }
     }
-  }
+    cta: allSanityContactInfo {
+      nodes {
+        title
+        tagline
+        phone
+        id
+        cta
+        address
+      }
+    }
   }
 `;

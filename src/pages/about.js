@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
 import SEO from '../components/SEO';
 import SanityImage from 'gatsby-plugin-sanity-image';
-import knowledge from '../assets/images/KnowledgeInformedWRDS.png';
 
 const AboutStyles = styled.div`
   max-width: 1080px;
@@ -48,10 +47,6 @@ const AboutStyles = styled.div`
     .textImg {
       width: 100%;
       height: 100%;
-      background-image: url(${knowledge});
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center center;
     }
   }
   .content {
@@ -112,6 +107,7 @@ const AboutStyles = styled.div`
       align-items: center;
       .tagline {
         font-size: 3rem;
+        max-width: 245px;
       }
       .phone {
          font-weight: bold;
@@ -213,7 +209,7 @@ const TabletAboutStyles = styled.div`
     }
     .staffImg {
       width: 30%;
-      margin: 0 1rem 0 0;
+      margin: 0 2rem 0 0;
       text-align: center;
       img {
         width: 25rem;
@@ -334,7 +330,7 @@ const MobileAboutStyles = styled.div`
   }
   .flex {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
   }
   .upper {
     text-transform: uppercase;
@@ -420,6 +416,7 @@ const MobileAboutStyles = styled.div`
   .contact {
     align-items: center;
     .tagline {
+      max-width: 245px;
       font-size: 3rem;
       text-align: center;
     }
@@ -467,28 +464,38 @@ const MobileAboutStyles = styled.div`
 `;
 
 export default function AboutPage({ data }) {
-  const missionlist = data.missionlist.nodes;
-  const stafflist = data.stafflist.nodes;
+  const profiles = data.profiles.nodes;
+  const contents = data.contents.nodes;
+  const cta = data.cta.nodes;
   return (
     <>
       <SEO title="About Us" />
         <AboutStyles>
-          <div className="head inline">
-            <div className="left flex">
-              <h1>Meet Our Team</h1>
+          {contents.map((content) => (
+            <div className="head inline" key={content.id}>
+              <div className="left flex">
+                <h1>{content.title}</h1>
+              </div>
+              <div className="right flex">
+                <SanityImage 
+                  {...content.textimage}
+                  alt={content.textalt}
+                  style={{
+                    objectFit: 'cover',
+                    auto: 'format',
+                  }}
+                />
+              </div>
             </div>
-            <div className="right flex">
-              <div className="textImg" />
-            </div>
-          </div>
-          <div className="content inline">
-            <section className="staffContainer">
-            {stafflist.map((staff) => (
+          ))}
+        <div className="content inline">
+          <section className="staffContainer">
+            {profiles.map((staff) => (
               <div className="inline staff" key={staff.id}>
                 <div className="staffImg">
                   <SanityImage
-                    {...staff.image}
-                    alt="Staff Image"
+                    {...staff.profileimage}
+                    alt={staff.mainalt}
                     style={{
                       objectFit: 'cover',
                       auto: 'format',
@@ -513,55 +520,51 @@ export default function AboutPage({ data }) {
             ))}
             </section>
             <section className="missionContainer flex">
-          {missionlist.map((mission) => (
-            <div className="paraInfo" key={mission.id}>
-              {/* <div className="mission">
-                <h3 className="missionTitle">{mission.title}</h3>
-                <p className="missionStatement">
-                {mission.mission}
-                </p>
-              </div> */}
-              <div className="info">
-                <p>
-                  It has always been our practice to initiate and maintain long-term trusting relationships with our clients. We have taken the time to know the “in’s and out’s” of the insurance industry so that we can guide you towards making an informed decision when it comes to the insurance plans you purchase.
-                </p>
-                <p>
-                  The effective preservation of your family’s health and lifestyle should not cost you more than you need to spend which is why we affiliate with top insurance providers to bring you inclusive and flexible coverages at their most competitive rates.
-                </p>
-                <p>
-                  We work tirelessly to stay informed about the latest changes in the healthcare markets. We can provide you information on what your market has available right now and any expected changes.
-                </p>
+            {contents.map((paragraphs) => (
+              <div className="paraInfo" key={paragraphs.id}>
+                <div className="info">
+                  {paragraphs.content.map((c) => (
+                    c.children.map((text) =>
+                      <p key={text._key}>
+                        {text.text}
+                      </p>
+                    )
+                  ))}
+                </div>
               </div>
+            ))}
+            {cta.map((call) => (
               <div className="contact flex">
                 <p className="tagline upper">
-                  Good Health, That's the plan
+                  {call.tagline}
                 </p>
-                <a href="tel:9702415542" className="phone">
-                  970.241.5542
+                <a href={`tel:${call.phone}`} className="phone">
+                  {call.phone}
                 </a>
                 <Link to="/contact" className="buttonesque upper">
-                  Contact Us  <HiOutlineArrowNarrowRight className="arrowRight"/>
+                  {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
                 </Link>
               </div>
-            </div>
             ))}
-            </section>
-          </div>
+          </section>
+        </div>
         </AboutStyles>
         <TabletAboutStyles>
-          <div className="head flex">
-            <div className="left flex">
-              <h1>Meet Our Team</h1>
+          {contents.map((content) => (
+            <div className="head flex">
+              <div className="left flex">
+                <h1>{content.title}</h1>
+              </div>
             </div>
-          </div>
+          ))}
           <div className="content flex">
           <section className="staffContainer flex">
-            {stafflist.map((staff) => (
+            {profiles.map((staff) => (
               <div className="inline staff" key={staff.id}>
                 <div className="staffImg">
                   <SanityImage
-                    {...staff.image}
-                    alt={staff.image.asset.altText}
+                    {...staff.profileimage}
+                    alt={staff.mainalt}
                     style={{
                       objectFit: 'cover',
                       auto: 'format',
@@ -586,56 +589,53 @@ export default function AboutPage({ data }) {
             ))}
             </section>
             <section className="missionContainer flex">
-                {missionlist.map((mission) => (
-                  <div className="paraInfo" key={mission.id}>
-                    {/* <div className="mission">
-                      <h3 className="missionTitle">{mission.title}</h3>
-                      <p className="missionStatement">
-                      {mission.mission}
-                      </p>
-                    </div> */}
+              {contents.map((paragraphs) => (
+                  <div className="paraInfo" key={paragraphs.id}>
                     <div className="info">
-                      <p>
-                        It has always been our practice to initiate and maintain long-term trusting relationships with our clients. We have taken the time to know the “in’s and out’s” of the insurance industry so that we can guide you towards making an informed decision when it comes to the insurance plans you purchase.
-                      </p>
-                      <p>
-                        The effective preservation of your family’s health and lifestyle should not cost you more than you need to spend which is why we affiliate with top insurance providers to bring you inclusive and flexible coverages at their most competitive rates.
-                      </p>
-                      <p>
-                        We work tirelessly to stay informed about the latest changes in the healthcare markets. We can provide you information on what your market has available right now and any expected changes.
-                      </p>
+                      {paragraphs.content.map((c) => (
+                        c.children.map((text) =>
+                          <p key={text._key}>
+                            {text.text}
+                          </p>
+                        )
+                      ))}
                     </div>
                 </div>
               ))}
             </section>
-            <div className="contact flex">
-              <p className="tagline upper">
-                Good Health, <br />That's the plan</p>
-              <div className="inline nextTo">
-                <a href="tel:9702415542" className="phone">
-                  970.241.5542
-                </a>
-                <Link to="/contact" className="buttonesque upper">
-                  Contact Us  <HiOutlineArrowNarrowRight className="arrowRight"/>
-                </Link>
+            {cta.map((call) => (
+              <div className="contact flex">
+                <p className="tagline upper">
+                  {call.tagline}
+                </p>
+                <div className="inline nextTo">
+                  <a href={`tel:${call.phone}`} className="phone">
+                    {call.phone}
+                  </a>
+                  <Link to="/contact" className="buttonesque upper">
+                    {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
+                  </Link>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </TabletAboutStyles>
         <MobileAboutStyles>
-          <div className="head flex">
-            <div className="left flex">
-              <h1>Meet Our Team</h1>
+          {contents.map((content) => (
+            <div className="head flex">
+              <div className="left flex">
+                <h1>{content.title}</h1>
+              </div>
             </div>
-          </div>
+          ))}
           <div className="content flex">
             <section className="staffContainer flex">
-            {stafflist.map((staff) => (
+            {profiles.map((staff) => (
               <div className="flex staff" key={staff.id}>
                 <div className="staffImg">
                   <SanityImage
-                    {...staff.image}
-                    alt={staff.image.asset.altText}
+                    {...staff.profileimage}
+                    alt={staff.mainalt}
                     style={{
                       objectFit: 'cover',
                       auto: 'format',
@@ -660,40 +660,35 @@ export default function AboutPage({ data }) {
             ))}
             </section>
             <section className="missionContainer flex">
-              {missionlist.map((mission) => (
-                <div className="paraInfo" key={mission.id}>
-                  {/* <div className="mission">
-                    <h3 className="missionTitle">{mission.title}</h3>
-                    <p className="missionStatement">
-                    {mission.mission}
-                    </p>
-                  </div> */}
+            {contents.map((paragraphs) => (
+                <div className="paraInfo" key={paragraphs.id}>
                   <div className="info">
-                    <p>
-                      It has always been our practice to initiate and maintain long-term trusting relationships with our clients. We have taken the time to know the “in’s and out’s” of the insurance industry so that we can guide you towards making an informed decision when it comes to the insurance plans you purchase.
-                    </p>
-                    <p>
-                      The effective preservation of your family’s health and lifestyle should not cost you more than you need to spend which is why we affiliate with top insurance providers to bring you inclusive and flexible coverages at their most competitive rates.
-                    </p>
-                    <p>
-                      We work tirelessly to stay informed about the latest changes in the healthcare markets. We can provide you information on what your market has available right now and any expected changes.
-                    </p>
+                    {paragraphs.content.map((c) => (
+                      c.children.map((text) =>
+                        <p key={text._key}>
+                          {text.text}
+                        </p>
+                      )
+                    ))}
                   </div>
               </div>
             ))}
-          </section>
-            <div className="contact flex">
-              <p className="tagline upper">
-                Good Health, <br />That's the plan</p>
-              <div className="inline nextTo">
-                <a href="tel:9702415542" className="phone">
-                  970.241.5542
-                </a>
-                <Link to="/contact" className="buttonesque upper">
-                  Contact Us  <HiOutlineArrowNarrowRight className="arrowRight"/>
-                </Link>
+            </section>
+            {cta.map((call) => (
+              <div className="contact flex">
+                <p className="tagline upper">
+                  {call.tagline}
+                </p>
+                <div className="inline nextTo">
+                  <a href={`tel:${call.phone}`} className="phone">
+                    {call.phone}
+                  </a>
+                  <Link to="/contact" className="buttonesque upper">
+                    {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
+                  </Link>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </MobileAboutStyles>
     </>
@@ -702,27 +697,56 @@ export default function AboutPage({ data }) {
 
 export const query = graphql`
   query {
-    missionlist: allSanityAboutMission {
+    profiles: allSanityAboutProfile {
       nodes {
-        id
-        title
-        mission
-      }
-    }
-    stafflist: allSanityAboutProfile {
-      nodes {
+        email
+        bio
         id
         jobTitle
         name
-        bio
-        email
-        image {
+        mainalt
+        profileimage {
           asset {
             id
-            altText
           }
           ...ImageWithPreview
         }
+      }
+    }
+    contents: allSanityAboutContent {
+      nodes {
+        content {
+          children {
+            _key
+            text
+          }
+        }
+        mainimage {
+          asset {
+            id
+          }
+          ...ImageWithPreview
+        }
+        id
+        title
+        mainalt
+        textalt
+        textimage {
+          asset {
+            id
+          }
+          ...ImageWithPreview
+        }
+      }
+    }
+    cta: allSanityContactInfo {
+      nodes {
+        title
+        tagline
+        phone
+        id
+        cta
+        address
       }
     }
   }

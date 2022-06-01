@@ -55,16 +55,16 @@ export default function PrivacyPolicy({ data }) {
 export const query = graphql`
   query {
     policies: allSanityPrivacyPolicy {
-    nodes {
-      id
-      title
-      content {
-        children {
-          _key
-          text
+      nodes {
+        id
+        title
+        content {
+          children {
+            _key
+            text
+          }
         }
       }
     }
-  }
   }
 `;

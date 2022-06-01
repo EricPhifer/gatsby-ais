@@ -1,11 +1,8 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-// import SanityImage from 'gatsby-plugin-sanity-image';
+import SanityImage from 'gatsby-plugin-sanity-image';
 import styled from 'styled-components';
 import {HiOutlineArrowNarrowRight} from 'react-icons/hi';
-import family from '../assets/images/MultiGenerationFamily.jpg';
-import clarity from '../assets/images/InsClarity.png';
-
 import SEO from '../components/SEO';
 
 const ServiceStyles = styled.div`
@@ -39,23 +36,18 @@ const ServiceStyles = styled.div`
   .serviceContainer {
     width: 100%;
   }
-  .img {
+  .mainimg {
     width: 100%;
     height: 36rem;
-    background-image: url(${family});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     box-shadow: 5px 5px 10px #000;
   }
   .textImg {
     width: 100%;
     height: 9rem;
-    background-image: url(${clarity});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     margin: 4rem 0;
+  }
+  #Medicare {
+    display: none;
   }
   .serviceCard {
     margin-top: 3rem;
@@ -145,6 +137,9 @@ const TabletServiceStyles = styled.div`
       display: none;
     }
   }
+  #Medicare {
+    display: none;
+  }
   .flexSwitch {
     @media only screen and (min-width: 901px) {
       display: inline-flex;
@@ -172,28 +167,26 @@ const TabletServiceStyles = styled.div`
     h1 {
       font-size: 5rem;
       font-weight: bold;
+      @media only screen and (max-width: 900px) {
+        margin: 0.6rem 0;
+      }
     }
   }
   .serviceContainer {
     width: 100%;
   }
-  .img {
+  .mainimg {
     width: 100%;
     height: 36rem;
-    background-image: url(${family});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     box-shadow: 5px 5px 10px #000;
+    @media only screen and (max-width: 900px) {
+      height: 60vmin;
+    }
   }
   .textImg {
     width: 100%;
     height: 10rem;
     margin: 2rem 0;
-    background-image: url(${clarity});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
   }
   .serviceContainer {
     padding: 3rem 1rem 0;
@@ -305,25 +298,20 @@ const MobileServiceStyles = styled.div`
       font-weight: bold;
     }
   }
+  #Medicare {
+    display: none;
+  }
   .serviceContainer {
     width: 100%;
   }
-  .img {
+  .mainimg {
     width: 100%;
     height: 36rem;
-    background-image: url(${family});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     box-shadow: 5px 5px 10px #000;
   }
   .textImg {
     width: 100%;
     height: 5rem;
-    background-image: url(${clarity});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     margin: 2rem 0;
   }
   .serviceContainer {
@@ -359,8 +347,9 @@ const MobileServiceStyles = styled.div`
     justify-content: center;
     align-items: center;
     .tagline {
-      font-size: 3rem;
+      max-width: 245px;
       margin: 0;
+      font-size: 3rem;
     }
     .phone {
        font-weight: bold;
@@ -398,234 +387,215 @@ const MobileServiceStyles = styled.div`
 
 export default function ServicePage({ data }) {
   const services = data.services.nodes;
+  const plans = data.plans.nodes;
+  const cta = data.cta.nodes;
   return (
     <>
       <SEO title="Insurance Services" />
       <ServiceStyles>
         <div className="serviceContainer inline">
           <div className="left flex">
-            <div className="head flex">
-              <h1>What we cover</h1>
-            </div>
-            <div className="serviceCard inline">
-              <div className="dotContainer">
-                <div className="dot" />
+            {services.map((service) => (
+              <div className="head flex" key={service.id}>
+                <h1>{service.title}</h1>
               </div>
-              <div className="serviceInfo flex">
-                <Link to="plans">
-                  <h2>Employer Benefit Solutions</h2>
-                </Link>
-                <p>
-                  We can find plans where, in many cases, your employees will receive comprehensive benefits with low out-of-pocket expenses and more choices than ever, all while keeping that personal touch we are known for.
-                </p>
+            ))}
+            {plans.map((plan) => (
+              <div 
+                className="serviceCard inline" 
+                id={plan.title}
+                key={plan.id}
+              >
+                <div className="dotContainer">
+                  <div className="dot" />
+                </div>
+                <div className="serviceInfo flex">
+                  <Link to={`/plans#${plan.slug.current}`}>
+                    <h2>{plan.title}</h2>
+                  </Link>
+                  <p>
+                    {plan.description}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="serviceCard inline">
-              <div className="dotContainer">
-                <div className="dot" />
-              </div>
-              <div className="serviceInfo flex">
-                <Link to="plans">
-                  <h2>Individual and Family Insurance Plans</h2>
-                </Link>
-                <p>
-                Your family is the most important part of your life. We help you find health insurance that covers everyone, puts your mind at ease, and won’t break the bank with coverage that’s tailored to you and your family.
-                </p>
-              </div>
-            </div>
-            <div className="serviceCard inline">
-              <div className="dotContainer">
-                <div className="dot" />
-              </div>
-              <div className="serviceInfo flex">
-                <Link to="plans">
-                  <h2>Supplemental Plans</h2>
-                </Link>
-                <p>
-                Whether it be Medicare Plan G, Life Insurance, Disability Coverage, or Long Term Care Plans, we are experts that can give you peace of mind and explain all the options available to you.
-                </p>
-              </div>
-            </div>
-            <div className="serviceCard inline">
-              <div className="dotContainer">
-                <div className="dot" />
-              </div>
-              <div className="serviceInfo flex">
-                <Link to="plans">
-                  <h2>Life Insurance Plans</h2>
-                </Link>
-                <p>
-                Protection for your family and allows the family to help maintain its standard of living by providing income after the loss of a loved one.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="right flex">
-            <div className="img"/>
-            <div className="textImg"/>
-            <div className="contact flex">
+            {services.map((service) => (
+              <span key={service.id}>
+                  <SanityImage 
+                    {...service.mainimage}
+                    alt={service.mainalt}
+                    className="mainimg"
+                    style={{
+                      objectFit: 'cover',
+                      auto: 'format',
+                    }}
+                    />
+                  <SanityImage 
+                    {...service.textimage}
+                    alt={service.textalt}
+                    className="textImg"
+                    style={{
+                      objectFit: 'cover',
+                      auto: 'format',
+                    }}
+                    />
+                </span>
+              ))}
+            {cta.map((call) => (
+              <div className="contact flex" key={call.id}>
                 <p className="tagline upper">
-                  Good Health, That's the plan</p>
+                  {call.tagline}
+                </p>
                 <Link to="/contact" className="buttonesque upper">
-                  Contact Us  <HiOutlineArrowNarrowRight className="arrowRight"/>
+                  {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
                 </Link>
-                <a href="tel:9702415542" className="phone">
-                  970.241.5542
+                <a href={`tel:${call.phone}`} className="phone">
+                  {call.phone}
                 </a>
               </div>
+            ))}
           </div>
         </div>
       </ServiceStyles>
       <TabletServiceStyles>
         <div className="flexSwitch">
           <div className="flex left">
-            <div className="head flex">
-              <h1>What we cover</h1>
-            </div>
-            <div className="img noNineOver"/>
+            {services.map((service) => (
+              <div className="head flex" key={service.id}>
+                <h1>{service.title}</h1>
+                <SanityImage 
+                  {...service.mainimage}
+                  className="noNineOver mainimg"
+                  alt={service.mainalt}
+                  style={{
+                    objectFit: 'cover',
+                    auto: 'format',
+                  }}
+                />
+              </div>
+            ))}
             <div className="serviceContainer">
-              <div className="serviceCard inline">
-                <div className="dotContainer">
-                  <div className="dot" />
+              {plans.map((plan) => (
+                <div 
+                  className="serviceCard inline" 
+                  id={plan.title} 
+                  key={plan.id}
+                >
+                  <div className="dotContainer">
+                    <div className="dot" />
+                  </div>
+                  <div className="serviceInfo flex">
+                    <Link to={`/plans#${plan.slug.current}`}>
+                      <h2>{plan.title}</h2>
+                    </Link>
+                    <p>
+                      {plan.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="serviceInfo flex">
-                  <Link to="plans">
-                    <h2>Employer Benefit Solutions</h2>
-                  </Link>
-                  <p>
-                    We can find plans where, in many cases, your employees will receive comprehensive benefits with low out-of-pocket expenses and more choices than ever, all while keeping that personal touch we are known for.
-                  </p>
-                </div>
-              </div>
-              <div className="serviceCard inline">
-                <div className="dotContainer">
-                  <div className="dot" />
-                </div>
-                <div className="serviceInfo flex">
-                  <Link to="plans">
-                    <h2>Individual and Family Insurance Plans</h2>
-                  </Link>
-                  <p>
-                  Your family is the most important part of your life. We help you find health insurance that covers everyone, puts your mind at ease, and won’t break the bank with coverage that’s tailored to you and your family.
-                  </p>
-                </div>
-              </div>
-              <div className="serviceCard inline">
-                <div className="dotContainer">
-                  <div className="dot" />
-                </div>
-                <div className="serviceInfo flex">
-                  <Link to="plans">
-                    <h2>Supplemental Plans</h2>
-                  </Link>
-                  <p>
-                  Whether it be Medicare Plan G, Life Insurance, Disability Coverage, or Long Term Care Plans, we are experts that can give you peace of mind and explain all the options available to you.
-                  </p>
-                </div>
-              </div>
-              <div className="serviceCard inline">
-                <div className="dotContainer">
-                  <div className="dot" />
-                </div>
-                <div className="serviceInfo flex">
-                  <Link to="plans">
-                    <h2>Life Insurance Plans</h2>
-                  </Link>
-                  <p>
-                  Protection for your family and allows the family to help maintain its standard of living by providing income after the loss of a loved one.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
           <div className="right flex">
-            <div className="img noNineUnder"/>
-            <div className="textImg"/>
-              <div className="contact flex">
-                <p className="tagline upper">
-                  Good Health, <br />That's the plan</p>
-                <Link to="/contact" className="buttonesque upper">
-                  Contact Us  <HiOutlineArrowNarrowRight className="arrowRight"/>
-                </Link>
-                <a href="tel:9702415542" className="phone">
-                  970.241.5542
-                </a>
+          {services.map((service) => (
+            <span key={service.id}>
+              <SanityImage 
+                {...service.mainimage}
+                className="mainimg noNineUnder"
+                alt={service.mainalt}
+                style={{
+                  objectFit: 'cover',
+                  auto: 'format',
+                }}
+                />
+              <SanityImage 
+                {...service.textimage}
+                alt={service.textalt}
+                className="textImg"
+                style={{
+                  objectFit: 'cover',
+                  auto: 'format',
+                }}
+                />
+            </span>
+          ))}
+          {cta.map((call) => (
+            <div className="contact flex" key={call.id}>
+              <p className="tagline upper">
+                {call.tagline}
+              </p>
+              <Link to="/contact" className="buttonesque upper">
+                {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
+              </Link>
+              <a href={`tel:${call.phone}`} className="phone">
+                {call.phone}
+              </a>
             </div>
+            ))}
           </div>
         </div>
       </TabletServiceStyles>
       <MobileServiceStyles>
         <div className="flex">
-          <div className="head flex">
-            <h1>What we cover</h1>
-          </div>
-          <div className="img"/>
+          {services.map((service) => (
+            <div className="head flex" key={service.id}>
+              <h1>{service.title}</h1>
+              <SanityImage 
+                {...service.mainimage}
+                alt={service.mainalt}
+                style={{
+                  objectFit: 'cover',
+                  auto: 'format',
+                }}
+              />
+            </div>
+          ))}
           <div className="serviceContainer">
-            <div className="serviceCard inline">
-              <div className="dotContainer">
-                <div className="dot" />
+            {plans.map((plan) => (
+              <div className="serviceCard inline" id={plan.title} key={plan.id}>
+                <div className="dotContainer">
+                  <div className="dot" />
+                </div>
+                <div className="serviceInfo flex">
+                  <Link to={`/plans#${plan.slug.current}`}>
+                    <h2>{plan.title}</h2>
+                  </Link>
+                  <p>
+                    {plan.description}
+                  </p>
+                </div>
               </div>
-              <div className="serviceInfo flex">
-                <Link to="plans">
-                  <h2>Employer Benefit Solutions</h2>
-                </Link>
-                <p>
-                  We can find plans where, in many cases, your employees will receive comprehensive benefits with low out-of-pocket expenses and more choices than ever, all while keeping that personal touch we are known for.
-                </p>
-              </div>
-            </div>
-            <div className="serviceCard inline">
-              <div className="dotContainer">
-                <div className="dot" />
-              </div>
-              <div className="serviceInfo flex">
-                <Link to="plans">
-                  <h2>Individual and Family Insurance Plans</h2>
-                </Link>
-                <p>
-                Your family is the most important part of your life. We help you find health insurance that covers everyone, puts your mind at ease, and won’t break the bank with coverage that’s tailored to you and your family.
-                </p>
-              </div>
-            </div>
-            <div className="serviceCard inline">
-              <div className="dotContainer">
-                <div className="dot" />
-              </div>
-              <div className="serviceInfo flex">
-                <Link to="plans">
-                  <h2>Supplemental Plans</h2>
-                </Link>
-                <p>
-                Whether it be Medicare Plan G, Life Insurance, Disability Coverage, or Long Term Care Plans, we are experts that can give you peace of mind and explain all the options available to you.
-                </p>
-              </div>
-            </div>
-            <div className="serviceCard inline">
-              <div className="dotContainer">
-                <div className="dot" />
-              </div>
-              <div className="serviceInfo flex">
-                <Link to="plans">
-                  <h2>Life Insurance Plans</h2>
-                </Link>
-                <p>
-                Protection for your family and allows the family to help maintain its standard of living by providing income after the loss of a loved one.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-        <div className="textImg"/>
-        <div className="contact flex">
+        {services.map((service) => (
+            <span key={service.id}>
+              <SanityImage 
+                {...service.textimage}
+                alt={service.textalt}
+                className="textImg"
+                style={{
+                  objectFit: 'cover',
+                  auto: 'format',
+                }}
+                />
+            </span>
+          ))}
+        {cta.map((call) => (
+          <div className="contact flex" key={call.id}>
             <p className="tagline upper">
-              Good Health, <br />That's the plan</p>
+              {call.tagline}
+            </p>
             <Link to="/contact" className="buttonesque upper">
-              Contact Us  <HiOutlineArrowNarrowRight className="arrowRight"/>
+              {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
             </Link>
-            <a href="tel:9702415542" className="phone">
-              970.241.5542
+            <a href={`tel:${call.phone}`} className="phone">
+              {call.phone}
             </a>
-          </div>       
+          </div>
+        ))}     
       </MobileServiceStyles>
     </>
   );
@@ -633,74 +603,50 @@ export default function ServicePage({ data }) {
 
 export const query = graphql`
   query {
-    services: allSanityServicePage {
-    nodes {
-      title
-      id
-      description
-      content {
-        ... on SanityServiceEmployer {
-          id
-          title
-          description
-          plans {
-            title
-            description
+    services: allSanityServiceContent {
+      nodes {
+        title
+        id
+        mainalt
+        textalt
+        mainimage {
+          asset {
             id
           }
+          ...ImageWithPreview
         }
-        ... on SanityServiceHero {
-          id
-          text
-          heading
-          image {
-            asset {
-              id
-            }
-          }
-        }
-        ... on SanityServiceIndividual {
-          id
-          description
-          title
-          plans {
-            title
-            description
+        textimage {
+          asset {
             id
           }
-        }
-        ... on SanityServiceLife {
-          id
-          title
-          description
-          plans {
-            title
-            description
-            id
-          }
-        }
-        ... on SanityServiceMedicare {
-          id
-          title
-          description
-          plans {
-            id
-            title
-            description
-          }
-        }
-        ... on SanityServiceSupplemental {
-          id
-          title
-          description
-          plans {
-            title
-            id
-            description
-          }
+          ...ImageWithPreview
         }
       }
     }
-  }
+    plans: allSanityServices {
+      nodes {
+        description
+        id
+        title
+        slug {
+          current
+        }
+        plans {
+          _key
+          plantitle
+          description
+        }
+      }
+    }
+    cta: allSanityContactInfo {
+      nodes {
+        title
+        tagline
+        phone
+        id
+        cta
+        address
+      }
+    }
   }
 `;

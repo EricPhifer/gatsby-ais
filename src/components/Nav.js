@@ -444,42 +444,26 @@ const MobileNavStyles = styled.div`
 `;
 
 export default function Nav() {
-  const { layout } = useStaticQuery(graphql`
+  const { navigation } = useStaticQuery(graphql`
     query {
-      layout: allSanityLayout {
+      navigation: allSanityLayoutHeader {
         nodes {
           id
-          header {
-            navItems {
-              ... on SanityNavItemGroup {
-                id
-                name
-                navItems {
-                  text
-                  id
-                  icon
-                  href
-                  description
-                }
-              }
-            }
-            contactnumber
-            id
-            title
-            logo {
-              asset {
-                id
-              }
-              ...ImageWithPreview
-            }
-          }
+          contactnumber
           title
+          mainalt
+          mainlogo {
+            asset {
+              id
+            }
+            ...ImageWithPreview
+          }
         }
       }
     }
   `)
 
-  const nodes = layout.nodes;
+  const nodes = navigation.nodes;
 
   return (
     <>
@@ -489,19 +473,19 @@ export default function Nav() {
             <div className="bg-gradient full" />
             <div className="full bg-gray">
               <div className="maxWidth upperNav">
-                <a href={`tel:${node.header.contactnumber}`} className="phone">{node.header.contactnumber}</a>
+                <a href={`tel:${node.contactnumber}`} className="phone">{node.contactnumber}</a>
                 <nav>
                   <ul>
                     <li>
-                      <Link to="/plans">Employer and Individual Health Plans</Link>
+                      <Link to="/plans#employer-benefit-solutions">Employer and Individual Health Plans</Link>
                     </li>
                     <span> | </span>
                     <li>
-                      <Link to="/plans">Medicare</Link>
+                      <Link to="/plans#medicare">Medicare</Link>
                     </li>
                     <span> | </span>
                     <li>
-                      <Link to="/plans">Life Insurance</Link>
+                      <Link to="/plans#life-insurance">Life Insurance</Link>
                     </li>
                   </ul>
                 </nav>
@@ -509,8 +493,8 @@ export default function Nav() {
             <div className="lowerNav maxWidth">
               <nav>
                 <SanityImage 
-                  {...node.header.logo}
-                  alt="Active Insurance Logo"
+                  {...node.mainlogo}
+                  alt={node.mainalt}
                   style={{
                     width: '40%',
                     objectFit: 'contain',
@@ -552,7 +536,7 @@ export default function Nav() {
           <TabletNavStyles>
             <div className="navGradient" />
             <div className="navContainer">
-              <a href={`tel:${node.header.contactnumber}`} className="phone">{node.header.contactnumber}</a>
+              <a href={`tel:${node.contactnumber}`} className="phone">{node.contactnumber}</a>
               <div id="menuToggle">
                 <input type="checkbox" />
                 <span />
@@ -590,7 +574,7 @@ export default function Nav() {
                   <nav className="lowerNav">
                     <ul className="inline">
                       <li>
-                        <Link to="/services#individual">Employer and Individual Health Plans</Link>
+                        <Link to="/services#employer-benefit-solutions">Employer and Individual Health Plans</Link>
                       </li>
                       <span className="navBarCancel"> | </span>
                       <li>
@@ -598,15 +582,15 @@ export default function Nav() {
                       </li>
                       <span className="navBarCancel"> | </span>
                       <li>
-                        <Link to="/services#life">Life Insurance</Link>
+                        <Link to="/services#life-insurance">Life Insurance</Link>
                       </li>
                     </ul>
                   </nav>
                 </div>
               </div>
               <SanityImage 
-              {...node.header.logo}
-              alt="Active Insurance Logo"
+              {...node.mainlogo}
+              alt={node.mainalt}
               style={{
                 objectFit: 'contain',
                 auto: 'format',
@@ -617,7 +601,7 @@ export default function Nav() {
           <MobileNavStyles>
             <div className="navGradient" />
             <div className="navContainer">
-              <a href={`tel:${node.header.contactnumber}`} className="phone">{node.header.contactnumber}</a>
+              <a href={`tel:${node.contactnumber}`} className="phone">{node.contactnumber}</a>
               <div id="menuToggle">
                 <input type="checkbox" />
                 <span />
@@ -655,21 +639,21 @@ export default function Nav() {
                   <nav className="lowerNav">
                     <ul>
                       <li>
-                        <Link to="/services#individual">Employer and Individual Health Plans</Link>
+                        <Link to="/services#employer-benefit-solutions">Employer and Individual Health Plans</Link>
                       </li>
                       <br />
                       <li className="inline">
                         <Link to="/services#medicare">Medicare</Link>
                         <span className="navBarCancel"> | </span>
-                        <Link to="/services#life">Life Insurance</Link>
+                        <Link to="/services#life-insurance">Life Insurance</Link>
                       </li>
                     </ul>
                   </nav>
                 </div>
               </div>
               <SanityImage 
-              {...node.header.logo}
-              alt="Active Insurance Logo"
+              {...node.mainlogo}
+              alt={node.mainalt}
               style={{
                 objectFit: 'contain',
                 auto: 'format',

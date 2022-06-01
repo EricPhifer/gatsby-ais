@@ -1,13 +1,9 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-// import SanityImage from 'gatsby-plugin-sanity-image';
+import SanityImage from 'gatsby-plugin-sanity-image';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
-import SanityImage from 'gatsby-plugin-sanity-image';
-import texture from '../assets/images/texture.png';
-import opaque from '../assets/images/logo-opaque.png';
-import solutions from '../assets/images/ins-sol.png'
 
 const HeroStyles = styled.div`
   padding-top: 18rem;
@@ -23,28 +19,22 @@ const HeroStyles = styled.div`
     width: 100%;
     height: 50.3rem;
     display: inline-flex;
-    img { 
-      width: 80%;
+    .mainimg { 
       height: 62rem;
     }
     .sideTexture {
-      width: 20%;
       display: flex;
       align-items: end;
-      background-image: url(${texture});
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
+      position: relative;
+      .texture {
+        height: 50.4rem
+      }
       .solutions {
-        width: 100%;
         height: 7rem;
-        background-image: url(${solutions});
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-        position: relative;
+        position: absolute;
+        bottom: 11rem;
+        padding: 0 0.4rem;
         z-index: 1;
-        margin-bottom: 11rem;
       }
     }
   }
@@ -115,10 +105,6 @@ const HeroStyles = styled.div`
         position: absolute;
         right: 0;
         bottom: 2rem;
-        background-image: url(${opaque});
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
         opacity: 0.2;
       }
       .phone {
@@ -153,10 +139,7 @@ const TabletHeroStyles = styled.div`
   @media only screen and (max-width: 500px) {
     display: none;
   }
-  padding-top: 14rem;
-  @media only screen and (min-width: 901px) {
-    padding-top: 16rem;
-  }
+  padding-top: 16rem;
   .hero {
     position: relative;
     .upper {
@@ -165,30 +148,46 @@ const TabletHeroStyles = styled.div`
   }
   .upperContent {
     width: 100%;
-    height: 35rem;
     display: inline-flex;
-    img { 
-      width: 100%;
+    .mainimg { 
+      @media only screen and (max-width: 1081px) {
+        height: 60rem;
+      }
+      @media only screen and (max-width: 1000px) {
+        height: 58rem;
+      }
+      @media only screen and (max-width: 950px) {
+        height: 56rem;
+      }
+      @media only screen and (max-width: 900px) {
+        width: 100%;
+      }
+      @media only screen and (max-width: 700px) {
+        height: 48rem;
+      }
+      @media only screen and (max-width: 600px) {
+        height: 37rem;
+      }
     }
     .sideTexture {
-      width: 20%;
+      position: relative;
       display: flex;
       align-items: end;
       justify-content: center;
-      background-image: url(${texture});
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
+      .texture {
+        height: 100%;
+      }
       .solutions {
-        width: 100%;
         height: 7rem;
-        background-image: url(${solutions});
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-        position: relative;
+        position: absolute;
         z-index: 1;
         margin-bottom: 11rem;
+        @media only screen and (max-width: 1030px) {
+          height: 6rem;
+        }
+        @media only screen and (max-width: 900px) {
+          height: 5rem;
+        }
       }
       @media only screen and (max-width: 900px) {
         display: none;
@@ -279,17 +278,13 @@ const TabletHeroStyles = styled.div`
       display: flex;
       justify-content: end;
       align-items: center;
-      padding: 5rem 1rem 2rem 0;
+      padding: 3rem 7rem 2rem 0;
       .lowerLogo {
         width: 75%;
         height: 11rem;
         position: absolute;
         right: 0;
         bottom: 2rem;
-        background-image: url(${opaque});
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
         opacity: 0.2;
         @media only screen and (max-width: 900px) {
           display: none;
@@ -307,16 +302,18 @@ const TabletHeroStyles = styled.div`
       }
     }
   }
+  @media only screen and (max-width: 600px) {
+    .upperContent {
+      height: 42rem;
+    }
+  }
   @media only screen and (min-width: 901px) {
     .upperContent {
       height: 50rem;
-      img {
-        80%;
-      }
       .sideTexture {
         .solutions {
           width: 95%;
-          margin-bottom: 16rem;
+          bottom: 5rem;
         }
       }
     }
@@ -325,7 +322,7 @@ const TabletHeroStyles = styled.div`
       bottom: 10rem;
       a {
         position: static;
-      z-index: 2;
+        z-index: 2;
       }
     }
     .lowerContent {
@@ -359,7 +356,7 @@ const MobileHeroStyles = styled.div`
   @media only screen and (min-width: 501px) {
     display: none;
   }
-  padding-top: 11rem;
+  padding-top: 13rem;
   .hero {
     position: relative;
     .upper {
@@ -370,7 +367,7 @@ const MobileHeroStyles = styled.div`
     width: 100%;
     height: 20rem;
     display: inline-flex;
-    img { 
+    .mainimg { 
       width: 100%;
     }
     @media only screen and (min-width: 321px) {
@@ -379,7 +376,7 @@ const MobileHeroStyles = styled.div`
     @media only screen and (min-width: 385px) {
       height: 25rem;
     }
-    @media only screen and (min-width: 450px) {
+    @media only screen and (min-width: 425px) {
       height: 32rem;
     }
     @media only screen and (min-width: 500px) {
@@ -439,9 +436,11 @@ const MobileHeroStyles = styled.div`
       align-items: center;
       .tagline {
         max-width: 200px;
-        margin-left: 1rem;
+        margin: 0;
+        align-self: start;
         font-size: 1.3rem;
-        @media only screen and (min-width: 321px) {
+        margin-left: 0.5rem;
+        @media only screen and (min-width: 311px) {
           max-width: 145px;
         }
       }
@@ -452,7 +451,7 @@ const MobileHeroStyles = styled.div`
       display: flex;
       justify-content: end;
       align-items: center;
-      padding: 0 1rem 2rem 0;
+      padding: 0 5rem 2rem 0;
       }
       .phone {
         font-weight: bold;
@@ -556,226 +555,313 @@ const MobilePartnerStyles = styled.div`
 `;
 
 export default function HomePage({ data }) {
-  const homepage = data.homepage.nodes;
   const logolist = data.logolist.nodes;
   const heroes = data.heroes.nodes;
+  const cta = data.cta.nodes;
   return (
     <>
       <SEO title="Home Page" />
-      {heroes.map((hero) => (
-        <div className="nodeParser" key={hero.id}>
           <HeroStyles>
-            <div className="hero">
+            {heroes.map((hero) => (
+            <div className="hero" key={hero.id}>
               <div className="upperContent">
                 <SanityImage
-                  {...hero.image}
-                  alt={hero.image.asset.altText}
+                  {...hero.mainimage}
+                  alt={hero.mainalt}
+                  className="mainimg"
                   styles={{
                     objectFit: 'cover',
                     auto: 'format',
                   }}
                 />
                 <div className="sideTexture">
-                  <div className="solutions"/>
+                  <SanityImage 
+                    {...hero.bgimage}
+                    alt={hero.bgalt}
+                    className="texture"
+                    styles={{
+                      objectFit: 'cover',
+                      auto: 'format',
+                    }}
+                    />
+                  <SanityImage 
+                    {...hero.textimage}
+                    alt={hero.textalt}
+                    className="solutions"
+                    styles={{
+                      objectFit: 'cover',
+                      auto: 'format',
+                    }}
+                    />
                 </div>
               </div>
-              <div className="textBox">
-                <p>Taking the worry out <br /> 
-                of complex insurance issues<br /> 
-                for both <span className="upper">businesses</span><br /> 
-                and <span className="upper">individuals</span>
-                </p>
-                <div className="buttonesque">
-                  <Link to="/contact" className="upper">
-                    Contact Us  <HiOutlineArrowNarrowRight className="arrowRight"/>
-                  </Link>
+            {cta.map((call) => (
+              <div className="nodeParser"key={call.id}>
+                <div className="textBox">
+                  <p>Taking the worry out <br /> 
+                  of complex insurance issues<br /> 
+                  for both <span className="upper">businesses</span><br /> 
+                  and <span className="upper">individuals</span>
+                  </p>
+                  <div className="buttonesque">
+                    <Link to="/contact" className="upper">
+                      {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
+                    </Link>
+                  </div>
+                </div>
+                <div className="lowerContent">
+                  <div className="taglineContainer">
+                    <p className="tagline upper">{call.tagline} </p>
+                  </div>
+                  <div className="contactContainer">
+                    <SanityImage 
+                      {...hero.secondlogo}
+                      alt={hero.secondalt}
+                      className="lowerLogo"
+                      style={{
+                        objectFit: 'cover',
+                        auto: 'format',
+                      }}
+                    />
+                    <a href={`tel:${call.phone}`} className="phone">{call.phone}</a>
+                  </div>
                 </div>
               </div>
-              <div className="lowerContent">
-                <div className="taglineContainer">
-                  <p className="tagline upper">Good Health,<br /> That's the Plan </p>
-                </div>
-                <div className="contactContainer">
-                  <div className="lowerLogo"/>
-                  <a href="tel:9702415542" className="phone">970.241.5542</a>
-                </div>
-              </div>
+            ))}
             </div>
+          ))}
           </HeroStyles>
-          <TabletHeroStyles key={hero.id}>
-            <div className="hero">
+          <TabletHeroStyles>
+          {heroes.map((hero) => (
+            <div className="hero" key={hero.id}>
               <div className="upperContent">
                 <SanityImage
-                  {...hero.image}
-                  alt={hero.image.asset.altText}
+                  {...hero.mainimage}
+                  alt={hero.mainalt}
+                  className="mainimg"
                   styles={{
                     objectFit: 'cover',
                     auto: 'format',
                   }}
                 />
                 <div className="sideTexture">
-                  <div className="solutions"/>
+                  <SanityImage 
+                    {...hero.bgimage}
+                    alt={hero.bgalt}
+                    className="texture"
+                    styles={{
+                      objectFit: 'cover',
+                      auto: 'format',
+                    }}
+                  />
+                  <SanityImage 
+                    {...hero.textimage}
+                    alt={hero.textalt}
+                    className="solutions"
+                    styles={{
+                      objectFit: 'cover',
+                      auto: 'format',
+                    }}
+                  />
                 </div>
               </div>
-              <div className="textBox">
-                <p>Taking the worry out <br /> 
-                of complex insurance issues<br /> 
-                for both <span className="upper">businesses</span><br /> 
-                and <span className="upper">individuals</span>
-                </p>
-                <Link to="/contact" className="upper">
-                  Contact Us  <HiOutlineArrowNarrowRight className="arrowRight"/>
-                </Link>
-              </div>
-              <div className="lowerContent">
-                <div className="taglineContainer">
-                  <p className="tagline upper">Good Health, That's the Plan </p>
+              {cta.map((call) => (
+                <div className="nodeParser">
+                  <div className="textBox">
+                    <p>Taking the worry out <br /> 
+                    of complex insurance issues<br /> 
+                    for both <span className="upper">businesses</span><br /> 
+                    and <span className="upper">individuals</span>
+                    </p>
+                    <Link to="/contact" className="upper">
+                      {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
+                    </Link>
+                  </div>
+                  <div className="lowerContent">
+                    <div className="taglineContainer">
+                      <p className="tagline upper">{call.tagline} </p>
+                    </div>
+                    <div className="contactContainer">
+                      <SanityImage 
+                        {...hero.secondlogo}
+                        alt={hero.secondalt}
+                        className="lowerLogo"
+                        style={{
+                          objectFit: 'cover',
+                          auto: 'format',
+                        }}
+                      />
+                      <a 
+                      href={`tel:${call.phone}`} 
+                      className="phone"
+                      >
+                        {call.phone}
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div className="contactContainer">
-                  <div className="lowerLogo"/>
-                  <a href="tel:9702415542" className="phone">970.241.5542</a>
-                </div>
-              </div>
+              ))}
             </div>
-          </TabletHeroStyles>
-          <MobileHeroStyles key={hero.id}>
-            <div className="hero">
+          ))}
+        </TabletHeroStyles>
+        <MobileHeroStyles>
+          {heroes.map((hero) => (
+            <div className="hero" key={hero.id}>
               <div className="upperContent">
                 <SanityImage
-                  {...hero.image}
-                  alt={hero.image.asset.altText}
+                  {...hero.mainimage}
+                  alt={hero.mainalt}
+                  className="mainimg"
                   styles={{
                     objectFit: 'cover',
                     auto: 'format',
                   }}
                 />
               </div>
-              <div className="textBox">
-                <p>Taking the worry out <br /> 
-                of complex insurance issues<br /> 
-                for both <span className="upper">businesses</span><br /> 
-                and <span className="upper">individuals</span>
-                </p>
-                <Link to="/contact" className="upper">
-                  Contact Us  <HiOutlineArrowNarrowRight className="arrowRight"/>
-                </Link>
-              </div>
-              <div className="lowerContent">
-                <div className="taglineContainer">
-                  <p className="tagline upper">Good Health, That's the Plan </p>
+              {cta.map((call) => (
+                <div key={call.id}>
+                  <div className="textBox">
+                    <p>Taking the worry out <br /> 
+                    of complex insurance issues<br /> 
+                    for both <span className="upper">businesses</span><br /> 
+                    and <span className="upper">individuals</span>
+                    </p>
+                    <Link to="/contact" className="upper">
+                      {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
+                    </Link>
+                  </div>
+                  <div className="lowerContent">
+                    <div className="taglineContainer">
+                      <p className="tagline upper">
+                        {call.tagline} 
+                      </p>
+                    </div>
+                    <div className="contactContainer">
+                      <a href={`tel:${call.phone}`} className="phone">{call.phone}</a>
+                    </div>
+                  </div>
                 </div>
-                <div className="contactContainer">
-                  <a href="tel:9702415542" className="phone">970.241.5542</a>
-                </div>
-              </div>
+              ))}
             </div>
-          </MobileHeroStyles>
+          ))}
+        </MobileHeroStyles>
+        <PartnerStyles>
+          <div className="headerBackdrop">
+            <h3>Our Partners</h3>
           </div>
-        ))}
-        {logolist.map((list) => (
-          <div className="nodeParser" key={list.id}>
-            <PartnerStyles>
-              <div className="headerBackdrop">
-                <h3>Our Partners</h3>
+          <div className="logoGrid">
+            {logolist.map((logo) => (
+              <div className="logoContainer" key={logo.id}>
+                {console.log(logo.logoimage)}
+                <SanityImage 
+                {...logo.logoimage}
+                alt={logo.altTitle}
+                style={{
+                  objectFit: 'cover',
+                  auto: 'format',
+                }}
+                />
               </div>
-              <div className="logoGrid">
-                {list.logos.map((logo) => (
-                  <div className="logoContainer" key={logo.id}>
-                    <SanityImage 
-                    {...logo.image}
-                    alt={logo.alt}
-                    style={{
-                      objectFit: 'cover',
-                      auto: 'format',
-                    }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </PartnerStyles>
-            <TabletPartnerStyles>
-              <div className="headerBackdrop">
-                <h3>Our Partners</h3>
-              </div>
-              <div className="logoGrid">
-                {list.logos.map((logo) => (
-                  <div className="logoContainer" key={logo.id}>
-                    <SanityImage 
-                    {...logo.image}
-                    alt={logo.alt}
-                    style={{
-                      objectFit: 'cover',
-                      auto: 'format',
-                    }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </TabletPartnerStyles>
-            <MobilePartnerStyles>
-              <div className="headerBackdrop">
-                <h3>Our Partners</h3>
-              </div>
-              <div className="logoGrid">
-                {list.logos.map((logo) => (
-                  <div className="logoContainer" key={logo.id}>
-                    <SanityImage 
-                    {...logo.image}
-                    alt={logo.alt}
-                    style={{
-                      objectFit: 'cover',
-                      auto: 'format',
-                    }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </MobilePartnerStyles>
+            ))}
           </div>
-        ))}
+        </PartnerStyles>
+        <TabletPartnerStyles>
+          <div className="headerBackdrop">
+            <h3>Our Partners</h3>
+          </div>
+          <div className="logoGrid">
+            {logolist.map((logo) => (
+              <div className="logoContainer" key={logo.id}>
+                <SanityImage 
+                {...logo.logoimage}
+                alt={logo.altTitle}
+                style={{
+                  objectFit: 'cover',
+                  auto: 'format',
+                }}
+                />
+              </div>
+            ))}
+          </div>
+        </TabletPartnerStyles>
+        <MobilePartnerStyles>
+          <div className="headerBackdrop">
+            <h3>Our Partners</h3>
+          </div>
+          <div className="logoGrid">
+            {logolist.map((logo) => (
+              <div className="logoContainer" key={logo.id}>
+                <SanityImage 
+                {...logo.logoimage}
+                alt={logo.altTitle}
+                style={{
+                  objectFit: 'cover',
+                  auto: 'format',
+                }}
+                />
+              </div>
+            ))}
+          </div>
+        </MobilePartnerStyles>
     </>
   );
 }
 export const query = graphql`
   query {
-    logolist: allSanityHomepageLogoList {
-      nodes {
-        logos {
-          image {
-            asset {
-              id
-            }
-            ...ImageWithPreview
-          }
-          alt
-          id
-        }
-        text
-        id
-      }
-    }
-    homepage: allSanityHomepage {
-      nodes {
-        title
-        description
-        id
-      }
-    }
     heroes: allSanityHomepageHero {
       nodes {
-        image {
+        mainalt
+        bgalt
+        secondalt
+        textalt
+        bgimage {
+          ...ImageWithPreview
           asset {
-            altText
             id
           }
-          ...ImageWithPreview
         }
-        id
-        heading
-        kicker
-        subhead
-        text
+        mainimage {
+          ...ImageWithPreview
+          asset {
+            id
+          }
+        }
+        secondlogo {
+          ...ImageWithPreview
+          asset {
+            id
+          }
+        }
+        textimage {
+          ...ImageWithPreview
+          asset {
+            id
+          }
+        }
         title
+        id
+      }
+    }
+    logolist: allSanityHomepageLogo {
+      nodes {
+        id
+        altTitle
+        logoimage {
+          ...ImageWithPreview
+          asset {
+            id
+          }
+        }
+      }
+    }
+    cta: allSanityContactInfo {
+      nodes {
+        title
+        tagline
+        phone
+        id
+        cta
+        address
       }
     }
   }
