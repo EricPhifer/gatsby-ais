@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import SanityImage from 'gatsby-plugin-sanity-image';
 import styled from 'styled-components';
-import { render } from 'react-dom';
 
 const NavStyles = styled.div`
   .bg-gradient {
