@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import SanityImage from 'gatsby-plugin-sanity-image';
 import styled from 'styled-components';
+import { render } from 'react-dom';
 
 const NavStyles = styled.div`
   .bg-gradient {
@@ -954,10 +955,13 @@ export default function Nav() {
 
 const nodes = navigation.nodes;
 
-function uncheckTablet() {
-  let input = document.getElementById('checkTabletId');
-  console.log(document.getElementById('checkTabletId'));
+function uncheckMobile() {
+  const input = document.getElementById('checkMobileId') || { checked: 'false'};
   input.checked = false;
+}
+function uncheckTablet() {
+  const inputs = document.getElementById('checkTabletId') || { checked: 'false' };
+  inputs.checked = false;
 }
 window.onload = function() {
   window.addEventListener('load', check, false);
@@ -1043,39 +1047,40 @@ window.onload = function() {
                     <ul>
                       <button 
                         type="button" 
+                      
                         onclick={uncheckTablet()}
                       >
                         <Link to="/" className="mobileLink">
                           <li>
-                            <div>Home</div>
+                            <p>Home</p>
                           </li>
                         </Link>
                       </button>
                       <button>
                         <Link to="/about" className="mobileLink">
                           <li>
-                            <div>About Us</div>
+                            <p>About Us</p>
                           </li>
                         </Link>
                       </button>
                       <button>
                         <Link to="/services" className="mobileLink">
                           <li>
-                            <div>Services</div>
+                            <p>Services</p>
                           </li>
                         </Link>
                       </button>
                       <button>
                         <Link to="/faq" className="mobileLink">
                           <li>
-                            <div>FAQ</div>
+                            <p>FAQ</p>
                           </li>
                         </Link>
                         </button>
                       <button>
                         <Link to="/contact" className="mobileLink">
                           <li>
-                            <div>Contact Us</div>
+                            <p>Contact Us</p>
                           </li>
                         </Link>
                       </button>
@@ -1113,35 +1118,40 @@ window.onload = function() {
             <div className="navContainer">
               <a href={`tel:${node.contactnumber}`} className="phone">{node.contactnumber}</a>
               <div id="menuToggle">
-                <input type="checkbox" />
+                <input type="checkbox" id="checkMobileId"/>
                 <span />
                 <span />
                 <div id="menu" className="menuContainer">
                   <nav className="upperNav">
                     <ul>
-                      <Link to="/" className="mobileLink">
-                        <li>
-                          <div>Home</div>
-                        </li>
-                      </Link>
+                      <button 
+                        type="button" 
+                        onclick={uncheckMobile()}
+                      >
+                        <Link to="/" className="mobileLink">
+                          <li>
+                            <p>Home</p>
+                          </li>
+                        </Link>
+                      </button>
                       <Link to="/about" className="mobileLink">
                         <li>
-                          <div>About Us</div>
+                          <p>About Us</p>
                         </li>
                       </Link>
                       <Link to="/services" className="mobileLink">
                         <li>
-                          <div>Services</div>
+                          <p>Services</p>
                         </li>
                       </Link>
                       <Link to="/faq" className="mobileLink">
                         <li>
-                          <div>FAQ</div>
+                          <p>FAQ</p>
                         </li>
                       </Link>
                       <Link to="/contact" className="mobileLink">
                         <li>
-                          <div>Contact Us</div>
+                          <p>Contact Us</p>
                         </li>
                       </Link>
                     </ul>
