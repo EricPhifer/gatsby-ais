@@ -17,6 +17,11 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
   }
 
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   button {
     display: flex;
     max-width: 800px;
