@@ -193,7 +193,6 @@ const TabletNavStyles = styled.div`
     opacity: 0;
     z-index: 2;
     bottom: 5px;
-    right: 5px;
   }
   #menuToggle span {
     display: flex;
@@ -238,20 +237,21 @@ const TabletNavStyles = styled.div`
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   }
   #menu li {
+    position: relative;
     transition-delay: 2s;
   }
-  #menuToggle input:checked ~ .menuContainer {
-    transform: none;
+  #menu button {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
   }
-  .menuContainer > #menu input:checked {
+  #menuToggle input:checked ~ .menuContainer {
     transform: none;
   }
   a {
     color: var(--white);
     font-size: 1.5rem;
-  }
-  a[aria-current='page'] {
-    text-decoration: underline 3px var(--red);
   }
   .upperNav ul {
     display: flex;
@@ -266,6 +266,9 @@ const TabletNavStyles = styled.div`
       text-transform: uppercase;
       text-shadow: 0 0.5px var(--white), 0.5px 0 var(--white), 0 -0.5px var(--white), -0.5px 0 var(--white);
       font-size: 3rem;
+      &[aria-current='page'] {
+        text-decoration: underline 3px var(--red);
+      }
     }
     a:hover {
       opacity: 0.5;
@@ -636,6 +639,8 @@ const MobileNavStyles = styled.div`
     cursor: pointer;
     opacity: 0;
     z-index: 2;
+    bottom: 5px;
+    right: 5px;
   }
   #menuToggle span {
     display: flex;
@@ -689,9 +694,6 @@ const MobileNavStyles = styled.div`
     color: var(--white);
     font-size: 1.5rem;
   }
-  a[aria-current='page'] {
-    text-decoration: underline 3px var(--red);
-  }
   .upperNav ul {
     display: flex;
     flex-flow: column nowrap;
@@ -705,6 +707,9 @@ const MobileNavStyles = styled.div`
       text-transform: uppercase;
       text-shadow: 0 0.5px var(--white), 0.5px 0 var(--white), 0 -0.5px var(--white), -0.5px 0 var(--white);
       font-size: 3rem;
+      &[aria-current='page'] {
+        text-decoration: underline 3px var(--red);
+      }
     }
     a:hover {
       opacity: 0.5;
@@ -926,6 +931,7 @@ const MobileNavStyles = styled.div`
     } 
 `;
 
+
 export default function Nav() {
   const { navigation } = useStaticQuery(graphql`
     query {
@@ -946,8 +952,16 @@ export default function Nav() {
     }
   `)
 
-  const nodes = navigation.nodes;
+const nodes = navigation.nodes;
 
+function uncheckTablet() {
+  let input = document.getElementById('checkTabletId');
+  console.log(document.getElementById('checkTabletId'));
+  input.checked = false;
+}
+window.onload = function() {
+  window.addEventListener('load', check, false);
+}
   return (
     <>
       {nodes.map((node) => (
@@ -1021,42 +1035,50 @@ export default function Nav() {
             <div className="navContainer">
               <a href={`tel:${node.contactnumber}`} className="phone">{node.contactnumber}</a>
               <div id="menuToggle">
-                <input type="checkbox" />
+                <input type="checkbox" id="checkTabletId" />
                 <span />
                 <span />
                 <div id="menu" className="menuContainer">
                   <nav className="upperNav">
                     <ul>
-                      <Link to="/" className="mobileLink">
-                        <li>
-                          <input type="checkbox" />
-                          <div>Home</div>
-                        </li>
-                      </Link>
-                      <Link to="/about" className="mobileLink">
-                        <li>
-                          <input type="checkbox" />
-                          <div>About Us</div>
-                        </li>
-                      </Link>
-                      <Link to="/services" className="mobileLink">
-                        <li>
-                          <input type="checkbox" />
-                          <div>Services</div>
-                        </li>
-                      </Link>
-                      <Link to="/faq" className="mobileLink">
-                        <li>
-                          <input type="checkbox" />
-                          <div>FAQ</div>
-                        </li>
-                      </Link>
-                      <Link to="/contact" className="mobileLink">
-                        <li>
-                          <input type="checkbox" />
-                          <div>Contact Us</div>
-                        </li>
-                      </Link>
+                      <button 
+                        type="button" 
+                        onclick={uncheckTablet()}
+                      >
+                        <Link to="/" className="mobileLink">
+                          <li>
+                            <div>Home</div>
+                          </li>
+                        </Link>
+                      </button>
+                      <button>
+                        <Link to="/about" className="mobileLink">
+                          <li>
+                            <div>About Us</div>
+                          </li>
+                        </Link>
+                      </button>
+                      <button>
+                        <Link to="/services" className="mobileLink">
+                          <li>
+                            <div>Services</div>
+                          </li>
+                        </Link>
+                      </button>
+                      <button>
+                        <Link to="/faq" className="mobileLink">
+                          <li>
+                            <div>FAQ</div>
+                          </li>
+                        </Link>
+                        </button>
+                      <button>
+                        <Link to="/contact" className="mobileLink">
+                          <li>
+                            <div>Contact Us</div>
+                          </li>
+                        </Link>
+                      </button>
                     </ul>
                   </nav>
                   <nav className="lowerNav">
