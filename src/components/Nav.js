@@ -962,9 +962,6 @@ function uncheckTablet() {
   const inputs = document.getElementById('checkTabletId') || { checked: 'false' };
   inputs.checked = false;
 }
-window.onload = function() {
-  window.addEventListener('load', check, false);
-}
   return (
     <>
       {nodes.map((node) => (
