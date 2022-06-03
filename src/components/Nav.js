@@ -254,9 +254,12 @@ const TabletNavStyles = styled.div`
   .upperNav ul {
     display: flex;
     flex-flow: column nowrap;
-    margin-top: 10rem;
+    margin-top: 5rem;
     padding: 0;
     list-style-type: none;
+    button {
+      height: 10rem;
+    }
     a {
       margin-bottom: 4rem;
       color: var(--black);
@@ -704,9 +707,12 @@ const MobileNavStyles = styled.div`
   .upperNav ul {
     display: flex;
     flex-flow: column nowrap;
-    margin-top: 5rem;
+    margin-top: 10rem;
     padding: 0;
     list-style-type: none;
+    button {
+      height: 7rem;
+    }
     a {
       margin-bottom: 4rem;
       color: var(--black);
