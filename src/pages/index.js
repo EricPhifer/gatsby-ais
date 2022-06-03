@@ -189,9 +189,12 @@ const TabletHeroStyles = styled.div`
         height: 72vmin;
       }
       @media only screen and (min-width: 814px) {
+        height: 75vmin;
+      }
+      @media only screen and (min-width: 838px) {
         height: 80vmin;
       }
-      @media only screen and (min-width: 900px) {
+      @media only screen and (min-width: 901px) {
         height: 66vmin;
       }
       @media only screen and (min-width: 1018px) {

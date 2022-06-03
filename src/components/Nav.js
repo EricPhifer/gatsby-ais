@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import SanityImage from 'gatsby-plugin-sanity-image';
 import styled from 'styled-components';
+import { useRef } from 'react';
 
 const NavStyles = styled.div`
   .bg-gradient {
@@ -180,9 +181,6 @@ const TabletNavStyles = styled.div`
     z-index: 1;
     -webkit-user-select: none;
     user-select: none;
-  }
-  li input {
-    width: 181.75px !important;
   }
   #menuToggle input {
     display: flex;
@@ -687,6 +685,12 @@ const MobileNavStyles = styled.div`
   #menu li {
     transition-delay: 2s;
   }
+  #menu button {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
   #menuToggle input:checked ~ .menuContainer {
     transform: none;
   }
@@ -694,10 +698,13 @@ const MobileNavStyles = styled.div`
     color: var(--white);
     font-size: 1.5rem;
   }
+  .lifeAltering {
+    width: 10rem;
+  }
   .upperNav ul {
     display: flex;
     flex-flow: column nowrap;
-    margin-top: 10rem;
+    margin-top: 5rem;
     padding: 0;
     list-style-type: none;
     a {
@@ -954,14 +961,9 @@ export default function Nav() {
 
 const nodes = navigation.nodes;
 
-function uncheckMobile() {
-  const input = document.getElementById('checkMobileId') || { checked: 'false'};
-  input.checked = false;
-}
-function uncheckTablet() {
-  const inputs = document.getElementById('checkTabletId') || { checked: 'false' };
-  inputs.checked = false;
-}
+const checkId = useRef(null);
+const [checked, setChecked] = React.useState(true);
+
   return (
     <>
       {nodes.map((node) => (
@@ -1035,7 +1037,11 @@ function uncheckTablet() {
             <div className="navContainer">
               <a href={`tel:${node.contactnumber}`} className="phone">{node.contactnumber}</a>
               <div id="menuToggle">
-                <input type="checkbox" id="checkTabletId" />
+                <input 
+                  type="checkbox" 
+                  checked={checked}
+                  onClick={() => {setChecked(old => !old)}} 
+                />
                 <span />
                 <span />
                 <div id="menu" className="menuContainer">
@@ -1043,8 +1049,9 @@ function uncheckTablet() {
                     <ul>
                       <button 
                         type="button" 
-                      
-                        onclick={uncheckTablet()}
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
                       >
                         <Link to="/" className="mobileLink">
                           <li>
@@ -1052,28 +1059,48 @@ function uncheckTablet() {
                           </li>
                         </Link>
                       </button>
-                      <button>
+                      <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
                         <Link to="/about" className="mobileLink">
                           <li>
                             <p>About Us</p>
                           </li>
                         </Link>
                       </button>
-                      <button>
+                      <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
                         <Link to="/services" className="mobileLink">
                           <li>
                             <p>Services</p>
                           </li>
                         </Link>
                       </button>
-                      <button>
+                      <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
                         <Link to="/faq" className="mobileLink">
                           <li>
                             <p>FAQ</p>
                           </li>
                         </Link>
-                        </button>
-                      <button>
+                      </button>
+                      <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
                         <Link to="/contact" className="mobileLink">
                           <li>
                             <p>Contact Us</p>
@@ -1085,15 +1112,36 @@ function uncheckTablet() {
                   <nav className="lowerNav">
                     <ul className="inline">
                       <li>
+                        <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
                         <Link to="/plans#employer-benefit-solutions">Employer and Individual Health Plans</Link>
+                        </button>
                       </li>
                       <span className="navBarCancel"> | </span>
                       <li>
+                        <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
                         <Link to="/plans#medicare">Medicare</Link>
+                        </button>
                       </li>
                       <span className="navBarCancel"> | </span>
                       <li>
+                        <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
                         <Link to="/plans#life-insurance">Life Insurance</Link>
+                        </button>
                       </li>
                     </ul>
                   </nav>
@@ -1114,15 +1162,21 @@ function uncheckTablet() {
             <div className="navContainer">
               <a href={`tel:${node.contactnumber}`} className="phone">{node.contactnumber}</a>
               <div id="menuToggle">
-                <input type="checkbox" id="checkMobileId"/>
+              <input 
+                  type="checkbox" 
+                  checked={checked}
+                  onClick={() => {setChecked(old => !old)}} 
+                />
                 <span />
                 <span />
                 <div id="menu" className="menuContainer">
                   <nav className="upperNav">
                     <ul>
-                      <button 
+                    <button 
                         type="button" 
-                        onclick={uncheckMobile()}
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
                       >
                         <Link to="/" className="mobileLink">
                           <li>
@@ -1130,38 +1184,89 @@ function uncheckTablet() {
                           </li>
                         </Link>
                       </button>
-                      <Link to="/about" className="mobileLink">
-                        <li>
-                          <p>About Us</p>
-                        </li>
-                      </Link>
-                      <Link to="/services" className="mobileLink">
-                        <li>
-                          <p>Services</p>
-                        </li>
-                      </Link>
-                      <Link to="/faq" className="mobileLink">
-                        <li>
-                          <p>FAQ</p>
-                        </li>
-                      </Link>
-                      <Link to="/contact" className="mobileLink">
-                        <li>
-                          <p>Contact Us</p>
-                        </li>
-                      </Link>
+                      <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
+                        <Link to="/about" className="mobileLink">
+                          <li>
+                            <p>About Us</p>
+                          </li>
+                        </Link>
+                      </button>
+                      <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
+                        <Link to="/services" className="mobileLink">
+                          <li>
+                            <p>Services</p>
+                          </li>
+                        </Link>
+                      </button>
+                      <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
+                        <Link to="/faq" className="mobileLink">
+                          <li>
+                            <p>FAQ</p>
+                          </li>
+                        </Link>
+                      </button>
+                      <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
+                        <Link to="/contact" className="mobileLink">
+                          <li>
+                            <p>Contact Us</p>
+                          </li>
+                        </Link>
+                      </button>
                     </ul>
                   </nav>
                   <nav className="lowerNav">
                     <ul>
                       <li>
-                        <Link to="/plans#employer-benefit-solutions">Employer and Individual Health Plans</Link>
+                        <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
+                          <Link to="/plans#employer-benefit-solutions">Employer and Individual Health Plans</Link>
+                        </button>
                       </li>
                       <br />
                       <li className="inline">
-                        <Link to="/plans#medicare">Medicare</Link>
+                        <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
+                          <Link to="/plans#medicare">Medicare</Link>
+                      </button>
                         <span className="navBarCancel"> | </span>
-                        <Link to="/plans#life-insurance">Life Insurance</Link>
+                      <button 
+                        type="button" 
+                        onClick={
+                          () => {setChecked(old => !old)}
+                        }
+                      >
+                          <Link to="/plans#life-insurance" className="lifeAltering">
+                            Life Insurance
+                          </Link>
+                        </button>
                       </li>
                     </ul>
                   </nav>
