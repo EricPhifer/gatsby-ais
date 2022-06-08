@@ -640,12 +640,10 @@ export const query = graphql`
     }
     cta: allSanityContactInfo {
       nodes {
-        title
         tagline
         phone
         id
         cta
-        address
       }
     }
   }
