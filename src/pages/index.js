@@ -295,13 +295,9 @@ const TabletHeroStyles = styled.div`
       justify-content: center;
       align-items: center;
       .tagline {
-        max-width: 145px;
+        max-width: 200px;
         margin-left: 1rem;
-        font-size: 1.7rem;
-        @media only screen and (min-width: 700px) {
-          max-width: 165px;
-          font-size: 2rem;
-        }
+        font-size: 2rem;
       }
     }
     .contactContainer {
@@ -324,7 +320,7 @@ const TabletHeroStyles = styled.div`
       }
       .phone {
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: 2rem;
         &:hover {
           color: var(--blue);
         }
@@ -714,7 +710,7 @@ const MobileHeroStyles = styled.div`
         max-width: 200px;
         margin: 0;
         align-self: end;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         margin: 0 0 2rem 0.5rem;
         @media only screen and (min-width: 311px) {
           max-width: 130px;
@@ -731,7 +727,7 @@ const MobileHeroStyles = styled.div`
       }
       .phone {
         font-weight: bold;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         &:hover {
           color: var(--blue);
         }

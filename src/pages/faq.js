@@ -1,8 +1,8 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
+import { defaultComponents, PortableText } from '@portabletext/react';
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
-
 import SEO from '../components/SEO';
 
 const FaqStyles = styled.div`
@@ -20,13 +20,43 @@ const FaqStyles = styled.div`
     text-transform: uppercase;
   }
   .top {
+    width: 100%;
     margin-bottom: 1rem;
   }
+  .right {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background-color: #000;
+    color: var(--white);
+    h2 {
+      font-weight: bold;
+    }
+  }
   .dotContainer {
+    width: 8%;
+    padding-right: 3vmin;
     .dot {
       background-color: var(--blue);
-      width: 3vmin;
-      height: 3vmin;
+      width: 4vmin;
+      height: 4vmin;
+    }
+    @media only screen and (max-width: 550px) {
+      .dot {
+        width: 6vmin;
+        height: 6vmin;
+      }
+    }
+    @media only screen and (max-width: 450px) {
+      .dot {
+        width: 8vmin;
+        height: 8vmin;
+      }
+    }
+    @media only screen and (max-width: 350px) {
+      .dot {
+        width: 10vmin;
+        height: 10vmin;
+      }
     }
   }
   .faqCard {
@@ -38,10 +68,64 @@ const FaqStyles = styled.div`
   .question {
     font-size: 1.5rem;
     padding-left: 1rem;
+    @media only screen and (max-width: 550px) {
+     font-size: 1.3rem; 
+    }
+  }
+  .paraInfo {
+    padding: 0 3rem;
   }
   .answer {
     padding-bottom: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    text-align: justify;
+
+    // Styling rich text by key
+    #1332c16aa9b1 {
+      font-weight: bold;
+    }
+    #d10f621e440a0 {
+      font-weight: bold;
+    }
+    #d0d307f4d8c5 {
+      font-weight: bold;
+    }
+    #7766c6c6057d {
+      font-weight: bold;
+    }
+    #32db947647c60 {
+      font-weight: bold;
+    }
+    #054cd634043d0::before {
+      content: "• ";
+      color: #000;
+      padding-left: 1rem;
+      font-weight: bold;
+    }
+    #b2ece7cc77a0::before {
+      content: "• ";
+      color: #000;
+      padding-left: 1rem;
+      font-weight: bold;
+    }
+    #5213bb205e64::before {
+      content: "• ";
+      color: #000;
+      padding-left: 1rem;
+      font-weight: bold;
+    }
+    #c6587ba57477::before {
+      content: "• ";
+      color: #000;
+      padding-left: 1rem;
+      font-weight: bold;
+    }
+    #be905c3cb6a4::before {
+      content: "• ";
+      color: #000;
+      padding-left: 1rem;
+      font-weight: bold;
+    }
   }
   .contact {
     text-align: center;
@@ -84,11 +168,24 @@ const FaqStyles = styled.div`
       }
     }
   }
+
+  // Rich text style rendering
+  .richTextUL {}
+  .richTextOL {}
+  .richTextLI {}
+  .richTextEM {}
+  .richTextStrong {
+    font-weight: bold;
+  }
+  .richTextUnderline {
+    text-decoration: underline;
+  }
 `;
 
 export default function FaqPage({ data }) {
   const faqs = data.faqs.nodes;
   const cta = data.cta.nodes;
+
   return (
     <>
       <SEO title="Frequently Asked Questions" />
@@ -113,13 +210,17 @@ export default function FaqPage({ data }) {
             <div className='bottom flex'>
               <div className='faqContainer'>
                 {faq.answer.map((content) => (
-                  <div className="paraInfo" key={content.id}>
+                  <div className="paraInfo" key={content._key}>
                     <div className="answer">
-                        {content.children.map((text) =>
-                          <span key={text._key}>
-                            {text.text}
-                          </span>
-                        )}
+                      {content.children.map((text) =>
+                        <span key={text._key} id={text._key}>
+                          {text.text}
+                        </span>
+                        /* <PortableText 
+                          value={[faq.answer]} 
+                          className="answer flex"
+                        /> */
+                      )}
                     </div>
                   </div>
                 ))}
@@ -147,13 +248,17 @@ export default function FaqPage({ data }) {
 
 export const query = graphql`
 query {
-  faqs: allSanityFaq {
+  faqs: allSanityFaqs {
     nodes {
       id
       question
       answer {
+        _key
+        list
+        style
         children {
           _key
+          _type
           text
           marks
         }

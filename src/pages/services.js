@@ -30,7 +30,7 @@ const ServiceStyles = styled.div`
     color: var(--white);
     font-size: 2.5rem;
     h1 {
-      margin-right: 10rem;
+      margin-left: 5rem;
     }
   }
   .serviceContainer {
@@ -137,7 +137,7 @@ const TabletServiceStyles = styled.div`
       display: none;
     }
   }
-  #Medicare {
+  #medicare {
     display: none;
   }
   .flexSwitch {
@@ -149,7 +149,6 @@ const TabletServiceStyles = styled.div`
       flex-direction: column;
     }
   }
-  padding-top: 16rem;
   .inline {
     display: inline-flex;
   }
@@ -167,8 +166,9 @@ const TabletServiceStyles = styled.div`
     h1 {
       font-size: 5rem;
       font-weight: bold;
+      margin-left: 2rem;
       @media only screen and (max-width: 900px) {
-        margin: 0.6rem 0;
+        margin: 0.6rem auto;
       }
     }
   }
@@ -224,6 +224,7 @@ const TabletServiceStyles = styled.div`
     justify-content: center;
     align-items: center;
     .tagline {
+      max-width: 260px;
       font-size: 3rem;
       margin: 0;
     }
@@ -296,6 +297,7 @@ const MobileServiceStyles = styled.div`
     h1 {
       font-size: 3.5rem;
       font-weight: bold;
+      margin: 2rem auto;
     }
   }
   #Medicare {
@@ -347,7 +349,7 @@ const MobileServiceStyles = styled.div`
     justify-content: center;
     align-items: center;
     .tagline {
-      max-width: 245px;
+      max-width: 260px;
       margin: 0;
       font-size: 3rem;
     }

@@ -11,6 +11,9 @@ const PlanStyles = styled.div`
   padding-top: 18rem;
   .planContainer {
     width: 100%;
+    display: block;
+    padding-top: 160px;
+    margin-top: -160px;
   }
   .inline {
     display: inline-flex;
@@ -35,10 +38,12 @@ const PlanStyles = styled.div`
   }
   .head {
     width: 90%;
+    padding: 2rem;
+    padding: 2rem;
     background-color: var(--black);
     h1 {
       color: var(--white);
-      margin: 2rem 0;
+      margin: 0;
     }
   }
   .planGrid {
@@ -121,6 +126,9 @@ const TabletPlanStyles = styled.div`
   padding: 18rem 2rem 0;
   .planContainer {
     width: 100%;
+    display: block;
+    padding-top: 160px;
+    margin-top: -160px;
   }
   .inline {
     display: inline-flex;
@@ -145,10 +153,12 @@ const TabletPlanStyles = styled.div`
   }
   .head {
     width: 90%;
+    padding: 2rem;
     background-color: var(--black);
     h1 {
       color: var(--white);
       font-weight: 600;
+      margin: 0;
     }
   }
   .planGrid {
@@ -233,6 +243,9 @@ const MobilePlanStyles = styled.div`
   padding: 16rem 2rem 0;
   .planContainer {
     width: 100%;
+    display: block;
+    padding-top: 160px;
+    margin-top: -160px;
   }
   .inline {
     display: inline-flex;
@@ -249,11 +262,13 @@ const MobilePlanStyles = styled.div`
   }
   .head {
     width: 100%;
+    padding: 2rem;
     background-color: var(--black);
     h1 {
       color: var(--white);
       font-size: 2.5rem;
       font-weight: 600;
+      margin: 0;
     }
   }
   .planGrid {
@@ -486,3 +501,4 @@ export const query = graphql`
     }
   }
 `;
+

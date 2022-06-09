@@ -107,7 +107,7 @@ const AboutStyles = styled.div`
       align-items: center;
       .tagline {
         font-size: 3rem;
-        max-width: 245px;
+        max-width: 260px;
       }
       .phone {
          font-weight: bold;
@@ -141,6 +141,15 @@ const AboutStyles = styled.div`
         }
       }
     }
+  }
+  #randy {
+    order: 1;
+  }
+  #c {
+    order: 2;
+  }
+  #rhonda {
+    order: 3;
   }
   @media only screen and (max-width: 900px) {
     padding-top: 3rem;
@@ -270,6 +279,7 @@ const TabletAboutStyles = styled.div`
   .contact {
     align-items: center;
     .tagline {
+      max-width: 260px;
       font-size: 3rem;
       text-align: center;
     }
@@ -416,7 +426,7 @@ const MobileAboutStyles = styled.div`
   .contact {
     align-items: center;
     .tagline {
-      max-width: 245px;
+      max-width: 260px;
       font-size: 3rem;
       text-align: center;
     }
@@ -429,8 +439,9 @@ const MobileAboutStyles = styled.div`
       }
     }
     .phone {
-      font-weight: bold;
+      font-size: 2rem;
       margin: 2.5rem;
+      font-weight: bold;
       &:hover {
         color: var(--blue);
       }
@@ -489,9 +500,9 @@ export default function AboutPage({ data }) {
             </div>
           ))}
         <div className="content inline">
-          <section className="staffContainer">
+          <section className="staffContainer flex">
             {profiles.map((staff) => (
-              <div className="inline staff" key={staff.id}>
+              <div className="inline staff" key={staff.id} id={staff.name.split(' ')[0].toLowerCase().split('.')[0]}>
                 <div className="staffImg">
                   <SanityImage
                     {...staff.profileimage}

@@ -209,7 +209,7 @@ const MobileContactStyles = styled.div`
   }
   .content {
     max-width: 375px;
-    margin-top: 2rem;
+    margin: 2rem 1.5rem 0;
     font-size: 2rem;
     text-align: justify;
     p {
@@ -464,7 +464,7 @@ const MobileFormStyles = styled.div`
     display: none;
   }
   margin: 0 auto;
-  padding: 5rem;
+  padding: 2rem;
   position: relative;
   display: flex;
   background: var(--black);
@@ -499,15 +499,15 @@ const MobileFormStyles = styled.div`
   .hide {
     display: none;
   }
+  input[type="radio"] {
+    min-width: 15px;
+  }
   .contactmethodLabel {
     width: 100%;
     display: inline-flex;
     color: var(--white);
     align-items: center;
-    padding-left: 1rem;
-    span {
-      padding-right: 2rem;
-    }
+    padding-left: 0.5rem;
     label {
       display: flex;
       span {
@@ -601,7 +601,8 @@ export default function Contact({ data }) {
                 ))}
                 {contacts.map((c) => (
                   <div className="address" key={c.id}>
-                    <h3>{c.address}</h3>
+                    <h3>{c.streetaddress}</h3>
+                    <h3>{c.cityaddress}</h3>
                   </div>
                 ))}
               </div>
@@ -665,7 +666,7 @@ export default function Contact({ data }) {
                         onChange={updateValue}
                         id="contactDay"
                       >
-                        <option value="ContactTime">Best day for us to contact you...</option>
+                        <option value="ContactTime">Best day to contact you...</option>
                         <option value="Monday">Monday</option>
                         <option value="Tuesday">Tuesday</option>
                         <option value="Wednesday">Wednesday</option>
@@ -682,7 +683,7 @@ export default function Contact({ data }) {
                         onChange={updateValue}
                         id="contactTimes"
                       >
-                        <option value="WhoToContact">Best time for us to contact you...</option>
+                        <option value="WhoToContact">Best time to contact you...</option>
                         <option value="8-9am">8-9am</option>
                         <option value="9-10am">9-10am</option>
                         <option value="10-11am">10-11am</option>
@@ -787,7 +788,7 @@ export default function Contact({ data }) {
                       onChange={updateValue}
                       id="contactDay"
                     >
-                      <option value="ContactTime">Best day for us to contact you...</option>
+                      <option value="ContactTime">Best day to contact you...</option>
                       <option value="Monday">Monday</option>
                       <option value="Tuesday">Tuesday</option>
                       <option value="Wednesday">Wednesday</option>
@@ -804,7 +805,7 @@ export default function Contact({ data }) {
                       onChange={updateValue}
                       id="contactTimes"
                     >
-                      <option value="WhoToContact">Best time for us to contact you...</option>
+                      <option value="WhoToContact">Best time to contact you...</option>
                       <option value="8-9am">8-9am</option>
                       <option value="9-10am">9-10am</option>
                       <option value="10-11am">10-11am</option>
@@ -862,7 +863,8 @@ export default function Contact({ data }) {
               ))}
               {contacts.map((c) => (
                 <div className="address" key={c.id}>
-                  <h3>{c.address}</h3>
+                  <h3>{c.streetaddress}</h3>
+                  <h3>{c.cityaddress}</h3>
                 </div>
               ))}
             </div>
@@ -872,147 +874,148 @@ export default function Contact({ data }) {
         </div>
         </TabletContactStyles>
         <MobileContactStyles>
-        <div className="contactContainer flex">
-              <div className="contactInfo">
-                <h1>Contact Us</h1>
-                <TabletFormStyles>
-                  <form
-                    className="container"
-                    id="formContainer"
-                    method="post"
-                    netlify-honeypot="bot-field"
-                    data-netlify="true"
-                    name="contact"
-                  >
-                    <input type="hidden" name="bot-field" />
-                    <input type="hidden" name="form-name" value="contact" />
-                    <fieldset>
-                      <legend>Your Information</legend>
-                      <label htmlFor="name" className="nameLabel">
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        value={values.name}
-                        onChange={updateValue}
-                        placeholder="Full Name"
-                        className='required'
-                      />
-                      <label htmlFor="email" className="emailLabel">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        value={values.email}
-                        onChange={updateValue}
-                        placeholder="Email Address"
-                        className='required'
-                      />
-                      <label htmlFor="phone" className="phoneLabel">
-                        Phone Number
-                      </label>
-                      <input
-                        type="phone"
-                        name="phone"
-                        id="phone"
-                        value={values.phone}
-                        onChange={updateValue}
-                        placeholder="Phone Number"
-                      />
-                      <label htmlFor="contactday" className="contactdayLabel">
-                        Contact Day:
-                      </label>
-                      <select
-                        type="contactday"
-                        name="contactday"
-                        value={values.contactday}
-                        onChange={updateValue}
-                        id="contactDay"
-                      >
-                        <option value="ContactTime">Best day for us to contact you...</option>
-                        <option value="Monday">Monday</option>
-                        <option value="Tuesday">Tuesday</option>
-                        <option value="Wednesday">Wednesday</option>
-                        <option value="Thursday">Thursday</option>
-                        <option value="Friday">Friday</option>
-                      </select>
-                      <label htmlFor="contactday" className="contactdayLabel">
-                        Contact Time:
-                      </label>
-                      <select
-                        type="contacttime"
-                        name="contacttime"
-                        value={values.contacttime}
-                        onChange={updateValue}
-                        id="contactTimes"
-                      >
-                        <option value="WhoToContact">Best time for us to contact you...</option>
-                        <option value="8-9am">8-9am</option>
-                        <option value="9-10am">9-10am</option>
-                        <option value="10-11am">10-11am</option>
-                        <option value="12-1pm">12-1pm</option>
-                        <option value="1-2pm">1-2pm</option>
-                        <option value="2-3pm">2-3pm</option>
-                        <option value="3-4pm">3-4pm</option>
-                        <option value="4-5pm">4-5pm</option>
-                      </select>
-                      <label htmlFor='contactmethod' className='contactmethodLabel'>
-                        <span>Please contact me via:</span>
-                        <label><span>Email</span>
-                        <input type="radio" id="emailmethod" name="contactmethod" value="Email" />
-                          </label>                     
-                        <label><span>Phone</span>
-                        <input type="radio" id="emailmethod" name="contactmethod" value="Phone" />
-                          </label>                     
-                      </label>
-                      <label htmlFor="message" className="messageLabel">
-                        Message
-                      </label>
-                      <textarea
-                        name="message"
-                        id="message"
-                        value={values.message}
-                        onChange={updateValue}
-                        rows="7"
-                        placeholder="How can we help you with your insurance needs?"
-                      />
-                      <button type="submit" className="submitButton" value="Submit">
-                        Submit Message
-                      </button>
-                    </fieldset>
-                  </form>
-                  <p className='tomato'>Required fields</p>
-                </TabletFormStyles>
-              </div>
-              <div className='flex'>
-                {contacts.map((contact) => (
-                  <div className="content" key={contact.id}>
-                    <p className='p1'>{contact.firstparagraph}</p>
-                    <p className='p2'>{contact.secondparagraph}</p>
-                    <p className='p3'>{contact.thirdparagraph}</p>
-                  </div>
-                ))}
-                {cta.map((call) => (
-                  <div className="callContainer" key={call.id}>
-                    <p className="tagline upper">
-                      {call.tagline}
-                    </p>
-                    <a href={`tel:${call.phone}`} className="phone">
-                      {call.phone}
-                    </a>
-                  </div>
-                ))}
-                {contacts.map((c) => (
-                  <div className="address" key={c.id}>
-                    <h3>{c.address}</h3>
-                  </div>
-                ))}
-              </div>
+          <div className="contactContainer flex">
+            <div className="contactInfo">
+              <h1>Contact Us</h1>
+              <MobileFormStyles>
+                <form
+                  className="container"
+                  id="formContainer"
+                  method="post"
+                  netlify-honeypot="bot-field"
+                  data-netlify="true"
+                  name="contact"
+                >
+                  <input type="hidden" name="bot-field" />
+                  <input type="hidden" name="form-name" value="contact" />
+                  <fieldset>
+                    <legend>Your Information</legend>
+                    <label htmlFor="name" className="nameLabel">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      value={values.name}
+                      onChange={updateValue}
+                      placeholder="Full Name"
+                      className='required'
+                    />
+                    <label htmlFor="email" className="emailLabel">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      value={values.email}
+                      onChange={updateValue}
+                      placeholder="Email Address"
+                      className='required'
+                    />
+                    <label htmlFor="phone" className="phoneLabel">
+                      Phone Number
+                    </label>
+                    <input
+                      type="phone"
+                      name="phone"
+                      id="phone"
+                      value={values.phone}
+                      onChange={updateValue}
+                      placeholder="Phone Number"
+                    />
+                    <label htmlFor="contactday" className="contactdayLabel">
+                      Contact Day:
+                    </label>
+                    <select
+                      type="contactday"
+                      name="contactday"
+                      value={values.contactday}
+                      onChange={updateValue}
+                      id="contactDay"
+                    >
+                      <option value="ContactTime">Best day to contact you...</option>
+                      <option value="Monday">Monday</option>
+                      <option value="Tuesday">Tuesday</option>
+                      <option value="Wednesday">Wednesday</option>
+                      <option value="Thursday">Thursday</option>
+                      <option value="Friday">Friday</option>
+                    </select>
+                    <label htmlFor="contactday" className="contactdayLabel">
+                      Contact Time:
+                    </label>
+                    <select
+                      type="contacttime"
+                      name="contacttime"
+                      value={values.contacttime}
+                      onChange={updateValue}
+                      id="contactTimes"
+                    >
+                      <option value="WhoToContact">Best time to contact you...</option>
+                      <option value="8-9am">8-9am</option>
+                      <option value="9-10am">9-10am</option>
+                      <option value="10-11am">10-11am</option>
+                      <option value="12-1pm">12-1pm</option>
+                      <option value="1-2pm">1-2pm</option>
+                      <option value="2-3pm">2-3pm</option>
+                      <option value="3-4pm">3-4pm</option>
+                      <option value="4-5pm">4-5pm</option>
+                    </select>
+                    <label htmlFor='contactmethod' className='contactmethodLabel'>
+                      <span>Please contact me via:</span>
+                      <label><span>Email</span>
+                      <input type="radio" id="emailmethod" name="contactmethod" value="Email" />
+                        </label>                     
+                      <label><span>Phone</span>
+                      <input type="radio" id="emailmethod" name="contactmethod" value="Phone" />
+                        </label>                     
+                    </label>
+                    <label htmlFor="message" className="messageLabel">
+                      Message
+                    </label>
+                    <textarea
+                      name="message"
+                      id="message"
+                      value={values.message}
+                      onChange={updateValue}
+                      rows="7"
+                      placeholder="How can we help you with your insurance needs?"
+                    />
+                    <button type="submit" className="submitButton" value="Submit">
+                      Submit Message
+                    </button>
+                  </fieldset>
+                </form>
+                <p className='tomato'>Required fields</p>
+              </MobileFormStyles>
             </div>
+            <div className='flex'>
+              {contacts.map((contact) => (
+                <div className="content" key={contact.id}>
+                  <p className='p1'>{contact.firstparagraph}</p>
+                  <p className='p2'>{contact.secondparagraph}</p>
+                  <p className='p3'>{contact.thirdparagraph}</p>
+                </div>
+              ))}
+              {cta.map((call) => (
+                <div className="callContainer" key={call.id}>
+                  <p className="tagline upper">
+                    {call.tagline}
+                  </p>
+                  <a href={`tel:${call.phone}`} className="phone">
+                    {call.phone}
+                  </a>
+                </div>
+              ))}
+              {contacts.map((c) => (
+                <div className="address" key={c.id}>
+                  <h3>{c.streetaddress}</h3>
+                  <h3>{c.cityaddress}</h3>
+                </div>
+              ))}
+            </div>
+          </div>
           <div className='mapContainer'>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3097.753386369639!2d-108.55890598436525!3d39.066533944561094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87471c68f4f11b93%3A0xdf1f6524a186a19!2sActive%20Insurance%20Solutions!5e0!3m2!1sen!2sus!4v1654626606979!5m2!1sen!2sus" />
           </div>
@@ -1027,7 +1030,8 @@ export const query = graphql`
       nodes {
         id
         firstparagraph
-        address
+        streetaddress
+        cityaddress
         secondparagraph
         thirdparagraph
         title
