@@ -1,3 +1,4 @@
+import { defaultComponents, PortableText } from '@portabletext/react';
 import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
@@ -6,6 +7,7 @@ import SEO from '../components/SEO';
 const TermStyles = styled.div`
   padding: 18rem 5rem 0;
   word-wrap: break-word;
+  text-align: center;
   .termsContainer {
     max-width: 600px;
     margin: 0 auto;
@@ -46,12 +48,11 @@ export default function TermsConditions({ data }) {
           <section key={term.id}>
             <h1>{term.title}</h1>
             <section className="termsContainer">
-              {term.content.map((c) => 
-                c.children.map((text) => 
-                  <p key={text._key}>
-                    {text.text}
-                  </p>
-              ))}
+              <PortableText 
+                value={term._rawContent}
+                components={defaultComponents}
+                className="answer flex"
+              />
             </section>
           </section>
         ))}
@@ -66,12 +67,7 @@ export const query = graphql`
     nodes {
       id
       title
-      content {
-        children {
-          _key
-          text
-        }
-      }
+      _rawContent
     }
   }
   }

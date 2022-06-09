@@ -325,6 +325,15 @@ const TabletAboutStyles = styled.div`
       }
     }
   }
+  #randy {
+    order: 1;
+  }
+  #c {
+    order: 2;
+  }
+  #rhonda {
+    order: 3;
+  }
 `;
 
 const MobileAboutStyles = styled.div`
@@ -472,6 +481,15 @@ const MobileAboutStyles = styled.div`
       }
     }
   }
+  #randy {
+    order: 1;
+  }
+  #c {
+    order: 2;
+  }
+  #rhonda {
+    order: 3;
+  }
 `;
 
 export default function AboutPage({ data }) {
@@ -571,7 +589,7 @@ export default function AboutPage({ data }) {
           <div className="content flex">
           <section className="staffContainer flex">
             {profiles.map((staff) => (
-              <div className="inline staff" key={staff.id}>
+              <div className="inline staff" key={staff.id} id={staff.name.split(' ')[0].toLowerCase().split('.')[0]}>
                 <div className="staffImg">
                   <SanityImage
                     {...staff.profileimage}
@@ -642,7 +660,7 @@ export default function AboutPage({ data }) {
           <div className="content flex">
             <section className="staffContainer flex">
             {profiles.map((staff) => (
-              <div className="flex staff" key={staff.id}>
+              <div className="flex staff" key={staff.id} id={staff.name.split(' ')[0].toLowerCase().split('.')[0]}>
                 <div className="staffImg">
                   <SanityImage
                     {...staff.profileimage}

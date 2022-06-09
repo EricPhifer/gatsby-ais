@@ -73,7 +73,7 @@ const FaqStyles = styled.div`
     }
   }
   .paraInfo {
-    padding: 0 3rem;
+    padding: 0 2rem;
   }
   .answer {
     padding-bottom: 1rem;
@@ -209,21 +209,11 @@ export default function FaqPage({ data }) {
             </div>
             <div className='bottom flex'>
               <div className='faqContainer'>
-                {faq.answer.map((content) => (
-                  <div className="paraInfo" key={content._key}>
-                    <div className="answer">
-                      {content.children.map((text) =>
-                        <span key={text._key} id={text._key}>
-                          {text.text}
-                        </span>
-                        /* <PortableText 
-                          value={[faq.answer]} 
-                          className="answer flex"
-                        /> */
-                      )}
-                    </div>
-                  </div>
-                ))}
+                <PortableText 
+                  value={faq._rawAnswer}
+                  components={defaultComponents}
+                  className="answer flex"
+                />
               </div>
             </div>
           </div>
@@ -252,17 +242,7 @@ query {
     nodes {
       id
       question
-      answer {
-        _key
-        list
-        style
-        children {
-          _key
-          _type
-          text
-          marks
-        }
-      }
+      _rawAnswer
     }
   }
   cta: allSanityContactInfo {

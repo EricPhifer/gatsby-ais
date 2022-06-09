@@ -1,3 +1,4 @@
+import { defaultComponents, PortableText } from '@portabletext/react';
 import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
@@ -6,6 +7,9 @@ import SEO from '../components/SEO';
 const PolicyStyles = styled.div`
   padding: 18rem 5rem 0;
   word-wrap: break-word;
+  h1 {
+    text-align: center;
+  }
   .policyContainer {
     max-width: 600px;
     margin: 0 auto;
@@ -38,12 +42,11 @@ export default function PrivacyPolicy({ data }) {
           <section key={policy.id}>
             <h1>{policy.title}</h1>
             <section className="policyContainer">
-              {policy.content.map((c) => 
-                c.children.map((text) => 
-                  <p key={text._key}>
-                    {text.text}
-                  </p>
-              ))}
+              <PortableText 
+                value={policy._rawContent}
+                components={defaultComponents}
+                className="answer flex"
+              />
             </section>
           </section>
         ))}
@@ -58,12 +61,7 @@ export const query = graphql`
       nodes {
         id
         title
-        content {
-          children {
-            _key
-            text
-          }
-        }
+        _rawContent
       }
     }
   }

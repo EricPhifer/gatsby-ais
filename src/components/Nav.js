@@ -966,9 +966,7 @@ export default function Nav() {
   `)
 
 const nodes = navigation.nodes;
-
-const checkId = useRef(null);
-const [checked, setChecked] = React.useState(true);
+const [checked, setChecked] = React.useState(false);
 
   return (
     <>
