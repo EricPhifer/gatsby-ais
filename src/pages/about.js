@@ -46,8 +46,7 @@ const AboutStyles = styled.div`
     padding: 2rem;
     background-color: #D3D3D3;
     .textImg {
-      width: 100%;
-      height: 100%;
+      height: 3vmin;
     }
   }
   .content {
@@ -510,6 +509,7 @@ export default function AboutPage({ data }) {
                 <SanityImage 
                   {...content.textimage}
                   alt={content.textalt}
+                  className="textImg"
                   style={{
                     objectFit: 'cover',
                     auto: 'format',
