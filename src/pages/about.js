@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
 import SEO from '../components/SEO';
 import SanityImage from 'gatsby-plugin-sanity-image';
+import { defaultComponents, PortableText } from '@portabletext/react';
 
 const AboutStyles = styled.div`
   max-width: 1080px;
@@ -549,11 +550,15 @@ export default function AboutPage({ data }) {
             ))}
             </section>
             <section className="missionContainer flex">
-              <PortableText 
-                value={faq._rawContent}
-                components={defaultComponents}
-                className="flex"
-              />
+              {contents.map((c) => (
+                <div key={c.id} className='info flex'>
+                  <PortableText 
+                    value={c._rawContent}
+                    components={defaultComponents}
+                    className="flex"
+                  />
+                </div>
+              ))}
             {cta.map((call) => (
               <div className="contact flex" key={call.id}>
                 <p className="tagline upper">
@@ -610,11 +615,15 @@ export default function AboutPage({ data }) {
             ))}
             </section>
             <section className="missionContainer flex">
-              <PortableText 
-                value={faq._rawContent}
-                components={defaultComponents}
-                className="flex"
-              />
+              {contents.map((c) => (
+                <div key={c.id} className='info flex'>
+                  <PortableText 
+                    value={c._rawContent}
+                    components={defaultComponents}
+                    className="flex"
+                  />
+                </div>
+              ))}
             </section>
             {cta.map((call) => (
               <div className="contact flex" key={call.id}>
@@ -673,11 +682,15 @@ export default function AboutPage({ data }) {
             ))}
             </section>
             <section className="missionContainer flex">
-              <PortableText 
-                value={faq._rawContent}
-                components={defaultComponents}
-                className="flex"
-              />
+              {contents.map((c) => (
+                <div key={c.id} className='info flex'>
+                  <PortableText 
+                    value={c._rawContent}
+                    components={defaultComponents}
+                    className="flex"
+                  />
+                </div>
+              ))}
             </section>
             {cta.map((call) => (
               <div className="contact flex" key={call.id}>

@@ -198,6 +198,7 @@ const TabletPlanStyles = styled.div`
     align-items: center;
     margin: 3rem 0;
     .tagline {
+      max-width: 260px;
       font-size: 3rem;
       margin: 0;
     }
@@ -297,7 +298,7 @@ const MobilePlanStyles = styled.div`
     align-items: center;
     margin: 3rem 0;
     .tagline {
-      max-width: 245px;
+      max-width: 260px;
       margin: 0;
       font-size: 3rem;
     }

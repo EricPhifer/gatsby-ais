@@ -127,6 +127,7 @@ const TabletServiceStyles = styled.div`
   @media only screen and (max-width: 500px) {
     display: none;
   }
+  padding-top: 16rem;
   .noNineUnder {
     @media only screen and (max-width: 900px) {
       display: none;
@@ -137,7 +138,7 @@ const TabletServiceStyles = styled.div`
       display: none;
     }
   }
-  #medicare {
+  #Medicare {
     display: none;
   }
   .flexSwitch {

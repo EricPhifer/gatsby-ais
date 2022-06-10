@@ -7,14 +7,12 @@ import SEO from '../components/SEO';
 const TermStyles = styled.div`
   padding: 18rem 5rem 0;
   word-wrap: break-word;
-  text-align: center;
   .termsContainer {
     max-width: 600px;
     margin: 0 auto;
     padding: 0 1rem;
-    text-align: justify;
   }
-  .updateDate {
+  .updateDate, h1 {
     text-align: center;
   }
   @media (max-width: 600px) {
@@ -30,10 +28,10 @@ const TermStyles = styled.div`
     }
   }
   @media only screen and (max-width: 900px) {
-    padding-top: 3rem;
+    padding-top: 16rem;
   }
   @media only screen and (max-width: 501px) {
-    padding-top: 1rem;
+    padding-top: 16rem;
   }
 `;
 

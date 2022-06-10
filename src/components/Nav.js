@@ -1043,7 +1043,7 @@ const [checked, setChecked] = React.useState(false);
               <div id="menuToggle">
                 <input 
                   type="checkbox" 
-                  checked={checked}
+                  defaultChecked={checked}
                   onClick={() => {setChecked(old => !old)}} 
                 />
                 <span />
@@ -1168,7 +1168,7 @@ const [checked, setChecked] = React.useState(false);
               <div id="menuToggle">
               <input 
                   type="checkbox" 
-                  checked={checked}
+                  defaultChecked={checked}
                   onClick={() => {setChecked(old => !old)}} 
                 />
                 <span />

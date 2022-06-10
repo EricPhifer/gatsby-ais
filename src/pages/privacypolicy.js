@@ -14,7 +14,6 @@ const PolicyStyles = styled.div`
     max-width: 600px;
     margin: 0 auto;
     padding: 0 1rem;
-    text-align: justify;
   }
   .updateDate {
     text-align: center;
@@ -24,10 +23,10 @@ const PolicyStyles = styled.div`
     padding-right: 1rem;
   }
   @media only screen and (max-width: 900px) {
-    padding-top: 3rem;
+    padding-top: 16rem;
   }
   @media only screen and (max-width: 501px) {
-    padding-top: 1rem;
+    padding-top: 16rem;
   }
 `;
 

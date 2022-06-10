@@ -294,6 +294,9 @@ const FormStyles = styled.div`
   .hide {
     display: none;
   }
+  input[type="radio"] {
+    min-width: 15px;
+  }
   .contactmethodLabel {
     width: 100%;
     display: inline-flex;
@@ -399,6 +402,9 @@ const TabletFormStyles = styled.div`
   }
   .hide {
     display: none;
+  }
+  input[type="radio"] {
+    min-width: 15px;
   }
   .contactmethodLabel {
     width: 100%;
