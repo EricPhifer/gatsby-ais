@@ -1007,7 +1007,7 @@ export default function HomePage({ data }) {
                 </div>
               </div>
             {cta.map((call) => (
-              <div className="nodeParser"key={call.id}>
+              <div className="nodeParser" key={call.id}>
                 <div className="textBox">
                   <p>Taking the worry out <br /> 
                   of complex insurance issues<br /> 
@@ -1077,7 +1077,7 @@ export default function HomePage({ data }) {
                 </div>
               </div>
               {cta.map((call) => (
-                <div className="nodeParser">
+                <div className="nodeParser" key={call.id}>
                   <div className="textBox">
                     <p>Taking the worry out <br /> 
                     of complex insurance issues<br /> 

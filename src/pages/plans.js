@@ -346,6 +346,7 @@ export default function PlanPage({ data }) {
           <section 
             className="planContainer" 
             id={plan.slug.current}
+            key={plan.id}
           >
             <div className="headContainer inline">
               <div className="dotContainer">
@@ -389,6 +390,7 @@ export default function PlanPage({ data }) {
           <section 
             className="planContainer" 
             id={plan.slug.current}
+            key={plan.id}
           >
           <div className="headContainer inline">
             <div className="dotContainer">
@@ -432,6 +434,7 @@ export default function PlanPage({ data }) {
           <section 
             className="planContainer" 
             id={plan.slug.current}
+            key={plan.id}
           >
             <div className="headContainer inline">
               <div className="head">

@@ -549,21 +549,13 @@ export default function AboutPage({ data }) {
             ))}
             </section>
             <section className="missionContainer flex">
-            {contents.map((paragraphs) => (
-              <div className="paraInfo" key={paragraphs.id}>
-                <div className="info">
-                  {paragraphs.content.map((c) => (
-                    c.children.map((text) =>
-                      <p key={text._key}>
-                        {text.text}
-                      </p>
-                    )
-                  ))}
-                </div>
-              </div>
-            ))}
+              <PortableText 
+                value={faq._rawContent}
+                components={defaultComponents}
+                className="flex"
+              />
             {cta.map((call) => (
-              <div className="contact flex">
+              <div className="contact flex" key={call.id}>
                 <p className="tagline upper">
                   {call.tagline}
                 </p>
@@ -580,7 +572,7 @@ export default function AboutPage({ data }) {
         </AboutStyles>
         <TabletAboutStyles>
           {contents.map((content) => (
-            <div className="head flex">
+            <div className="head flex" key={content.id}>
               <div className="left flex">
                 <h1>{content.title}</h1>
               </div>
@@ -618,22 +610,14 @@ export default function AboutPage({ data }) {
             ))}
             </section>
             <section className="missionContainer flex">
-              {contents.map((paragraphs) => (
-                  <div className="paraInfo" key={paragraphs.id}>
-                    <div className="info">
-                      {paragraphs.content.map((c) => (
-                        c.children.map((text) =>
-                          <p key={text._key}>
-                            {text.text}
-                          </p>
-                        )
-                      ))}
-                    </div>
-                </div>
-              ))}
+              <PortableText 
+                value={faq._rawContent}
+                components={defaultComponents}
+                className="flex"
+              />
             </section>
             {cta.map((call) => (
-              <div className="contact flex">
+              <div className="contact flex" key={call.id}>
                 <p className="tagline upper">
                   {call.tagline}
                 </p>
@@ -651,7 +635,7 @@ export default function AboutPage({ data }) {
         </TabletAboutStyles>
         <MobileAboutStyles>
           {contents.map((content) => (
-            <div className="head flex">
+            <div className="head flex" key={content.id}>
               <div className="left flex">
                 <h1>{content.title}</h1>
               </div>
@@ -689,22 +673,14 @@ export default function AboutPage({ data }) {
             ))}
             </section>
             <section className="missionContainer flex">
-            {contents.map((paragraphs) => (
-                <div className="paraInfo" key={paragraphs.id}>
-                  <div className="info">
-                    {paragraphs.content.map((c) => (
-                      c.children.map((text) =>
-                        <p key={text._key}>
-                          {text.text}
-                        </p>
-                      )
-                    ))}
-                  </div>
-              </div>
-            ))}
+              <PortableText 
+                value={faq._rawContent}
+                components={defaultComponents}
+                className="flex"
+              />
             </section>
             {cta.map((call) => (
-              <div className="contact flex">
+              <div className="contact flex" key={call.id}>
                 <p className="tagline upper">
                   {call.tagline}
                 </p>
@@ -744,12 +720,7 @@ export const query = graphql`
     }
     contents: allSanityAboutContent {
       nodes {
-        content {
-          children {
-            _key
-            text
-          }
-        }
+        _rawContent
         mainimage {
           asset {
             id
