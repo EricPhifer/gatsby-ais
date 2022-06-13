@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import SanityImage from 'gatsby-plugin-sanity-image';
 import styled from 'styled-components';
-import { useRef } from 'react';
 
 const NavStyles = styled.div`
   .bg-gradient {
@@ -966,7 +965,7 @@ export default function Nav() {
   `)
 
 const nodes = navigation.nodes;
-const [checked, setChecked] = React.useState(false);
+const [checked, setChecked] = React.useState(false || '');
 
   return (
     <>
@@ -1043,7 +1042,7 @@ const [checked, setChecked] = React.useState(false);
               <div id="menuToggle">
                 <input 
                   type="checkbox" 
-                  defaultChecked={checked}
+                  checked={checked}
                   onClick={() => {setChecked(old => !old)}} 
                 />
                 <span />
@@ -1168,7 +1167,7 @@ const [checked, setChecked] = React.useState(false);
               <div id="menuToggle">
               <input 
                   type="checkbox" 
-                  defaultChecked={checked}
+                  checked={checked}
                   onClick={() => {setChecked(old => !old)}} 
                 />
                 <span />
