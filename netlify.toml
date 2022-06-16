@@ -1,0 +1,10 @@
+[[redirects]]
+from = "https://activeinsgj.com/*"
+to = "https://www.activeinsurancegj.com/:splat"
+status = 301
+force = true
+[[redirects]]
+from = "https://www.activeinsgj.com/*"
+to = "https://www.activeinsurancegj.com/:splat"
+status = 301
+force = true
