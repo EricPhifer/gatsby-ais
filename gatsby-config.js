@@ -14,15 +14,15 @@ module.exports = {
     'gatsby-plugin-netlify',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-image',
-    'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        host: 'https://activeinsurancegj.com',
-        sitemap: 'https://activeinsurancegj.com/sitemap/sitemap-index.xml',
-        policy: [{userAgent: '*', allow: '/'}],
-      },
-    },
+    // 'gatsby-plugin-sitemap',
+    // {
+    //   resolve: 'gatsby-plugin-robots-txt',
+    //   options: {
+    //     host: 'https://activeinsurancegj.com',
+    //     sitemap: 'https://activeinsurancegj.com/sitemap/sitemap-index.xml',
+    //     policy: [{userAgent: '*', allow: '/'}],
+    //   },
+    // },
     {
       resolve: 'gatsby-source-sanity',
       options: {
