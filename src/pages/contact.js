@@ -2,8 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 // import SanityImage from 'gatsby-plugin-sanity-image';
 import styled from 'styled-components';
-import useForm from '../../utils/useForm.js';
-import useContact from '../../utils/useContact.js';
+import useForm from '../utils/useForm.js';
+import useContact from '../utils/useContact.js';
 
 import SEO from '../components/SEO';
 

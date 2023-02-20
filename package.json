@@ -5,6 +5,7 @@
   "description": "Good Health. That's the plan",
   "version": "0.1.0",
   "license": "0BSD",
+  "author": "Eric Phifer",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
