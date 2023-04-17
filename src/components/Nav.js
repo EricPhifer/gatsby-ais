@@ -6,16 +6,16 @@ import styled from 'styled-components';
 const NavStyles = styled.div`
   .bg-gradient {
     position: static;
-    z-index: 1;
+    z-index: 101;
     height: 16rem;
     background-image: linear-gradient(to bottom, var(--blue), transparent);
   }
   .bg-gray {
     position: static;
-    z-index: 5;
-    height: 6rem;
+    z-index: 105;
+    height: 7rem;
     background: var(--gray);
-    box-shadow: 0 10px 10px #000;
+    box-shadow: 0 1rem 1rem #000;
   }
   .full {
     width: 100vw;
@@ -32,14 +32,15 @@ const NavStyles = styled.div`
     display: flex;
     place-items: center center;
     position: static;
-    z-index: 6;
+    z-index: 106;
     .phone {
       width: 50%;
       font-weight: bold;
       text-align: center;
       margin-right: 8rem;
+      margin-top: 1rem;
       position: static;
-      z-index: 4;
+      z-index: 104;
     }
     a:hover {
       color: var(--blue);
@@ -71,14 +72,14 @@ const NavStyles = styled.div`
       display: flex;
       justify-content: space-between;
       img {
-        margin-top: -4.5rem;
+        margin-top: -1rem;
         height: auto;
         width: auto;
         background: transparent;
       }
       ul {
         position: static;
-        z-index: 4;
+        z-index: 104;
         display: inline-flex;
         margin-top: 13px;
       }
@@ -90,7 +91,7 @@ const NavStyles = styled.div`
       background-color: var(--black);
       color: var(--white);
       text-transform: uppercase;
-      box-shadow: inset 0 8px 5px #000;
+      box-shadow: inset 0 0 5px #000;
       &[aria-current='page'] {
         background-color: var(--white);
         color: var(--black);
@@ -139,7 +140,7 @@ const TabletNavStyles = styled.div`
     height: 16rem;
     background-image: linear-gradient(to bottom, var(--blue), transparent);
     position: fixed;
-    z-index: 1;
+    z-index: 101;
   }
   img {
     width: 36rem;
@@ -151,14 +152,14 @@ const TabletNavStyles = styled.div`
     background: var(--gray);
     box-shadow: 0 10px 10px #000;
     position: fixed;
-    z-index: 1;
+    z-index: 101;
   }
   .phone {
     position: absolute;
     top: 25px;
     left: 15rem;
     font-weight: bold;
-    z-index: 2;
+    z-index: 102;
   }
   .navBarCancel {
     width: 0 !important;
@@ -177,7 +178,7 @@ const TabletNavStyles = styled.div`
     position: fixed;
     top: 25px;
     right: 25px;
-    z-index: 1;
+    z-index: 101;
     -webkit-user-select: none;
     user-select: none;
   }
@@ -188,7 +189,7 @@ const TabletNavStyles = styled.div`
     position: absolute;
     cursor: pointer;
     opacity: 0;
-    z-index: 2;
+    z-index: 102;
     bottom: 5px;
   }
   #menuToggle span {
@@ -198,7 +199,7 @@ const TabletNavStyles = styled.div`
     height: 5px;
     margin-bottom: 5px;
     border-radius: 3px;
-    z-index: 1;
+    z-index: 101;
     transform-origin: 5px 0;
     background: var(--white);
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
@@ -589,7 +590,7 @@ const MobileNavStyles = styled.div`
     height: 16rem;
     background-image: linear-gradient(to bottom, var(--blue), transparent);
     position: fixed;
-    z-index: 1;
+    z-index: 101;
   }
   img {
     width: 25rem;
@@ -601,14 +602,14 @@ const MobileNavStyles = styled.div`
     background: var(--gray);
     box-shadow: 0 10px 10px #000;
     position: fixed;
-    z-index: 1;
+    z-index: 101;
   }
   .phone {
     position: absolute;
     top: 25px;
     left: 7rem;
     font-weight: bold;
-    z-index: 2;
+    z-index: 102;
   }
   .navBarCancel {
     width: 0 !important;
@@ -627,7 +628,7 @@ const MobileNavStyles = styled.div`
     position: fixed;
     top: 25px;
     right: 25px;
-    z-index: 1;
+    z-index: 101;
     -webkit-user-select: none;
     user-select: none;
   }
@@ -638,7 +639,7 @@ const MobileNavStyles = styled.div`
     position: absolute;
     cursor: pointer;
     opacity: 0;
-    z-index: 2;
+    z-index: 102;
     bottom: 5px;
     right: 5px;
   }
@@ -649,7 +650,7 @@ const MobileNavStyles = styled.div`
     height: 5px;
     margin-bottom: 5px;
     border-radius: 3px;
-    z-index: 1;
+    z-index: 101;
     transform-origin: 5px 0;
     background: var(--white);
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
