@@ -5,6 +5,28 @@ import styled from 'styled-components';
 import SEO from '../components/SEO';
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
 
+const UpperContent = styled.section `
+  max-width: 108rem;
+  height: 50rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(auto, 1fr));
+  .heroImg {
+    grid-column: 1 / span 2;
+  }
+  .sideTexture {
+    grid-column: 3 / span 1;
+    .words {
+      max-width: 90%;
+      postion: absolute;
+      top: 50%;
+    }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 const HeroStyles = styled.div`
   padding-top: 18rem;
   .hero {
@@ -13,29 +35,6 @@ const HeroStyles = styled.div`
     margin: 0 auto;
     .upper {
       text-transform: uppercase;
-    }
-  }
-  .upperContent {
-    width: 100%;
-    height: 50.3rem;
-    display: inline-flex;
-    .mainimg { 
-      height: 62rem;
-    }
-    .sideTexture {
-      display: flex;
-      align-items: end;
-      position: relative;
-      .texture {
-        height: 50.4rem
-      }
-      .solutions {
-        height: 7rem;
-        position: absolute;
-        bottom: 11rem;
-        padding: 0 0.4rem;
-        z-index: 1;
-      }
     }
   }
   .textBox {
@@ -179,69 +178,6 @@ const TabletHeroStyles = styled.div`
     position: relative;
     .upper {
       text-transform: uppercase;
-    }
-  }
-  .upperContent {
-    width: 100%;
-    display: inline-flex;
-    .mainimg { 
-      @media only screen and (min-width: 501px) {
-        height: 72vmin;
-      }
-      @media only screen and (min-width: 814px) {
-        height: 75vmin;
-      }
-      @media only screen and (min-width: 838px) {
-        height: 80vmin;
-      }
-      @media only screen and (min-width: 901px) {
-        height: 66vmin;
-      }
-      @media only screen and (min-width: 1018px) {
-        height: 72vmin;
-      }
-    }
-    .sideTexture {
-      position: relative;
-      display: flex;
-      align-items: start;
-      justify-content: center;
-      .texture {
-        height: 66vmin;
-      }
-      .solutions {
-        height: 7rem;
-        position: absolute;
-        z-index: 1;
-        margin-bottom: 11rem;
-        @media only screen and (min-width: 900px) {
-          height: 7vmin;
-        }
-        @media only screen and (min-width: 960px) {
-          height: 8vmin;
-        }
-      }
-      @media only screen and (max-width: 900px) {
-        display: none;
-      }
-    }
-    @media only screen and (min-width: 575px) {
-      height: 40rem;
-    }
-    @media only screen and (min-width: 625px) {
-      height: 45rem;
-    }
-    @media only screen and (min-width: 675px) {
-      height: 50rem;
-    }
-    @media only screen and (min-width: 725px) {
-      height: 55rem;
-    }
-    @media only screen and (min-width: 775px) {
-      height: 60rem;
-    }
-    @media only screen and (min-width: 825px) {
-      height: 62rem;
     }
   }
   .textBox {
@@ -630,24 +566,6 @@ const MobileHeroStyles = styled.div`
       text-transform: uppercase;
     }
   }
-  .upperContent {
-    width: 100%;
-    height: 20rem;
-    display: inline-flex;
-    .mainimg { 
-      width: 100%;
-      height: 70vmin;
-    }
-    @media only screen and (max-width: 424px) {
-      height: 26rem;
-    }
-    @media only screen and (min-width: 425px) {
-      height: 32rem;
-    }
-    @media only screen and (min-width: 500px) {
-      height: 35rem;
-    }
-  }
   .textBox {
     width: 50%;
     height: 14rem;
@@ -975,16 +893,18 @@ export default function HomePage({ data }) {
           <HeroStyles>
             {heroes.map((hero) => (
             <div className="hero" key={hero.id}>
-              <div className="upperContent">
-                <SanityImage
-                  {...hero.mainimage}
-                  alt={hero.mainalt}
-                  className="mainimg"
-                  styles={{
-                    objectFit: 'cover',
-                    auto: 'format',
-                  }}
-                />
+              <UpperContent>
+                <div className='heroImg'>
+                  <SanityImage
+                    {...hero.mainimage}
+                    alt={hero.mainalt}
+                    className="mainimg"
+                    styles={{
+                      objectFit: 'cover',
+                      auto: 'format',
+                    }}
+                  />
+                </div>
                 <div className="sideTexture">
                   <SanityImage 
                     {...hero.bgimage}
@@ -995,17 +915,19 @@ export default function HomePage({ data }) {
                       auto: 'format',
                     }}
                     />
-                  <SanityImage 
-                    {...hero.textimage}
-                    alt={hero.textalt}
-                    className="solutions"
-                    styles={{
-                      objectFit: 'cover',
-                      auto: 'format',
-                    }}
+                  <div className='words'>
+                    <SanityImage 
+                      {...hero.textimage}
+                      alt={hero.textalt}
+                      className="solutions"
+                      styles={{
+                        objectFit: 'cover',
+                        auto: 'format',
+                      }}
                     />
+                  </div>
                 </div>
-              </div>
+              </UpperContent>
             {cta.map((call) => (
               <div className="nodeParser" key={call.id}>
                 <div className="textBox">
@@ -1045,16 +967,18 @@ export default function HomePage({ data }) {
           <TabletHeroStyles>
           {heroes.map((hero) => (
             <div className="hero" key={hero.id}>
-              <div className="upperContent">
-                <SanityImage
-                  {...hero.mainimage}
-                  alt={hero.mainalt}
-                  className="mainimg"
-                  styles={{
-                    objectFit: 'cover',
-                    auto: 'format',
-                  }}
-                />
+              <UpperContent>
+                <div className='heroImg'>
+                  <SanityImage
+                    {...hero.mainimage}
+                    alt={hero.mainalt}
+                    className="mainimg"
+                    styles={{
+                      objectFit: 'cover',
+                      auto: 'format',
+                    }}
+                  />
+                </div>
                 <div className="sideTexture">
                   <SanityImage 
                     {...hero.bgimage}
@@ -1065,17 +989,19 @@ export default function HomePage({ data }) {
                       auto: 'format',
                     }}
                   />
-                  <SanityImage 
-                    {...hero.textimage}
-                    alt={hero.textalt}
-                    className="solutions"
-                    styles={{
-                      objectFit: 'cover',
-                      auto: 'format',
-                    }}
-                  />
+                  <div className='words'>
+                    <SanityImage 
+                      {...hero.textimage}
+                      alt={hero.textalt}
+                      className="solutions"
+                      styles={{
+                        objectFit: 'cover',
+                        auto: 'format',
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
+              </UpperContent>
               {cta.map((call) => (
                 <div className="nodeParser" key={call.id}>
                   <div className="textBox">
@@ -1118,7 +1044,7 @@ export default function HomePage({ data }) {
         <MobileHeroStyles>
           {heroes.map((hero) => (
             <div className="hero" key={hero.id}>
-              <div className="upperContent">
+              <UpperContent>
                 <SanityImage
                   {...hero.mainimage}
                   alt={hero.mainalt}
@@ -1128,7 +1054,7 @@ export default function HomePage({ data }) {
                     auto: 'format',
                   }}
                 />
-              </div>
+              </UpperContent>
               {cta.map((call) => (
                 <div key={call.id}>
                   <div className="textBox">
