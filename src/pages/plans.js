@@ -1,20 +1,14 @@
-import React from 'react';
-import { graphql, Link } from 'gatsby';
-import styled from 'styled-components';
-import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
+import React from 'react'
+import { graphql, Link, useStaticQuery } from 'gatsby'
+import styled from 'styled-components'
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
-import SEO from '../components/SEO';
+import Seo from '../components/Seo'
 
 const PlanStyles = styled.div`
-  max-width: 1080px;
-  margin: 0 auto;
-  padding-top: 18rem;
-  .planContainer {
-    width: 100%;
-    display: block;
-    padding-top: 160px;
-    margin-top: -160px;
-  }
+  max-width: 108rem;
+  margin: 17rem auto 0;
+  padding: 0 2rem;
   .inline {
     display: inline-flex;
   }
@@ -25,484 +19,207 @@ const PlanStyles = styled.div`
   .upper {
     text-transform: uppercase;
   }
-  .headContainer {
-    width: 100%;
-  }
-  .dotContainer {
-    width: 8%;
-    .dot {
-      background-color: var(--blue);
-      width: 5vmin;
-      height: 5vmin;
-    }
-  }
-  .head {
-    width: 90%;
-    padding: 2rem;
-    padding: 2rem;
-    background-color: var(--black);
-    h1 {
-      color: var(--white);
-      margin: 0;
-    }
-  }
-  .planGrid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(auto, 1fr));
-    gap: 0 3rem;
-    padding-left: 9rem;
-    padding-right: 3rem;
-    .serviceInfo {
-      p {
-        text-align: justify;
-        letter-spacing: 0.7px
-      }
-      .title {
-        font-size: 1.75rem;
-        font-weight: bold;
-      }
-      .spacer {
-        font-size: 1.75rem;
-        font-weight: bold
-        padding: 0 1rem;
-      }
-    }
-  }
-  .contact {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin: 3rem 0;
-    .tagline {
-      font-size: 3rem;
-      margin: 0;
-    }
-    .phone {
-       font-weight: bold;
-       font-size: 2rem;
-       &:hover {
-         color: var(--blue);
-       }
-     }
-    .buttonesque {
-      display: flex;
-      place-items: center center;
-      place-content: center center;
-      padding: 1rem;
-      color: var(--white);
-      font-size: 1.25rem;
-      font-weight: bold;
-      width: 11.5rem;
-      margin: 2rem 0;
-      background-color: var(--blue);
-      border-right: 4px double var(--green);
-      border-bottom: 2px double var(--green);
-      &:hover {
-        background-color: var(--white);
-        color: var(--blue);
-        border-right: 4px double var(--blue);
-        border-bottom: 2px double var(--blue);
-      }
-      .arrowRight {
-        font-size: 2.5rem;
-        color: var(--green);
-      }
-    }
-  }
-  /* Hide menu on small screens */
+`
+
+const PlanContainer = styled.section`
+  width: 100%;
+  display: block;
+  padding: 16rem 0 5rem;
+  margin-top: -16rem;
+`
+
+const HeadContainer = styled.div`
+  width: 100%;
+`
+
+const DotContainer = styled.div`
+  width: 8%;
+`
+
+const Dot = styled.div`
+  background-color: var(--blue);
+  width: 5vmin;
+  height: 5vmin;
   @media only screen and (max-width: 1080px) {
-    display: none;
+    width: 6vmin;
+    height: 6vmin;
   }
-`;
+`
 
-const TabletPlanStyles = styled.div`
-  /* Show compressed menu on small screens */
-  @media only screen and (min-width: 1081px) {
-    display: none;
-  }
+const LeadTitle = styled.div`
+  width: 90%;
+  padding: 2rem;
+  background-color: var(--black);
   @media only screen and (max-width: 500px) {
-    display: none;
-  }
-  padding: 18rem 2rem 0;
-  .planContainer {
-    width: 100%;
-    display: block;
-    padding-top: 160px;
-    margin-top: -160px;
-  }
-  .inline {
-    display: inline-flex;
-  }
-  .flex {
-    display: flex;
-    flex-flow: column nowrap;
-  }
-  .upper {
-    text-transform: uppercase;
-  }
-  .headContainer {
     width: 100%;
   }
-  .dotContainer {
-    width: 8%;
-    .dot {
-      background-color: var(--blue);
-      width: 6vmin;
-      height: 6vmin;
-    }
-  }
-  .head {
-    width: 90%;
-    padding: 2rem;
-    background-color: var(--black);
-    h1 {
-      color: var(--white);
-      font-weight: 600;
-      margin: 0;
-    }
-  }
-  .planGrid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(auto, 1fr));
-    gap: 0 3rem;
-    padding-left: 9rem;
-    padding-right: 3rem;
-    .serviceInfo {
-      p {
-        text-align: justify;
-        letter-spacing: 0.7px
-      }
-      .title {
-        font-size: 1.75rem;
-        font-weight: bold;
-      }
-      .spacer {
-        font-size: 1.75rem;
-        font-weight: bold
-        padding: 0 1rem;
-      }
-    }
-    @media only screen and (max-width: 900px) {
-      padding-left: 6rem;
-      padding-right: 2rem;
-    }
-    @media only screen and (max-width: 750px) {
-      grid-template-columns: 1fr;
-      padding-left: 5rem;
-      padding-right: 3rem;
-    }
-  }
-  .contact {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin: 3rem 0;
-    .tagline {
-      max-width: 260px;
-      font-size: 3rem;
-      margin: 0;
-    }
-    .phone {
-       font-weight: bold;
-       font-size: 2rem;
-       &:hover {
-         color: var(--blue);
-       }
-     }
-    .buttonesque {
-      display: flex;
-      place-items: center center;
-      place-content: center center;
-      padding: 1rem;
-      color: var(--white);
-      font-size: 1.25rem;
-      font-weight: bold;
-      width: 11.5rem;
-      margin: 2rem 0;
-      background-color: var(--blue);
-      border-right: 4px double var(--green);
-      border-bottom: 2px double var(--green);
-      &:hover {
-        background-color: var(--white);
-        color: var(--blue);
-        border-right: 4px double var(--blue);
-        border-bottom: 2px double var(--blue);
-      }
-      .arrowRight {
-        font-size: 2.5rem;
-        color: var(--green);
-      }
-    }
-  }
+`
 
-`;
-const MobilePlanStyles = styled.div`
-  /* Show compressed menu on small screens */
-  @media only screen and (min-width: 501px) {
-    display: none;
+const H1 = styled.h1`
+  color: var(--white);
+  font-weight: 600;
+  margin: 0;
+  @media only screen and (max-width: 500px) {
+    font-size: 2.5rem;
   }
-  padding: 16rem 2rem 0;
-  .planContainer {
-    width: 100%;
-    display: block;
-    padding-top: 160px;
-    margin-top: -160px;
-  }
-  .inline {
-    display: inline-flex;
-  }
-  .flex {
-    display: flex;
-    flex-flow: column nowrap;
-  }
-  .upper {
-    text-transform: uppercase;
-  }
-  .headContainer {
-    width: 100%;
-  }
-  .head {
-    width: 100%;
-    padding: 2rem;
-    background-color: var(--black);
-    h1 {
-      color: var(--white);
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin: 0;
-    }
-  }
-  .planGrid {
-    display: grid;
+`
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, 1fr));
+  gap: 0 3rem;
+  padding-left: 9rem;
+  padding-right: 3rem;
+  @media only screen and (max-width: 810px) {
     grid-template-columns: 1fr;
     padding: 0 1rem;
-    .serviceInfo {
-      p {
-        text-align: justify;
-        letter-spacing: 0.7px;
-      }
-      .title {
-        font-size: 1.5rem;
-        font-weight: bold;
-      }
-      .spacer {
-        font-size: 1.5rem;
-        font-weight: bold
-        padding: 0 1rem;
-      }
-    }
   }
-  .contact {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin: 3rem 0;
-    .tagline {
-      max-width: 260px;
-      margin: 0;
-      font-size: 3rem;
-    }
-    .phone {
-        font-weight: bold;
-        font-size: 2rem;
-        &:hover {
-          color: var(--blue);
+`
+
+const ServiceInfo = styled.div`
+  @media only screen and (max-width: 810px) {
+    padding-left: 3rem;
+  }
+`
+
+const Description = styled.p`
+  text-align: justify;
+  letter-spacing: 0.07rem;
+  padding-top: 1.5rem;
+`
+
+const Title = styled.span`
+  font-size: 1.75rem;
+  font-weight: bold;
+  @media only screen and (max-width: 500px) {
+    font-size: 1.5rem;
+  }
+`
+
+const Spacer = styled.span`
+  font-size: 1.75rem;
+  font-weight: bold;
+  padding: 0 1rem;
+  @media only screen and (max-width: 500px) {
+    font-size: 1.5rem;
+  }
+`
+
+const Contact = styled.div`
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
+`
+
+const Tagline = styled.p`
+  font-size: 3rem;
+  margin: 0;
+  @media only screen and (max-width: 1080px) {
+    max-width: 26rem;
+  }
+`
+
+const Buttonesque = styled(Link)`
+  display: flex;
+  place-items: center center;
+  place-content: center center;
+  padding: 1rem;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: bold;
+  width: 11.5rem;
+  margin: 2rem 0;
+  background-color: var(--blue);
+  border-right: 0.4rem double var(--green);
+  border-bottom: 0.2rem double var(--green);
+  &:hover {
+    background-color: var(--white);
+    color: var(--blue);
+    border-right: 0.4rem double var(--blue);
+    border-bottom: 0.2rem double var(--blue);
+  }
+  .arrowRight {
+    font-size: 2.5rem;
+    color: var(--green);
+  }
+`
+
+const Phone = styled.a`
+  font-weight: bold;
+  font-size: 2rem;
+  &:hover {
+    color: var(--blue);
+  }
+`
+
+export default function PlanPage() {
+  const { plans, cta } = useStaticQuery(graphql`
+    query {
+      plans: allSanityServices {
+        nodes {
+          id
+          title
+          description
+          slug {
+            current
+          }
+          plans {
+            _key
+            plantitle
+            description
+          }
         }
       }
-    .buttonesque {
-      display: flex;
-      place-items: center center;
-      place-content: center center;
-      padding: 1rem;
-      color: var(--white);
-      font-size: 1.25rem;
-      font-weight: bold;
-      width: 11.5rem;
-      margin: 2rem 0;
-      background-color: var(--blue);
-      border-right: 4px double var(--green);
-      border-bottom: 2px double var(--green);
-      &:hover {
-        background-color: var(--white);
-        color: var(--blue);
-        border-right: 4px double var(--blue);
-        border-bottom: 2px double var(--blue);
-      }
-      .arrowRight {
-        font-size: 2.5rem;
-        color: var(--green);
+      cta: allSanityContactInfo {
+        nodes {
+          tagline
+          phone
+          id
+          cta
+        }
       }
     }
-  }
-`;
+  `)
+  const plannodes = plans.nodes
+  const ctanodes = cta.nodes
 
-export default function PlanPage({ data }) {
-  const plans = data.plans.nodes;
-  const cta = data.cta.nodes;
   return (
-    <>
-      <SEO title="Health &amp; Life Insurance Plans" />
-      <PlanStyles>
-        {plans.map((plan) => (
-          <section 
-            className="planContainer" 
-            id={plan.slug.current}
-            key={plan.id}
-          >
-            <div className="headContainer inline">
-              <div className="dotContainer">
-                <div className="dot" />
-              </div>
-              <div className="head">
-                <h1>{plan.title}</h1>
-              </div>
-            </div>
-            <div className="planGrid">
-              {plan.plans.map((content) => (
-                <div className="serviceInfo flex" key={content._key}>
-                  <p>
-                    <span className="title upper">
-                      {content.plantitle}
-                    </span>
-                    <span className="spacer"> | </span>
-                    {content.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
-        {cta.map((call) => (
-          <div className="contact flex" key={call.id}>
-            <p className="tagline upper">
-              {call.tagline}
-            </p>
-            <Link to="/contact" className="buttonesque upper">
-              {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
-            </Link>
-            <a href={`tel:${call.phone}`} className="phone">
-              {call.phone}
-            </a>
-          </div>
-        ))}
-      </PlanStyles>
-      <TabletPlanStyles>
-        {plans.map((plan) => (
-          <section 
-            className="planContainer" 
-            id={plan.slug.current}
-            key={plan.id}
-          >
-          <div className="headContainer inline">
-            <div className="dotContainer">
-              <div className="dot" />
-            </div>
-            <div className="head">
-              <h1>{plan.title}</h1>
-            </div>
-          </div>
-          <div className="planGrid">
-            {plan.plans.map((content) => (
-              <div className="serviceInfo flex" key={content._key}>
-                <p>
-                  <span className="title upper">
-                    {content.plantitle}
-                  </span>
-                  <span className="spacer"> | </span>
+    <PlanStyles>
+      {plannodes.map(plan => (
+        <PlanContainer id={plan.slug.current} key={plan.id}>
+          <HeadContainer className="inline">
+            <DotContainer>
+              <Dot />
+            </DotContainer>
+            <LeadTitle>
+              <H1>{plan.title}</H1>
+            </LeadTitle>
+          </HeadContainer>
+          <Grid>
+            {plan.plans.map(content => (
+              <ServiceInfo className="flex" key={content._key}>
+                <Description>
+                  <Title className="upper">{content.plantitle}</Title>
+                  <Spacer> | </Spacer>
                   {content.description}
-                </p>
-              </div>
+                </Description>
+              </ServiceInfo>
             ))}
-          </div>
-        </section>
+          </Grid>
+        </PlanContainer>
       ))}
-      {cta.map((call) => (
-        <div className="contact flex" key={call.id}>
-          <p className="tagline upper">
-            {call.tagline}
-          </p>
-          <Link to="/contact" className="buttonesque upper">
-            {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
-          </Link>
-          <a href={`tel:${call.phone}`} className="phone">
-            {call.phone}
-          </a>
-        </div>
+      {ctanodes.map(call => (
+        <Contact className="flex" key={call.id}>
+          <Tagline className="upper">{call.tagline}</Tagline>
+          <Buttonesque to="/contact" className="upper">
+            {call.cta} <HiOutlineArrowNarrowRight className="arrowRight" />
+          </Buttonesque>
+          <Phone href={`tel:${call.phone}`}>{call.phone}</Phone>
+        </Contact>
       ))}
-      </TabletPlanStyles>
-      <MobilePlanStyles>
-        {plans.map((plan) => (
-          <section 
-            className="planContainer" 
-            id={plan.slug.current}
-            key={plan.id}
-          >
-            <div className="headContainer inline">
-              <div className="head">
-                <h1>{plan.title}</h1>
-              </div>
-            </div>
-            <div className="planGrid">
-              {plan.plans.map((content) => (
-                <div 
-                  className="serviceInfo flex" 
-                  key={content._key}
-                >
-                  <p>
-                    <span className="title upper">
-                      {content.plantitle}
-                    </span>
-                    <span className="spacer"> | </span>
-                    {content.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
-        {cta.map((call) => (
-          <div className="contact flex" key={call.id}>
-            <p className="tagline upper">
-              {call.tagline}
-            </p>
-            <Link to="/contact" className="buttonesque upper">
-              {call.cta}  <HiOutlineArrowNarrowRight className="arrowRight"/>
-            </Link>
-            <a href={`tel:${call.phone}`} className="phone">
-              {call.phone}
-            </a>
-          </div>
-        ))}
-      </MobilePlanStyles>
-    </>
-  );
+    </PlanStyles>
+  )
 }
 
-export const query = graphql`
-  query {
-    plans: allSanityServices {
-      nodes {
-        description
-        id
-        title
-        slug {
-          current
-        }
-        plans {
-          _key
-          plantitle
-          description
-        }
-      }
-    }
-    cta: allSanityContactInfo {
-      nodes {
-        tagline
-        phone
-        id
-        cta
-      }
-    }
-  }
-`;
-
+export const Head = () => <Seo title="Health &amp; Life Insurance Plans" />

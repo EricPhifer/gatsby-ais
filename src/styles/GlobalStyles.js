@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   /* CSS Reset by Mirkov Sasa https://github.com/mirkovsasa/CSS-Reset/blob/main/Reset.css */
@@ -96,6 +96,6 @@ const GlobalStyles = createGlobalStyle`
       font-size: 2rem;
     }
   }
-`;
+`
 
-export default GlobalStyles;
+export default GlobalStyles

@@ -2,10 +2,10 @@
   "name": "gatsby-active-ins",
   "private": true,
   "homepage": "https://activeinsurancegj.com",
-  "description": "Good Health. That's the plan",
+  "description": "We strive to preserve your family’s health and lifestyle at a cost you can afford by affiliating with top insurance providers; bringing you inclusive and flexible coverages at their most competitive rates.",
   "version": "0.1.0",
   "license": "0BSD",
-  "author": "Eric Phifer",
+  "author": "Phifer Web Solutions",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -35,18 +35,6 @@
     "react-icons": "^4.8.0",
     "styled-components": "^5.3.9"
   },
-  "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-css": "^0.6.0",
-    "eslint-plugin-html": "^6.2.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "prettier": "^2.8.7"
-  },
   "eslintConfig": {
     "extends": [
       "wesbos"
@@ -61,5 +49,11 @@
   },
   "bugs": {
     "url": "https://github.com/EricPhifer/gatsby-ais/issues"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-config-wesbos": "^3.2.3",
+    "prettier": "^2.8.8",
+    "typescript": "^4.9.5"
   }
 }

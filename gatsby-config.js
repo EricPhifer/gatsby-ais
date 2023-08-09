@@ -1,14 +1,14 @@
- require('dotenv').config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-});
+})
 
 module.exports = {
   siteMetadata: {
     title: 'Active Insurance Solutions',
     siteUrl: 'https://activeinsurancegj.com',
-    description: 'Good Health. That\'s the plan.',
+    description: `We strive to preserve your family’s health and lifestyle at a cost you can afford by affiliating with top insurance providers; bringing you inclusive and flexible coverages at their most competitive rates.`,
+    author: 'Phifer Web Solutions',
   },
-  /* Your site config here */
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-netlify',
@@ -20,7 +20,7 @@ module.exports = {
       options: {
         host: 'https://activeinsurancegj.com',
         sitemap: 'https://activeinsurancegj.com/sitemap/sitemap-index.xml',
-        policy: [{userAgent: '*', allow: '/'}],
+        policy: [{ userAgent: '*', allow: '/' }],
       },
     },
     {

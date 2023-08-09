@@ -1,8 +1,8 @@
-import { defaultComponents, PortableText } from '@portabletext/react';
-import { graphql } from 'gatsby';
-import React from 'react';
-import styled from 'styled-components';
-import SEO from '../components/SEO';
+import { defaultComponents, PortableText } from '@portabletext/react'
+import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
+import styled from 'styled-components'
+import Seo from '../components/Seo'
 
 const TermStyles = styled.div`
   padding: 18rem 5rem 0;
@@ -12,7 +12,8 @@ const TermStyles = styled.div`
     margin: 0 auto;
     padding: 0 1rem;
   }
-  .updateDate, h1 {
+  .updateDate,
+  h1 {
     text-align: center;
   }
   @media (max-width: 600px) {
@@ -33,40 +34,38 @@ const TermStyles = styled.div`
   @media only screen and (max-width: 501px) {
     padding-top: 16rem;
   }
-`;
+`
 
-export default function TermsConditions({ data }) {
-  const terms = data.terms.nodes;
+export default function TermsConditions() {
+  const { terms } = useStaticQuery(graphql`
+    query {
+      terms: allSanityTermsConditions {
+        nodes {
+          id
+          title
+          _rawContent
+        }
+      }
+    }
+  `)
+  const { nodes } = terms
   return (
-    <>
-      <SEO title="Terms &amp; Conditions" />
-      <TermStyles>
-        <p className="updateDate">Last updated: May 17, 2022</p>
-        {terms.map((term) => (
-          <section key={term.id}>
-            <h1>{term.title}</h1>
-            <section className="termsContainer">
-              <PortableText 
-                value={term._rawContent}
-                components={defaultComponents}
-                className="answer flex"
-              />
-            </section>
+    <TermStyles>
+      <p className="updateDate">Last updated: May 17, 2022</p>
+      {nodes.map(term => (
+        <section key={term.id}>
+          <h1>{term.title}</h1>
+          <section className="termsContainer">
+            <PortableText
+              value={term._rawContent}
+              components={defaultComponents}
+              className="answer flex"
+            />
           </section>
-        ))}
-      </TermStyles>
-    </>
-  );
+        </section>
+      ))}
+    </TermStyles>
+  )
 }
 
-export const query = graphql`
-  query {
-    terms: allSanityTermsConditions {
-    nodes {
-      id
-      title
-      _rawContent
-    }
-  }
-  }
-`;
+export const Head = () => <Seo title="Terms &amp; Conditions" />

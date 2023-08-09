@@ -1,39 +1,45 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
-import { Helmet } from 'react-helmet';
+/**
+ * SEO component that queries for data with
+ * Gatsby's useStaticQuery React hook
+ *
+ * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
+ */
 
-export default function SEO({ children, location, description, title, image }) {
+import { graphql, useStaticQuery } from 'gatsby'
+import * as React from 'react'
+
+// eslint-disable-next-line react/prop-types
+function Seo({ description, title, children }) {
   const { site } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
+          siteUrl
           title
           description
+          author
         }
       }
     }
-  `);
+  `)
+
+  const metaDescription = description || site.siteMetadata.description
+  const defaultTitle = site.siteMetadata?.title
+
   return (
-    <Helmet titleTemplate={`%s - ${site.siteMetadata.title}`}>
-      <html lang="en" />
-      <title>{title}</title>
-      {/* Fav Icons */}
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <link rel="alternate icon" href="/favicon.ico" />
-      {/* Meta Tags */}
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content={site.siteMetadata.description} />
-      {/* Open Graph */}
-      {location && <meta property="og:url" content={location.href} />}
-      <meta property="og:image" content={image || '.logo.svg'} />
-      <meta property="og:title" content={title} key="ogtitle" />
-      <meta
-        property="og:site_name"
-        content={site.siteMetadata.title}
-        key="ogsitename"
-      />
-      <meta property="og:description" content={description} key="ogdesc" />
+    <>
+      <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
+      <meta name="description" content={metaDescription} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:creator" content={site.siteMetadata?.author || ``} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={metaDescription} />
       {children}
-    </Helmet>
-  );
+    </>
+  )
 }
+
+export default Seo

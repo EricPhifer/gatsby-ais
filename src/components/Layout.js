@@ -1,18 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
-import Footer from './Footer';
-import 'normalize.css';
-import Nav from './Nav';
-import GlobalStyles from '../styles/GlobalStyles';
-import Typography from '../styles/Typography';
+import React from 'react'
+import styled from 'styled-components'
+import Footer from './Footer'
+import 'normalize.css'
+import Nav from './Nav'
+import GlobalStyles from '../styles/GlobalStyles'
+import Typography from '../styles/Typography'
 
 const SiteStyles = styled.div`
   width: 100vw;
   min-height: 100vh;
   position: relative;
-  padding-bottom: 20rem;
-`;
-
+  padding-bottom: 17.5rem;
+`
+// eslint-disable-next-line
 export default function Layout({ children }) {
   return (
     <>
@@ -24,5 +24,5 @@ export default function Layout({ children }) {
         <Footer />
       </SiteStyles>
     </>
-  );
+  )
 }
