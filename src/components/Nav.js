@@ -4,7 +4,7 @@ import SanityImage from 'gatsby-plugin-sanity-image'
 import styled from 'styled-components'
 
 const NodeParser = styled.div`
-  posiiton: relative;
+  position: relative;
   z-index: 1000;
 `
 
@@ -277,7 +277,8 @@ const Hamburger = styled.span`
 `
 
 const Menu = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   width: 100vw;
   margin: 0;
   position: fixed;
@@ -291,6 +292,7 @@ const Menu = styled.div`
   transform-origin: 0% 0%;
   transform: translate(100%, 0%);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  overflow-y: scroll;
   li {
     transition-delay: 2s;
   }
@@ -327,7 +329,7 @@ const MobileUpperList = styled.ul`
   }
 `
 
-const MobileUpperItem = styled.ul``
+const MobileUpperItem = styled.li``
 
 const NavButton = styled.button`
   height: 7rem;
@@ -337,8 +339,8 @@ const MobileLower = styled.nav`
   display: flex;
   flex-flow: row wrap;
   position: absolute;
-  bottom: 15px;
-  right: 8px;
+  bottom: -15rem;
+  right: 1.5rem;
   font-size: 1.5rem;
   text-align: right;
 `

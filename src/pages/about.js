@@ -33,9 +33,6 @@ const AboutStyles = styled.div`
   @media only screen and (max-width: 1080px) {
     margin: 16rem auto 5rem;
   }
-  @media only screen and (max-width: 900px) and (max-height: 600px) {
-    margin: 3rem auto 5rem;
-  }
   @media only screen and (max-width: 500px) {
     margin: 13rem auto 5rem;
   }
@@ -77,7 +74,7 @@ const Right = styled.div`
   padding: 2rem;
   background-color: #d3d3d3;
   .textImg {
-    height: 3vmin;
+    height: 3rem;
   }
   @media only screen and (max-width: 1080px) {
     width: 100%;

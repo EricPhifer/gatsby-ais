@@ -5,34 +5,36 @@ import styled from 'styled-components'
 import Seo from '../components/Seo'
 
 const TermStyles = styled.div`
-  padding: 18rem 5rem 0;
+  padding: 18rem 1rem 10rem;
   word-wrap: break-word;
-  .termsContainer {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 1rem;
+`
+
+const Updated = styled.p`
+  text-align: center;
+`
+
+const Section = styled.section``
+
+const H1 = styled.h1`
+  text-align: center;
+`
+
+const Container = styled.section`
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  p {
+    padding: 1rem 0;
   }
-  .updateDate,
-  h1 {
-    text-align: center;
+  span {
+    font-weight: 700;
+    font-size: 1.5rem;
   }
-  @media (max-width: 600px) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .call {
-    display: none;
-  }
-  @media (pointer: coarse) {
-    .call {
-      display: block;
+  a {
+    color: var(--blue);
+    &:hover {
+      color: var(--gray);
     }
-  }
-  @media only screen and (max-width: 900px) {
-    padding-top: 16rem;
-  }
-  @media only screen and (max-width: 501px) {
-    padding-top: 16rem;
   }
 `
 
@@ -51,18 +53,18 @@ export default function TermsConditions() {
   const { nodes } = terms
   return (
     <TermStyles>
-      <p className="updateDate">Last updated: May 17, 2022</p>
+      <Updated>Last updated: May 17, 2022</Updated>
       {nodes.map(term => (
-        <section key={term.id}>
-          <h1>{term.title}</h1>
-          <section className="termsContainer">
+        <Section key={term.id}>
+          <H1>{term.title}</H1>
+          <Container>
             <PortableText
               value={term._rawContent}
               components={defaultComponents}
-              className="answer flex"
+              className="flex"
             />
-          </section>
-        </section>
+          </Container>
+        </Section>
       ))}
     </TermStyles>
   )
