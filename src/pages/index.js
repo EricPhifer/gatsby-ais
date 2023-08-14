@@ -17,4 +17,4 @@ export default function HomePage() {
   )
 }
 
-export const Head = () => <title>Home</title>
+export const Head = () => <title>Active Insurance - Home</title>

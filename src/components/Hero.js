@@ -26,6 +26,7 @@ const Image = styled.div`
 `
 
 const Texture = styled.div`
+  max-height: 58.2rem;
   grid-column: 4 / span 1;
   position: relative;
   img {
@@ -37,6 +38,7 @@ const Texture = styled.div`
 `
 
 const Words = styled.div`
+  height: 9rem;
   position: absolute;
   top: 50%;
   @media only screen and (max-width: 915px) {
