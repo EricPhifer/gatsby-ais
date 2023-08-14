@@ -3,8 +3,6 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
-import Seo from '../components/Seo'
-
 const PlanStyles = styled.div`
   max-width: 108rem;
   margin: 17rem auto 0;
@@ -222,4 +220,4 @@ export default function PlanPage() {
   )
 }
 
-export const Head = () => <Seo title="Health &amp; Life Insurance Plans" />
+export const Head = () => <title>Health &amp; Life Insurance Plans</title>

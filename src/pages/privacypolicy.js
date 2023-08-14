@@ -2,7 +2,6 @@ import { defaultComponents, PortableText } from '@portabletext/react'
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
-import Seo from '../components/Seo'
 
 const PolicyStyles = styled.div`
   padding: 18rem 1rem 10rem;
@@ -76,4 +75,4 @@ export default function PrivacyPolicy() {
   )
 }
 
-export const Head = () => <Seo title="Privacy Policy" />
+export const Head = () => <title>Privacy Policy</title>

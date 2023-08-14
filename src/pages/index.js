@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Seo from '../components/Seo'
 import Hero from '../components/Hero'
 import LogoGrid from '../components/LogoGrid'
 
@@ -18,4 +17,4 @@ export default function HomePage() {
   )
 }
 
-export const Head = () => <Seo title="Home" />
+export const Head = () => <title>Home</title>

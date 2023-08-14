@@ -1,11 +1,9 @@
 import React from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
-// import SanityImage from 'gatsby-plugin-sanity-image';
 import styled from 'styled-components'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 import SanityImage from 'gatsby-plugin-sanity-image'
 import { defaultComponents, PortableText } from '@portabletext/react'
-import Seo from '../components/Seo'
 
 const AboutStyles = styled.div`
   max-width: 108rem;
@@ -420,4 +418,4 @@ export default function AboutPage() {
   )
 }
 
-export const Head = () => <Seo title="About Us" />
+export const Head = () => <title>About Us</title>

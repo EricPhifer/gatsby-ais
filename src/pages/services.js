@@ -3,7 +3,6 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import SanityImage from 'gatsby-plugin-sanity-image'
 import styled from 'styled-components'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
-import Seo from '../components/Seo'
 
 const ServiceStyles = styled.div`
   max-width: 1080px;
@@ -319,4 +318,4 @@ export default function ServicePage() {
   )
 }
 
-export const Head = () => <Seo title="Insurance Services" />
+export const Head = () => <title>Insurance Services</title>

@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import useForm from '../utils/useForm.js'
 import useContact from '../utils/useContact.js'
 
-import Seo from '../components/Seo.js'
-
 const ContactStyles = styled.div`
   max-width: 108rem;
   margin: 14rem auto 0;
@@ -437,4 +435,4 @@ export default function Contact() {
   )
 }
 
-export const Head = () => <Seo title="Contact Us" />
+export const Head = () => <title>Contact Us</title>

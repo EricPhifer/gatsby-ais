@@ -3,7 +3,6 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import { defaultComponents, PortableText } from '@portabletext/react'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
-import Seo from '../components/Seo'
 
 const FaqStyles = styled.div`
   max-width: 65rem;
@@ -242,4 +241,4 @@ export default function FaqPage() {
   )
 }
 
-export const Head = () => <Seo title="Frequently Asked Questions" />
+export const Head = () => <title>Frequently Asked Questions</title>

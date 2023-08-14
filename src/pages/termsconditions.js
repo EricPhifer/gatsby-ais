@@ -2,7 +2,6 @@ import { defaultComponents, PortableText } from '@portabletext/react'
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
-import Seo from '../components/Seo'
 
 const TermStyles = styled.div`
   padding: 18rem 1rem 10rem;
@@ -70,4 +69,4 @@ export default function TermsConditions() {
   )
 }
 
-export const Head = () => <Seo title="Terms &amp; Conditions" />
+export const Head = () => <title>Terms &amp; Conditions</title>
