@@ -28,6 +28,9 @@ const AboutStyles = styled.div`
   #rhonda {
     order: 3;
   }
+  #katie {
+    order: 4;
+  }
   @media only screen and (max-width: 1080px) {
     margin: 16rem auto 5rem;
   }
