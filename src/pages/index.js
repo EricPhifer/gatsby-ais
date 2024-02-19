@@ -5,7 +5,7 @@ import LogoGrid from '../components/LogoGrid'
 
 const Homestyle = styled.div`
   max-width: 108rem;
-  margin: 17rem auto 0;
+  margin: 8rem auto 0;
 `
 
 export default function HomePage() {

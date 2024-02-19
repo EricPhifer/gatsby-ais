@@ -2,26 +2,23 @@ import React from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
+// TODO: reworking Footer to reduce height and add continuity
+
 const FooterStyles = styled.footer`
   width: 100vw;
-  height: 18rem;
+  min-height: 12rem;
   margin: 0;
   padding: 0;
   position: absolute;
   bottom: 0;
   background-color: var(--gray);
   font-size: 1.25rem;
-  .inline {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    span {
-      padding: 0 1rem;
-    }
-  }
+
   .column {
     display: flex;
     flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
   }
 `
 
@@ -30,14 +27,31 @@ const Container = styled.div`
   height: 100%;
   margin: 0 auto;
   text-align: center;
-  justify-content: center;
-  align-items: center;
+  .inline {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    span {
+      padding: 0 1rem;
+    }
+  }
+`
+
+const RelativePosition = styled.div`
+  width: 100%;
+  .row {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2rem;
+    padding: 2rem;
+    justify-content: center;
+  }
 `
 
 const Nav = styled.ul`
   margin: 3rem 2.5rem;
   font-weight: bold;
-  padding: 0 0.5rem;
+  padding: 3rem 0.5rem;
   margin: 0;
   list-style-type: none;
 `
@@ -59,7 +73,8 @@ const Pages = styled(Link)`
 const Span = styled.span``
 
 const Credits = styled.ul`
-  padding: 0;
+  width: 100%;
+  padding: 0 2rem;
   margin: 0;
   list-style-type: none;
 `
@@ -132,43 +147,36 @@ export default function Footer() {
               <Pages to="/contact">Contact Us</Pages>
             </Item>
           </Nav>
-          <Credits className="column">
-            <CopyrightItem>
-              &copy; {node.copyright} {new Date().getFullYear()}
-            </CopyrightItem>
-            <CopyrightItem>
-              <Terms className="inline">
-                <TermItems>
-                  <PolicyLink to="/privacypolicy">Privacy Policy</PolicyLink>
-                </TermItems>
-                <Span> | </Span>
-                <TermItems>
-                  <PolicyLink to="/termsconditions">
-                    Terms &amp; Conditions
-                  </PolicyLink>
-                </TermItems>
-              </Terms>
-            </CopyrightItem>
-            <CopyrightItem>
-              Designed by <Span>{node.designs[0]}</Span> and{' '}
-              <Designer
-                href="https://ericphifer.com"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                {node.designs[1]}
-              </Designer>
-            </CopyrightItem>
-            <CopyrightItem>
-              <Designer
-                href="https://ericphifer.com"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Developed by {node.dev}
-              </Designer>
-            </CopyrightItem>
-          </Credits>
+          <RelativePosition>
+            <Credits className="row">
+              <CopyrightItem>
+                &copy; {node.copyright} {new Date().getFullYear()}
+              </CopyrightItem>
+              <CopyrightItem>
+                <Terms className="inline">
+                  <TermItems>
+                    <PolicyLink to="/privacypolicy">Privacy Policy</PolicyLink>
+                  </TermItems>
+                  <Span> | </Span>
+                  <TermItems>
+                    <PolicyLink to="/termsconditions">
+                      Terms &amp; Conditions
+                    </PolicyLink>
+                  </TermItems>
+                </Terms>
+              </CopyrightItem>
+              <CopyrightItem>
+                Built by <Span>{node.designs[0]}</Span> and{' '}
+                <Designer
+                  href="https://phiferwebsolutions.com"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {node.designs[1]}
+                </Designer>
+              </CopyrightItem>
+            </Credits>
+          </RelativePosition>
         </Container>
       ))}
     </FooterStyles>
