@@ -30,15 +30,16 @@ const GlobalStyles = createGlobalStyle`
   html {
     font-size: 10px;
     overflow-x: hidden;
+    &.no-scroll { 
+  overflow: hidden;
+  }
   }
 
   html, body {
     max-width: 100%;
   }
 
-  .no-scroll { 
-  overflow: hidden;
-  }
+
 
   button {
     display: flex;

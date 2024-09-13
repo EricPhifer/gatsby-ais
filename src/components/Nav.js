@@ -327,12 +327,14 @@ const MobileUpperList = styled.ul`
     text-decoration: none;
     text-transform: uppercase;
     font-size: 4rem;
-    &[aria-current='page'] {
-      text-decoration: underline 3px var(--red);
-    }
   }
   a:hover {
     opacity: 0.5;
+  }
+  &[aria-current='page'] {
+    background-color: var(--white);
+    color: var(--black);
+    border-bottom: 1px solid var(--red);
   }
 `
 
@@ -359,9 +361,9 @@ const MobileLowerList = styled.ul`
     font-size: 2rem;
     color: #000080;
     text-decoration: underline;
-    &[aria-current='page'] {
-      text-decoration: underline 3px var(--red);
-    }
+  }
+  a:hover {
+    opacity: 0.5;
   }
 `
 
