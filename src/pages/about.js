@@ -6,9 +6,21 @@ import SanityImage from 'gatsby-plugin-sanity-image'
 import { defaultComponents, PortableText } from '@portabletext/react'
 
 const AboutStyles = styled.div`
+  max-height: 100%;
   max-width: 108rem;
   margin: 18rem auto 5rem;
   text-align: left;
+  // @media only screen and (max-width: 500px) {
+  // ::-webkit-scrollbar {
+  //   display: none;
+  //   overflow: hidden;
+  //   background-attachment: fixed;
+  // }
+  //  {
+  //   -ms-overflow-style: none;
+  //   overflow: hidden;
+  //   background-attachment: fixed;
+  // }
   .inline {
     display: inline-flex;
   }
@@ -59,6 +71,7 @@ const Left = styled.div`
   padding-right: 10rem;
   padding-bottom: 1rem;
   h1 {
+    padding-left: 2rem;
     margin: 0;
   }
   @media only screen and (max-width: 1080px) {

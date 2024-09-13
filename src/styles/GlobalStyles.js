@@ -28,16 +28,16 @@ const GlobalStyles = createGlobalStyle`
     --green: #6BBF59;
   }
   html {
-    background-image: var(--white);
-    background-size: 100%;
-    background-attachment: fixed;
     font-size: 10px;
     overflow-x: hidden;
   }
 
   html, body {
     max-width: 100%;
-    overflow-x: hidden;
+  }
+
+  .no-scroll { 
+  overflow: hidden;
   }
 
   button {

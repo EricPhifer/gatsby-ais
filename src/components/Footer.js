@@ -6,13 +6,13 @@ import styled from 'styled-components'
 
 const FooterStyles = styled.footer`
   width: 100vw;
-  min-height: 12rem;
+  max-height: 225px;
   margin: 0;
   padding: 0;
   position: absolute;
   bottom: 0;
-  background-color: var(--gray);
-  font-size: 1.25rem;
+  background-color: #595959;
+  font-size: 1.7rem;
 
   .column {
     display: flex;
@@ -24,7 +24,6 @@ const FooterStyles = styled.footer`
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
   margin: 0 auto;
   text-align: center;
   .inline {
@@ -40,11 +39,13 @@ const Container = styled.div`
 const RelativePosition = styled.div`
   width: 100%;
   .row {
-    display: flex;
+    padding: 10rem;
+    display: block-flex;
     flex-flow: row wrap;
     gap: 2rem;
     padding: 2rem;
     justify-content: center;
+    color: var(--white);
   }
 `
 
@@ -56,18 +57,17 @@ const Nav = styled.ul`
   list-style-type: none;
 `
 
-const Item = styled.li`
-  padding-bottom: 1rem;
-`
+const Item = styled.li``
 
 const Pages = styled(Link)`
-  color: var(--blue);
+  color: var(--white);
   &:hover {
-    color: var(--white);
+    color: var(--blue);
   }
   &[aria-current='page'] {
     border-bottom: 1px solid var(--red);
   }
+  padding: 5px;
 `
 
 const Span = styled.span``
@@ -77,9 +77,14 @@ const Credits = styled.ul`
   padding: 0 2rem;
   margin: 0;
   list-style-type: none;
+  @media only screen and (max-width: 384px) {
+    font-size: 1.5rem;
+  }
 `
 
-const CopyrightItem = styled.li``
+const CopyrightItem = styled.li`
+  padding-bottom: 5px;
+`
 
 const Terms = styled.ul`
   padding: 0;
@@ -90,9 +95,11 @@ const Terms = styled.ul`
 const TermItems = styled.li``
 
 const PolicyLink = styled(Link)`
-  color: var(--blue);
+  padding-left: 10px;
+  padding-right: 10px;
+  color: var(--white);
   &:hover {
-    color: var(--white);
+    color: var(--blue);
   }
   &[aria-current='page'] {
     border-bottom: 1px solid var(--red);
@@ -100,9 +107,9 @@ const PolicyLink = styled(Link)`
 `
 
 const Designer = styled.a`
-  color: var(--blue);
+  color: var(--white);
   &:hover {
-    color: var(--white);
+    color: var(--blue);
   }
 `
 
@@ -130,19 +137,19 @@ export default function Footer() {
             <Item>
               <Pages to="/">Home</Pages>
             </Item>
-            <Span> | </Span>
+            <Item aria-label="hidden"> | </Item>
             <Item>
               <Pages to="/about">About Us</Pages>
             </Item>
-            <Span> | </Span>
+            <Item aria-label="hidden"> | </Item>
             <Item>
               <Pages to="/services">Services</Pages>
             </Item>
-            <Span> | </Span>
+            <Item aria-label="hidden"> | </Item>
             <Item>
               <Pages to="/faq">FAQ</Pages>
             </Item>
-            <Span> | </Span>
+            <Item aria-label="hidden"> | </Item>
             <Item>
               <Pages to="/contact">Contact Us</Pages>
             </Item>
@@ -152,12 +159,13 @@ export default function Footer() {
               <CopyrightItem>
                 &copy; {node.copyright} {new Date().getFullYear()}
               </CopyrightItem>
+
               <CopyrightItem>
                 <Terms className="inline">
                   <TermItems>
                     <PolicyLink to="/privacypolicy">Privacy Policy</PolicyLink>
                   </TermItems>
-                  <Span> | </Span>
+                  <Item> | </Item>
                   <TermItems>
                     <PolicyLink to="/termsconditions">
                       Terms &amp; Conditions
@@ -166,7 +174,7 @@ export default function Footer() {
                 </Terms>
               </CopyrightItem>
               <CopyrightItem>
-                Built by <Span>{node.designs[0]}</Span> and{' '}
+                Crafted by <Span>{node.designs[0]}</Span> and{' '}
                 <Designer
                   href="https://phiferwebsolutions.com"
                   target="_blank"

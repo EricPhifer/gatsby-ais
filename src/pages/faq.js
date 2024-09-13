@@ -5,6 +5,13 @@ import { defaultComponents, PortableText } from '@portabletext/react'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
 const FaqStyles = styled.div`
+  @media only screen and (max-width: 500px) {
+    body {
+      -ms-overflow-style: none;
+      overflow: hidden;
+      background-attachment: fixed;
+    }
+  }
   max-width: 65rem;
   margin: 17rem auto 0;
   .inline {

@@ -54,7 +54,7 @@ const LeadTitle = styled.div`
 `
 
 const H1 = styled.h1`
-  color: var(--white);
+  color: white;
   font-weight: 600;
   margin: 0;
   @media only screen and (max-width: 500px) {

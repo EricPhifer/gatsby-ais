@@ -110,7 +110,7 @@ const FormStyles = styled.div`
   background: var(--black);
   .required::placeholder,
   .tomato {
-    color: tomato;
+    color: red;
   }
   .hide {
     display: none;

@@ -18,6 +18,7 @@ const UpperContent = styled.div`
 const Image = styled.div`
   grid-column: 1 / span 3;
   img {
+    clamp:
     width: 100%;
   }
   @media only screen and (max-width: 915px) {

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 const Typography = createGlobalStyle`
   html {
@@ -19,6 +19,6 @@ const Typography = createGlobalStyle`
     text-decoration: none;
     color: var(--black);
   }
-`;
+`
 
-export default Typography;
+export default Typography

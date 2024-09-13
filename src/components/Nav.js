@@ -21,7 +21,7 @@ const Navigation = styled.div`
     position: fixed;
     top: 0;
     z-index: 1005;
-    background: var(--gray);
+    background: #595959;
     box-shadow: 0 1rem 1rem #000;
   }
   a {
@@ -44,6 +44,8 @@ const Upper = styled.div`
   place-items: center center;
   position: relative;
   z-index: 1006;
+  font-size: 25px;
+  color: var(--white);
 `
 
 const Image = styled.div`
@@ -67,10 +69,11 @@ const Lower = styled.nav`
   top: 5rem;
   right: 0;
   z-index: 1004;
+  padding-right: 1.5rem;
 `
 
 const Services = styled.nav`
-  width: 50%;
+  width: 80%;
   text-align: right;
   span {
     color: var(--white);
@@ -80,12 +83,19 @@ const Services = styled.nav`
     flex-flow: row nowrap;
   }
   ul li {
-    padding: 0 0.5rem;
+    padding: 0 1.5rem;
   }
   ul li a {
-    font-size: 1rem;
+    font-size: 1.6rem;
     color: var(--white);
     font-weight: bold;
+
+    @media only screen and (max-width: 1000px) {
+      font-size: 1.3rem;
+    }
+    @media only screen and (max-width: 877px) {
+      font-size: 1rem;
+    }
   }
 `
 
@@ -97,6 +107,7 @@ const Phone = styled.a`
   z-index: 1004;
   font-weight: bold;
   text-align: center;
+  color: white;
   &:hover {
     color: var(--blue);
   }
@@ -156,6 +167,7 @@ const LItem = styled.li`
 const Text = styled.span`
   align-self: end;
   width: 100%;
+  font-size: 12 px;
 `
 
 // Mobile Styling
@@ -165,11 +177,10 @@ const Mobile = styled.div`
     display: none;
   }
   .inline {
-    display: inline-flex;
+    padding-bottom: 15rem;
+    display: block;
+    text-align: center;
     a,
-    span {
-      padding-left: 1rem;
-    }
   }
   img {
     width: 25rem;
@@ -180,7 +191,7 @@ const Mobile = styled.div`
     font-size: 1.5rem;
   }
   .lifeAltering {
-    width: 11rem;
+    width: 13rem;
   }
 
   // Menu Toggling
@@ -277,9 +288,8 @@ const Hamburger = styled.span`
 `
 
 const Menu = styled.div`
-  min-height: 100vh;
-  height: 100%;
-  width: 100vw;
+  height: 100dvh;
+  width: 100dvw;
   margin: 0;
   position: fixed;
   top: 0;
@@ -287,12 +297,11 @@ const Menu = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  background-image: linear-gradient(to bottom, var(--blue), #fff);
+  background-image: linear-gradient(to bottom, var(--blue), #74c2d1);
   box-shadow: 0 0 10px #85888c;
   transform-origin: 0% 0%;
   transform: translate(100%, 0%);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  overflow-y: scroll;
   li {
     transition-delay: 2s;
   }
@@ -309,7 +318,7 @@ const MobileUpper = styled.nav``
 const MobileUpperList = styled.ul`
   display: flex;
   flex-flow: column nowrap;
-  margin-top: 10rem;
+  margin-top: 20rem;
   padding: 0;
   list-style-type: none;
   a {
@@ -317,9 +326,7 @@ const MobileUpperList = styled.ul`
     color: var(--black);
     text-decoration: none;
     text-transform: uppercase;
-    text-shadow: 0 0.5px var(--white), 0.5px 0 var(--white),
-      0 -0.5px var(--white), -0.5px 0 var(--white);
-    font-size: 3rem;
+    font-size: 4rem;
     &[aria-current='page'] {
       text-decoration: underline 3px var(--red);
     }
@@ -332,7 +339,7 @@ const MobileUpperList = styled.ul`
 const MobileUpperItem = styled.li``
 
 const NavButton = styled.button`
-  height: 7rem;
+  height: 8rem;
 `
 
 const MobileLower = styled.nav`
@@ -340,28 +347,28 @@ const MobileLower = styled.nav`
   flex-flow: row wrap;
   position: absolute;
   bottom: -15rem;
-  right: 1.5rem;
   font-size: 1.5rem;
   text-align: right;
+  padding-bottom: 3rem;
 `
 
 const MobileLowerList = styled.ul`
-  padding: 0;
+  text-align: center;
   list-style-type: none;
   a {
-    font-size: 1.5rem;
-    color: var(--blue);
+    font-size: 2rem;
+    color: #000080;
+    text-decoration: underline;
+    &[aria-current='page'] {
+      text-decoration: underline 3px var(--red);
+    }
   }
 `
 
 const MobileLowerItem = styled.li``
 
-const LowerNavButton = styled.button``
-
-const NavBarCancel = styled.span`
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent;
+const LowerNavButton = styled.button`
+  min-width: 200px;
 `
 
 export default function Nav() {
@@ -421,6 +428,10 @@ export default function Nav() {
                 {...node.mainlogo}
                 alt={node.mainalt}
                 style={{
+                  minHeight: '73px',
+                  maxHeight: '121px',
+                  minWidth: '250px',
+                  maxWidth: '415px',
                   width: '80%',
                   objectFit: 'contain',
                   auto: 'format',
@@ -562,7 +573,7 @@ export default function Nav() {
                         >
                           <Link to="/plans#medicare">Medicare</Link>
                         </LowerNavButton>
-                        <NavBarCancel> | </NavBarCancel>
+                        <br />
                         <LowerNavButton
                           type="button"
                           onClick={() => {

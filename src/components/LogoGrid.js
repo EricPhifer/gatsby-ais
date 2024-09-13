@@ -75,7 +75,9 @@ export default function LogoGrid() {
               {...logo.logoimage}
               alt={logo.altTitle}
               style={{
-                objectFit: 'cover',
+                objectFit: 'contain',
+                height: '200px',
+                width: '200px',
                 auto: 'format',
               }}
             />
