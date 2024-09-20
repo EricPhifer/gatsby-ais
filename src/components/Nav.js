@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import SanityImage from 'gatsby-plugin-sanity-image'
 import styled from 'styled-components'
+
+// eslint-disable-next-line
 
 const NodeParser = styled.div`
   position: relative;
@@ -318,23 +320,21 @@ const MobileUpper = styled.nav``
 const MobileUpperList = styled.ul`
   display: flex;
   flex-flow: column nowrap;
-  margin-top: 20rem;
+  margin-top: 10rem;
   padding: 0;
   list-style-type: none;
   a {
     margin-bottom: 4rem;
-    color: var(--black);
+    color: black;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 4rem;
+    font-size: 3rem;
+    &[aria-current='page'] {
+      text-decoration: underline 3px var(--red);
+    }
   }
   a:hover {
     opacity: 0.5;
-  }
-  &[aria-current='page'] {
-    background-color: var(--white);
-    color: var(--black);
-    border-bottom: 1px solid var(--red);
   }
 `
 
@@ -361,6 +361,9 @@ const MobileLowerList = styled.ul`
     font-size: 2rem;
     color: #000080;
     text-decoration: underline;
+    &[aria-current='/plans#employer-benefit-solutions'] {
+      text-decoration: underline 3px var(--red);
+    }
   }
   a:hover {
     opacity: 0.5;
@@ -395,6 +398,24 @@ export default function Nav() {
 
   const { nodes } = navigation
   const [checked, setChecked] = React.useState(false || '')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove('no-scroll')
+    }
+    console.log(isMenuOpen)
+    // Cleanup function to reset the body class when the component is unmounted
+    return () => {
+      document.body.classList.remove('no-scroll')
+    }
+  }, [isMenuOpen])
+
+  const menuToggle = () => {
+    setIsMenuOpen(prevState => !prevState)
+  }
 
   return (
     <>
@@ -481,6 +502,7 @@ export default function Nav() {
                   type="checkbox"
                   checked={checked}
                   onClick={() => {
+                    menuToggle(prevState => !prevState)
                     setChecked(old => !old)
                   }}
                 />
@@ -560,7 +582,10 @@ export default function Nav() {
                             setChecked(old => !old)
                           }}
                         >
-                          <Link to="/plans#employer-benefit-solutions">
+                          <Link
+                            className="activeLink"
+                            to="/plans#employer-benefit-solutions"
+                          >
                             Employer and Individual Health Plans
                           </Link>
                         </LowerNavButton>
@@ -573,7 +598,9 @@ export default function Nav() {
                             setChecked(old => !old)
                           }}
                         >
-                          <Link to="/plans#medicare">Medicare</Link>
+                          <Link className="activeLink" to="/plans#medicare">
+                            Medicare
+                          </Link>
                         </LowerNavButton>
                         <br />
                         <LowerNavButton
@@ -583,8 +610,8 @@ export default function Nav() {
                           }}
                         >
                           <Link
+                            className="activeLink"
                             to="/plans#life-insurance"
-                            className="lifeAltering"
                           >
                             Life Insurance
                           </Link>

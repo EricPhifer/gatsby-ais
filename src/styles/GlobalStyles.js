@@ -28,18 +28,21 @@ const GlobalStyles = createGlobalStyle`
     --green: #6BBF59;
   }
   html {
-    font-size: 10px;
-    overflow-x: hidden;
-    &.no-scroll { 
-  overflow: hidden;
-  }
+    font-size: 10px;  
   }
 
+ .no-scroll {
+    overflow: hidden;
+}
+ 
   html, body {
     max-width: 100%;
-  }
+    }
 
-
+  .activeLink:active {
+    text-decoration: none;
+    border-bottom: 2px solid var(--red);
+}
 
   button {
     display: flex;
@@ -67,16 +70,18 @@ const GlobalStyles = createGlobalStyle`
     image-rendering: pixelated;
   } */
 
-  /* Scrollbar Styles */
+   Scrollbar Styles 
   body::-webkit-scrollbar {
     width: 12px;
   }
   html {
     scrollbar-width: thin;
     scrollbar-color: var(--blue) var(--white);
+    
   }
   body::-webkit-scrollbar-track {
     background: var(--white);
+    
   }
   body::-webkit-scrollbar-thumb {
     background-color: var(--blue) ;

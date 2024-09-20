@@ -10,17 +10,6 @@ const AboutStyles = styled.div`
   max-width: 108rem;
   margin: 18rem auto 5rem;
   text-align: left;
-  // @media only screen and (max-width: 500px) {
-  // ::-webkit-scrollbar {
-  //   display: none;
-  //   overflow: hidden;
-  //   background-attachment: fixed;
-  // }
-  //  {
-  //   -ms-overflow-style: none;
-  //   overflow: hidden;
-  //   background-attachment: fixed;
-  // }
   .inline {
     display: inline-flex;
   }

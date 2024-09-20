@@ -16,29 +16,12 @@ const SiteStyles = styled.div`
 export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.classList.add('no-scroll')
-    } else {
-      document.body.classList.remove('no-scroll')
-    }
-
-    // Cleanup function to reset the body class when the component is unmounted
-    return () => {
-      document.body.classList.remove('no-scroll')
-    }
-  }, [isMenuOpen])
-
-  const toggleMenu = () => {
-    setIsMenuOpen(prevState => !prevState)
-  }
-
   return (
     <>
       <GlobalStyles />
       <Typography />
       <SiteStyles>
-        <Nav isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        <Nav isMenuOpen={isMenuOpen} />
         <main>{children}</main>
         <Footer />
       </SiteStyles>
