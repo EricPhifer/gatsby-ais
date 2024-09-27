@@ -399,14 +399,12 @@ export default function Nav() {
   const { nodes } = navigation
   const [checked, setChecked] = React.useState(false || '')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('no-scroll')
     } else {
       document.body.classList.remove('no-scroll')
     }
-    console.log(isMenuOpen)
     // Cleanup function to reset the body class when the component is unmounted
     return () => {
       document.body.classList.remove('no-scroll')
@@ -502,7 +500,7 @@ export default function Nav() {
                   type="checkbox"
                   checked={checked}
                   onClick={() => {
-                    menuToggle(prevState => !prevState)
+                    menuToggle(setIsMenuOpen => !setIsMenuOpen)
                     setChecked(old => !old)
                   }}
                 />
@@ -515,6 +513,7 @@ export default function Nav() {
                         <NavButton
                           type="button"
                           onClick={() => {
+                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
                             setChecked(old => !old)
                           }}
                         >
@@ -527,6 +526,7 @@ export default function Nav() {
                         <NavButton
                           type="button"
                           onClick={() => {
+                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
                             setChecked(old => !old)
                           }}
                         >
@@ -539,6 +539,7 @@ export default function Nav() {
                         <NavButton
                           type="button"
                           onClick={() => {
+                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
                             setChecked(old => !old)
                           }}
                         >
@@ -551,6 +552,7 @@ export default function Nav() {
                         <NavButton
                           type="button"
                           onClick={() => {
+                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
                             setChecked(old => !old)
                           }}
                         >
@@ -563,6 +565,7 @@ export default function Nav() {
                         <NavButton
                           type="button"
                           onClick={() => {
+                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
                             setChecked(old => !old)
                           }}
                         >
@@ -579,10 +582,12 @@ export default function Nav() {
                         <LowerNavButton
                           type="button"
                           onClick={() => {
+                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
                             setChecked(old => !old)
                           }}
                         >
                           <Link
+                            // className="activeLink"
                             className="activeLink"
                             to="/plans#employer-benefit-solutions"
                           >
@@ -595,10 +600,15 @@ export default function Nav() {
                         <LowerNavButton
                           type="button"
                           onClick={() => {
+                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
                             setChecked(old => !old)
                           }}
                         >
-                          <Link className="activeLink" to="/plans#medicare">
+                          <Link
+                            onClick={() => {}}
+                            className="activeLink"
+                            to="/plans#medicare"
+                          >
                             Medicare
                           </Link>
                         </LowerNavButton>
@@ -606,6 +616,7 @@ export default function Nav() {
                         <LowerNavButton
                           type="button"
                           onClick={() => {
+                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
                             setChecked(old => !old)
                           }}
                         >
