@@ -305,7 +305,7 @@ const Menu = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  background-image: linear-gradient(to bottom, var(--blue), #74c2d1);
+  background-image: linear-gradient(to bottom, var(--blue), #46acc3);
   box-shadow: 0 0 10px #85888c;
   transform-origin: 0% 0%;
   transform: translate(100%, 0%);
@@ -337,6 +337,7 @@ const MobileUpperList = styled.ul`
     font-size: 3rem;
     &[aria-current='page'] {
       text-decoration: underline 3px var(--red);
+      text-underline-offset: 7px;
     }
   }
   a:hover {
@@ -365,7 +366,7 @@ const MobileLowerList = styled.ul`
   list-style-type: none;
   a {
     font-size: 2rem;
-    color: #000080;
+    color: #000052;
     text-decoration: underline;
     &[aria-current='/plans#employer-benefit-solutions'] {
       text-decoration: underline 3px var(--red);
