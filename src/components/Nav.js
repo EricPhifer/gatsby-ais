@@ -111,7 +111,7 @@ const Phone = styled.a`
   text-align: center;
   color: white;
   &:hover {
-    color: var(--blue);
+    color: #000070;
   }
 `
 
@@ -500,7 +500,7 @@ export default function Nav() {
                   type="checkbox"
                   checked={checked}
                   onClick={() => {
-                    menuToggle(setIsMenuOpen => !setIsMenuOpen)
+                    menuToggle(open => !open)
                     setChecked(old => !old)
                   }}
                 />
@@ -513,7 +513,7 @@ export default function Nav() {
                         <NavButton
                           type="button"
                           onClick={() => {
-                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
+                            menuToggle(open => !open)
                             setChecked(old => !old)
                           }}
                         >
@@ -526,7 +526,7 @@ export default function Nav() {
                         <NavButton
                           type="button"
                           onClick={() => {
-                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
+                            menuToggle(open => !open)
                             setChecked(old => !old)
                           }}
                         >
@@ -539,7 +539,7 @@ export default function Nav() {
                         <NavButton
                           type="button"
                           onClick={() => {
-                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
+                            menuToggle(open => !open)
                             setChecked(old => !old)
                           }}
                         >
@@ -552,7 +552,7 @@ export default function Nav() {
                         <NavButton
                           type="button"
                           onClick={() => {
-                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
+                            menuToggle(open => !open)
                             setChecked(old => !old)
                           }}
                         >
@@ -565,7 +565,7 @@ export default function Nav() {
                         <NavButton
                           type="button"
                           onClick={() => {
-                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
+                            menuToggle(open => !open)
                             setChecked(old => !old)
                           }}
                         >
@@ -582,12 +582,11 @@ export default function Nav() {
                         <LowerNavButton
                           type="button"
                           onClick={() => {
-                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
+                            menuToggle(open => !open)
                             setChecked(old => !old)
                           }}
                         >
                           <Link
-                            // className="activeLink"
                             className="activeLink"
                             to="/plans#employer-benefit-solutions"
                           >
@@ -600,7 +599,7 @@ export default function Nav() {
                         <LowerNavButton
                           type="button"
                           onClick={() => {
-                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
+                            menuToggle(open => !open)
                             setChecked(old => !old)
                           }}
                         >
@@ -616,7 +615,7 @@ export default function Nav() {
                         <LowerNavButton
                           type="button"
                           onClick={() => {
-                            menuToggle(setIsMenuOpen => !setIsMenuOpen)
+                            menuToggle(open => !open)
                             setChecked(old => !old)
                           }}
                         >

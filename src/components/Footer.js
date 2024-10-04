@@ -62,7 +62,7 @@ const Item = styled.li``
 const Pages = styled(Link)`
   color: var(--white);
   &:hover {
-    color: var(--blue);
+    color: #000070;
   }
   &[aria-current='page'] {
     border-bottom: 1px solid var(--red);
