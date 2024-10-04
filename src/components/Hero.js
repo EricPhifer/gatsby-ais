@@ -148,7 +148,7 @@ const Telephone = styled.a`
   position: static;
   z-index: 125;
   &:hover {
-    color: var(--blue);
+    color: #000070;
   }
   @media only screen and (max-width: 1080px) {
     font-weight: bold;

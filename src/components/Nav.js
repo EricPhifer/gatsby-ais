@@ -46,7 +46,7 @@ const Upper = styled.div`
   place-items: center center;
   position: relative;
   z-index: 1006;
-  font-size: 25px;
+  font-size: 20px;
   color: var(--white);
 `
 
@@ -75,6 +75,9 @@ const Lower = styled.nav`
 `
 
 const Services = styled.nav`
+  :hover {
+    color: #000070;
+  }
   width: 80%;
   text-align: right;
   span {
@@ -88,10 +91,10 @@ const Services = styled.nav`
     padding: 0 1.5rem;
   }
   ul li a {
+    text-align: center;
     font-size: 1.6rem;
     color: var(--white);
     font-weight: bold;
-
     @media only screen and (max-width: 1000px) {
       font-size: 1.3rem;
     }
@@ -102,7 +105,7 @@ const Services = styled.nav`
 `
 
 const Phone = styled.a`
-  width: 50%;
+  width: 60%;
   margin-right: 8rem;
   margin-top: 1rem;
   position: relative;
@@ -117,6 +120,9 @@ const Phone = styled.a`
 
 const UList = styled.ul`
   list-style-type: none;
+  @hover {
+    color: #000070;
+  }
 `
 
 const UItem = styled.li``
@@ -375,6 +381,11 @@ const MobileLowerItem = styled.li``
 const LowerNavButton = styled.button`
   min-width: 200px;
 `
+const navLinks = styled.div`
+  @hover {
+    color: #000070;
+  }
+`
 
 export default function Nav() {
   const { navigation } = useStaticQuery(graphql`
@@ -580,6 +591,7 @@ export default function Nav() {
                     <MobileLowerList>
                       <MobileLowerItem>
                         <LowerNavButton
+                          className="navLinks"
                           type="button"
                           onClick={() => {
                             menuToggle(open => !open)
