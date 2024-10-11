@@ -76,7 +76,7 @@ const Lower = styled.nav`
 
 const Services = styled.nav`
   :hover {
-    color: #000070;
+    color: #1e90ff;
   }
   width: 80%;
   text-align: right;
@@ -95,7 +95,7 @@ const Services = styled.nav`
     font-size: 1.6rem;
     color: var(--white);
     font-weight: bold;
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 1070px) {
       font-size: 1.3rem;
     }
     @media only screen and (max-width: 877px) {
@@ -114,14 +114,14 @@ const Phone = styled.a`
   text-align: center;
   color: white;
   &:hover {
-    color: #000070;
+    color: #1e90ff;
   }
 `
 
 const UList = styled.ul`
   list-style-type: none;
   @hover {
-    color: #000070;
+    color: var(--blue);
   }
 `
 
@@ -368,9 +368,6 @@ const MobileLowerList = styled.ul`
     font-size: 2rem;
     color: #000052;
     text-decoration: underline;
-    &[aria-current='/plans#employer-benefit-solutions'] {
-      text-decoration: underline 3px var(--red);
-    }
   }
   a:hover {
     opacity: 0.5;
@@ -381,11 +378,6 @@ const MobileLowerItem = styled.li``
 
 const LowerNavButton = styled.button`
   min-width: 200px;
-`
-const navLinks = styled.div`
-  @hover {
-    color: #000070;
-  }
 `
 
 export default function Nav() {

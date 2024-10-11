@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import Hero from '../components/Hero'
 import LogoGrid from '../components/LogoGrid'
 

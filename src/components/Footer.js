@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 const FooterStyles = styled.footer`
   width: 100vw;
-  max-height: 225px;
+  max-height: 180px;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -43,7 +43,7 @@ const RelativePosition = styled.div`
     display: block-flex;
     flex-flow: row wrap;
     gap: 2rem;
-    padding: 2rem;
+    padding: 0rem 2rem 0rem 2rem;
     justify-content: center;
     color: var(--white);
   }
@@ -62,7 +62,7 @@ const Item = styled.li``
 const Pages = styled(Link)`
   color: var(--white);
   &:hover {
-    color: #000070;
+    color: #1e90ff;
   }
   &[aria-current='page'] {
     border-bottom: 1px solid var(--red);
@@ -83,7 +83,7 @@ const Credits = styled.ul`
 `
 
 const CopyrightItem = styled.li`
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 `
 
 const Terms = styled.ul`
@@ -99,7 +99,7 @@ const PolicyLink = styled(Link)`
   padding-right: 10px;
   color: var(--white);
   &:hover {
-    color: var(--blue);
+    color: #1e90ff;
   }
   &[aria-current='page'] {
     border-bottom: 1px solid var(--red);
