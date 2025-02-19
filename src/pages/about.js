@@ -20,10 +20,10 @@ const AboutStyles = styled.div`
     text-transform: uppercase;
   }
   #randy {
-    order: 1;
+    order: 2;
   }
   #c {
-    order: 2;
+    order: 1;
   }
   #rhonda {
     order: 3;
