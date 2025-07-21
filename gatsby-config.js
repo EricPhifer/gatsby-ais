@@ -12,7 +12,6 @@ module.exports = {
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-netlify',
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
     {
@@ -26,8 +25,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: process.env.SANITY_PROJECT_ID,
-        dataset: process.env.SANITY_DATASET,
+        projectId: process.env.SANITY_PROJECT_ID || '9etebhqo',
+        dataset: process.env.SANITY_DATASET || 'production',
         apiVersion: '2022-05-17',
         token: process.env.SANITY_TOKEN,
       },
@@ -35,8 +34,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sanity-image',
       options: {
-        projectId: process.env.SANITY_PROJECT_ID,
-        dataset: process.env.SANITY_DATASET,
+        projectId: process.env.SANITY_PROJECT_ID || '9etebhqo',
+        dataset: process.env.SANITY_DATASET || 'production',
       },
     },
   ],
