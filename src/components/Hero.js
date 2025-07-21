@@ -162,7 +162,8 @@ const Telephone = styled.a`
 const TaglinContainer = styled.div`
   width: 50%;
   display: flex;
-  justify-content: end;
+  justify-content: start;
+  flex-flow: column;
   .tagline {
     max-width: 26rem;
     margin: 0;
@@ -209,6 +210,41 @@ const LowerLogo = styled.div`
 
 const Uppercase = styled.span`
   text-transform: uppercase;
+`
+
+const Buttonesque = styled.div`
+  margin-top: 1.5rem;
+`
+
+const ExternalLink = styled.a`
+  width: 11rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: var(--blue);
+  border-right: 4px double var(--green);
+  border-bottom: 2px double var(--green);
+  &:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border-right: 4px double var(--blue);
+    border-bottom: 2px double var(--blue);
+  }
+  .arrowRight {
+    font-size: 2rem;
+    color: var(--green);
+  }
+
+  @media only screen and (max-width: 500px) {
+    .arrowRight {
+      font-size: 1.5rem;
+    }
+  }
 `
 
 export default function Hero() {
@@ -316,7 +352,16 @@ export default function Hero() {
             </Link>
           </Cta>
           <TaglinContainer>
-            <Uppercase className="tagline">{call.tagline} </Uppercase>
+            <Uppercase className="tagline">{call.tagline}</Uppercase>
+            <Buttonesque>
+              <ExternalLink
+                href="https://vivecp.com/325f0387-6c68-4e2d-8966-5370c6714eb9"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get a Quote
+              </ExternalLink>
+            </Buttonesque>
           </TaglinContainer>
           <ContactContainer>
             {nodes.map(h => (
