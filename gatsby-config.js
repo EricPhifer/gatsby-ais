@@ -10,10 +10,10 @@ module.exports = {
     author: 'Phifer Web Solutions',
   },
   plugins: [
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-netlify',
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-netlify',
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
@@ -27,7 +27,7 @@ module.exports = {
       options: {
         projectId: process.env.SANITY_PROJECT_ID || '9etebhqo',
         dataset: process.env.SANITY_DATASET || 'production',
-        apiVersion: '2022-05-17',
+        apiVersion: '2024-07-23',
         token: process.env.SANITY_TOKEN,
       },
     },
