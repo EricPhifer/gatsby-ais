@@ -6,6 +6,7 @@ import { FaCaretRight } from 'react-icons/fa'
 
 const HeroContainer = styled.header`
   width: 100%;
+  margin-bottom: 5rem;
 `
 
 // Upper part of the Hero Element
@@ -214,17 +215,18 @@ const Uppercase = styled.span`
 
 const Buttonesque = styled.div`
   margin-top: 1.5rem;
+  margin-left: 1.5rem;
 `
 
 const ExternalLink = styled.a`
-  width: 11rem;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
   color: var(--white);
-  font-size: 1rem;
-  font-weight: bold;
+  font-family: 'Dancing Script', cursive, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
   text-transform: uppercase;
   background-color: var(--blue);
   border-right: 4px double var(--green);
@@ -359,7 +361,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Get a Quote
+                Get a Personalized Life Insurance Quote Today
               </ExternalLink>
             </Buttonesque>
           </TaglinContainer>
