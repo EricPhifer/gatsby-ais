@@ -48,6 +48,15 @@
   "bugs": {
     "url": "https://github.com/EricPhifer/gatsby-ais/issues"
   },
+  "overrides": {
+    "webpack": "^5.105.0",
+    "axios": "^1.8.0",
+    "cookie": "^0.7.0",
+    "serialize-javascript": "^7.0.4",
+    "@parcel/reporter-dev-server": "^2.16.4",
+    "tmp": "^0.2.4",
+    "immutable": "^4.3.8"
+  },
   "devDependencies": {
     "eslint": "^8.40.0",
     "eslint-config-wesbos": "^3.2.3",
