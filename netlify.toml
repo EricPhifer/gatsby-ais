@@ -1,5 +1,5 @@
 [build]
-  environment = { NODE_VERSION = "18.16.0" }
+  environment = { NODE_VERSION = "20.18.3" }
 
 [[redirects]]
 from = "https://activeinsgj.com/*"
